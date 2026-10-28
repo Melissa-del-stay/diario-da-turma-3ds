@@ -1,0 +1,236 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #211318;
+    font-family: Georgia, serif;
+    overflow: hidden;
+}
+
+
+.livro {
+    position: relative;
+    width: 480px;
+    height: 620px;
+    perspective: 1600px;
+}
+
+
+.pagina {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    padding: 35px 25px;
+    background: #f1e4c9;
+    border: 5px solid #c5a15c;
+    border-radius: 4px 12px 12px 4px;
+    box-shadow: 5px 8px 20px #0008;
+    color: #51202b;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagina h1 {
+    font-size: 29px;
+    margin-bottom: 12px;
+}
+
+.pagina p {
+    margin-bottom: 18px;
+}
+
+#formulario {
+    width: 100%;
+}
+
+.pagina input {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0;
+    border: 1px solid #b9a27a;
+    border-radius: 5px;
+    background: #fffaf0;
+    font-size: 15px;
+}
+
+.pagina button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    color: #fff0d0;
+    background: #641d2c;
+    border: 1px solid #c5a15c;
+    border-radius: 5px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#mensagem {
+    margin-top: 12px;
+}
+
+.capa {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    transition: transform 2s ease-in-out;
+}
+
+.frente {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #792b3a, #581725 55%, #350b15);
+    border: 5px solid #c5a15c;
+    border-radius: 4px 12px 12px 4px;
+    box-shadow: inset 5px 0 12px #ffffff12;
+    backface-visibility: hidden;
+}
+
+.moldura {
+    position: absolute;
+    inset: 13px;
+    border: 1px solid #d9b66e;
+    border-radius: 3px 8px 8px 3px;
+    pointer-events: none;
+}
+
+.decoracao {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #dfbd72;
+    pointer-events: none;
+}
+
+.superior {
+    top: 24px;
+    font-size: 24px;
+}
+
+.titulo-capa {
+    position: absolute;
+    top: 75px;
+    left: 18px;
+    right: 18px;
+    text-align: center;
+    color: #e8cc8d;
+    pointer-events: none;
+}
+
+.titulo-capa span {
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.titulo-capa h2 {
+    margin-top: 12px;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.linha {
+    width: 90px;
+    margin: 12px auto;
+    border-top: 1px solid #c5a15c;
+}
+
+.titulo-capa p {
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+.cadeado {
+    position: absolute;
+    width: 76px;
+    height: 94px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    cursor: pointer;
+    z-index: 3;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.arco {
+    position: absolute;
+    top: 0;
+    left: 17px;
+    width: 42px;
+    height: 49px;
+    border: 7px solid #dfbd72;
+    border-bottom: 0;
+    border-radius: 24px 24px 0 0;
+}
+
+.corpo {
+    position: absolute;
+    bottom: 0;
+    width: 76px;
+    height: 57px;
+    background: linear-gradient(135deg, #f4d68d, #b78736);
+    border: 2px solid #f3d99a;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px #0005;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fechadura {
+    width: 12px;
+    height: 22px;
+    background: #581725;
+    border-radius: 8px;
+}
+
+.inferior {
+    bottom: 54px;
+    font-size: 32px;
+}
+
+.ano {
+    position: absolute;
+    bottom: 27px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #d9b66e;
+    font-size: 10px;
+    letter-spacing: 3px;
+    pointer-events: none;
+}
+
+.capa.abrindo {
+    transform: rotateY(-160deg);
+    pointer-events: none;
+}
+
+.capa.abrindo .cadeado {
+    opacity: 0;
+    transform: translate(-50%, -20%) scale(0.7);
+}
+
+
+@media (max-width: 600px) {
+    .livro {
+        width: min(82vw, 380px);
+        height: min(76vh, 520px);
+    }
+}
