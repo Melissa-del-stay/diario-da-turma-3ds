@@ -1,8 +1,8 @@
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -10,227 +10,270 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #211318;
-    font-family: Georgia, serif;
-    overflow: hidden;
+    padding: 25px;
+    background: #210e13;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #f1e4c8;
 }
-
 
 .livro {
     position: relative;
     width: 480px;
-    height: 620px;
-    perspective: 1600px;
+    max-width: 100%;
+    min-height: 620px;
+    perspective: 1200px;
 }
 
-
+/* Página interna do diário */
 .pagina {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    padding: 35px 25px;
-    background: #f1e4c9;
-    border: 5px solid #c5a15c;
-    border-radius: 4px 12px 12px 4px;
-    box-shadow: 5px 8px 20px #0008;
-    color: #51202b;
+    position: relative;
+    width: 100%;
+    min-height: 620px;
+    padding: 45px 30px;
+    background: #f1e4c8;
+    border: 5px solid #c9a45b;
+    border-radius: 5px;
+    color: #542431;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
 .pagina h1 {
-    font-size: 29px;
     margin-bottom: 12px;
+    font-size: 32px;
+    font-weight: normal;
 }
 
-.pagina p {
-    margin-bottom: 18px;
+.pagina > p {
+    margin-bottom: 25px;
+    font-size: 14px;
 }
 
 #formulario {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.pagina input {
+#formulario input {
     width: 100%;
+    min-height: 44px;
     padding: 12px;
-    margin: 6px 0;
-    border: 1px solid #b9a27a;
-    border-radius: 5px;
+    border: 1px solid #c4a779;
+    border-radius: 4px;
     background: #fffaf0;
-    font-size: 15px;
+    font-size: 14px;
 }
 
-.pagina button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 12px;
-    color: #fff0d0;
-    background: #641d2c;
-    border: 1px solid #c5a15c;
-    border-radius: 5px;
-    font-family: Georgia, serif;
-    font-size: 16px;
+#formulario button {
+    min-height: 45px;
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+    background: #682334;
+    color: #fff0d1;
+    font-family: Georgia, "Times New Roman", serif;
     cursor: pointer;
+}
+
+#formulario button:hover {
+    background: #7b3043;
 }
 
 #mensagem {
     margin-top: 12px;
+    font-size: 13px;
 }
 
+/* Link para criar uma conta */
+.opcao-cadastro {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.opcao-cadastro p {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.opcao-cadastro a {
+    color: #542431;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid #bd9653;
+    padding-bottom: 3px;
+}
+
+.opcao-cadastro a:hover {
+    color: #8a3c50;
+}
+
+/* Capa decorativa */
 .capa {
     position: absolute;
     inset: 0;
     z-index: 2;
+    border: 5px solid #bd9653;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #743044, #4b1928 65%, #35121e);
+    box-shadow:
+        inset 0 0 0 5px #4b1928,
+        inset 0 0 0 7px #bd9653,
+        0 12px 30px rgba(0, 0, 0, 0.4);
     transform-origin: left center;
-    transform-style: preserve-3d;
-    transition: transform 2s ease-in-out;
+    transition: transform 1s ease, opacity 1s ease;
 }
 
 .frente {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 610px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    background: linear-gradient(135deg, #792b3a, #581725 55%, #350b15);
-    border: 5px solid #c5a15c;
-    border-radius: 4px 12px 12px 4px;
-    box-shadow: inset 5px 0 12px #ffffff12;
-    backface-visibility: hidden;
 }
 
 .moldura {
     position: absolute;
-    inset: 13px;
-    border: 1px solid #d9b66e;
-    border-radius: 3px 8px 8px 3px;
+    inset: 20px;
+    border: 2px solid #c9a45b;
+    outline: 1px solid rgba(201, 164, 91, 0.5);
+    outline-offset: 5px;
     pointer-events: none;
 }
 
 .decoracao {
     position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: #dfbd72;
-    pointer-events: none;
+    color: #e0bd77;
+    font-size: 24px;
+    letter-spacing: 7px;
 }
 
-.superior {
-    top: 24px;
-    font-size: 24px;
+.decoracao.superior {
+    top: 55px;
+}
+
+.decoracao.inferior {
+    bottom: 70px;
+    font-size: 32px;
 }
 
 .titulo-capa {
-    position: absolute;
-    top: 75px;
-    left: 18px;
-    right: 18px;
+    position: relative;
+    z-index: 1;
+    padding: 0 25px;
     text-align: center;
-    color: #e8cc8d;
-    pointer-events: none;
+    color: #f1dfb8;
 }
 
 .titulo-capa span {
-    font-size: 10px;
-    letter-spacing: 4px;
+    font-size: 12px;
+    letter-spacing: 5px;
 }
 
 .titulo-capa h2 {
-    margin-top: 12px;
-    font-size: 25px;
-    font-style: italic;
+    margin-top: 22px;
+    font-size: 34px;
     font-weight: normal;
+    line-height: 1.3;
+    text-shadow: 2px 3px 4px #2b0c16;
 }
 
 .linha {
-    width: 90px;
-    margin: 12px auto;
-    border-top: 1px solid #c5a15c;
+    width: 150px;
+    margin: 20px auto;
+    border-top: 2px solid #c9a45b;
 }
 
 .titulo-capa p {
-    font-size: 11px;
-    letter-spacing: 4px;
+    font-size: 13px;
+    letter-spacing: 5px;
 }
 
+/* Cadeado desenhado em CSS */
 .cadeado {
     position: absolute;
-    width: 76px;
-    height: 94px;
-    top: 50%;
+    bottom: 125px;
     left: 50%;
-    transform: translate(-50%, -20%);
+    width: 48px;
+    height: 60px;
+    transform: translateX(-50%);
     cursor: pointer;
-    z-index: 3;
-    transition: opacity 0.5s, transform 0.5s;
 }
 
 .arco {
     position: absolute;
     top: 0;
-    left: 17px;
-    width: 42px;
-    height: 49px;
-    border: 7px solid #dfbd72;
-    border-bottom: 0;
-    border-radius: 24px 24px 0 0;
+    left: 11px;
+    width: 26px;
+    height: 29px;
+    border: 5px solid #d8b66f;
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
 }
 
 .corpo {
     position: absolute;
     bottom: 0;
-    width: 76px;
-    height: 57px;
-    background: linear-gradient(135deg, #f4d68d, #b78736);
-    border: 2px solid #f3d99a;
-    border-radius: 7px;
-    box-shadow: 0 4px 8px #0005;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 48px;
+    height: 37px;
+    border: 2px solid #e0bd77;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #d9b76d, #96702f);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .fechadura {
-    width: 12px;
-    height: 22px;
-    background: #581725;
-    border-radius: 8px;
+    position: absolute;
+    top: 9px;
+    left: 19px;
+    width: 7px;
+    height: 12px;
+    border-radius: 5px;
+    background: #4b1928;
 }
 
-.inferior {
-    bottom: 54px;
-    font-size: 32px;
+.fechadura::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 2px;
+    width: 3px;
+    height: 5px;
+    background: #4b1928;
 }
 
 .ano {
     position: absolute;
-    bottom: 27px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: #d9b66e;
-    font-size: 10px;
+    bottom: 32px;
+    color: #e0bd77;
+    font-size: 12px;
     letter-spacing: 3px;
-    pointer-events: none;
 }
 
-.capa.abrindo {
-    transform: rotateY(-160deg);
-    pointer-events: none;
-}
-
-.capa.abrindo .cadeado {
+/* Estado da capa aberta */
+.capa.aberta {
+    transform: rotateY(-110deg);
     opacity: 0;
-    transform: translate(-50%, -20%) scale(0.7);
+    pointer-events: none;
 }
 
+@media (max-width: 500px) {
+    body {
+        padding: 15px;
+    }
 
-@media (max-width: 600px) {
     .livro {
-        width: min(82vw, 380px);
-        height: min(76vh, 520px);
+        width: 100%;
+    }
+
+    .pagina {
+        padding: 35px 22px;
+    }
+
+    .titulo-capa h2 {
+        font-size: 29px;
     }
 }

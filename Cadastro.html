@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link rel="stylesheet" href="Cadastro.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Criar Conta | Nosso Diário 3DS</title>
+
+    <link rel="stylesheet" href="Cadastro.css">
+    <script src="Cadastro.js" defer></script>
+</head>
+
+<body>
+
+    <main class="pagina-diario">
+
+        <!-- Decoração do diário -->
+        <div class="ornamento">✦ ❦ ✦</div>
+
+        <!-- Cabeçalho -->
+        <header class="cabecalho">
+
+            <span class="etiqueta">DIÁRIO DA TURMA 3DS</span>
+
+            <h1>Nosso diário</h1>
+
+            <p class="frase">
+                Dois anos de histórias · Turma 3DS
+            </p>
+
+            <p class="introducao">
+                Cada pessoa faz parte desta história.
+                Crie sua conta e guarde seu capítulo
+                nas memórias da nossa turma.
+            </p>
+
+        </header>
+
+        <!-- Formulário de cadastro -->
+        <section class="formulario-area">
+
+            <h2>Faça parte da nossa história</h2>
+
+            <form id="formCadastro">
+
+                <label for="nome">
+                    Seu nome ou apelido
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Como podemos te chamar?"
+                    maxlength="60"
+                    autocomplete="name"
+                    required
+                >
+
+                <label for="email">
+                    Seu e-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Seu e-mail"
+                    autocomplete="email"
+                    required
+                >
+
+                <label for="senha">
+                    Crie sua senha
+                </label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Pelo menos 8 caracteres"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                >
+
+                <label for="confirmarSenha">
+                    Confirme sua senha
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmarSenha"
+                    name="confirmarSenha"
+                    placeholder="Digite a senha novamente"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                >
+
+                <label class="consentimento" for="aceite">
+
+                    <input
+                        type="checkbox"
+                        id="aceite"
+                        name="aceite"
+                        required
+                    >
+
+                    <span>
+                        Quero fazer parte deste álbum de memórias.
+                    </span>
+
+                </label>
+
+                <button type="submit">
+                    Guardar meu capítulo ✦
+                </button>
+
+                <p
+                    id="mensagemStatus"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+            <p class="voltar">
+                Já tem uma conta?
+                <a href="./Capa.html">Voltar para a capa</a>
+            </p>
+
+        </section>
+
+        <!-- Rodapé -->
+        <footer>
+            FEITO DE MOMENTOS, GUARDADO PARA SEMPRE
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

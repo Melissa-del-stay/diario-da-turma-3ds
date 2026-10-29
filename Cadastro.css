@@ -1,0 +1,220 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #210e13;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #542431;
+}
+
+/* Página do diário: mesmo tamanho da tela de entrada */
+.pagina-diario {
+    width: 480px;
+    height: 620px;
+    max-width: 100%;
+    padding: 22px 25px;
+    background: #f1e4c8;
+    border: 5px solid #c9a45b;
+    border-radius: 5px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Detalhes decorativos */
+.ornamento {
+    text-align: center;
+    color: #bd9653;
+    font-size: 18px;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+.cabecalho {
+    text-align: center;
+}
+
+.etiqueta {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #bd9653;
+    color: #542431;
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.cabecalho h1 {
+    margin-top: 12px;
+    font-size: 29px;
+    font-weight: normal;
+    color: #542431;
+}
+
+.frase {
+    margin-top: 7px;
+    font-size: 12px;
+}
+
+.introducao {
+    margin-top: 12px;
+    color: #79614e;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Formulário */
+.formulario-area {
+    margin-top: 18px;
+}
+
+.formulario-area h2 {
+    margin-bottom: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+#formCadastro {
+    display: flex;
+    flex-direction: column;
+}
+
+#formCadastro > label:not(.consentimento) {
+    margin: 7px 0 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#formCadastro > input {
+    width: 100%;
+    height: 37px;
+    padding: 8px 10px;
+    border: 1px solid #c4a779;
+    border-radius: 4px;
+    background: #fffaf0;
+    color: #39251e;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    outline: none;
+}
+
+#formCadastro > input:focus {
+    border-color: #6b2839;
+    box-shadow: 0 0 0 2px rgba(107, 40, 57, 0.12);
+}
+
+.consentimento {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin-top: 12px;
+    color: #79614e;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.consentimento input {
+    margin-top: 2px;
+    accent-color: #6b2839;
+    flex-shrink: 0;
+}
+
+#formCadastro button {
+    min-height: 40px;
+    margin-top: 14px;
+    padding: 9px;
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+    background: #682334;
+    color: #fff0d1;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#formCadastro button:hover {
+    background: #7b3043;
+}
+
+#mensagemStatus {
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+#mensagemStatus:empty {
+    display: none;
+}
+
+#mensagemStatus.erro {
+    color: #a12626;
+}
+
+#mensagemStatus.sucesso {
+    color: #355c36;
+}
+
+/* Link para voltar */
+.voltar {
+    margin-top: 13px;
+    text-align: center;
+    font-size: 11px;
+    color: #79614e;
+}
+
+.voltar a {
+    color: #682334;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid #bd9653;
+    padding-bottom: 2px;
+}
+
+.voltar a:hover {
+    color: #8a3c50;
+}
+
+/* Rodapé */
+footer {
+    margin-top: auto;
+    padding-top: 15px;
+    text-align: center;
+    color: #79614e;
+    font-size: 8px;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+/* Adaptação para telas menores */
+@media (max-width: 500px) {
+    body {
+        padding: 15px;
+    }
+
+    .pagina-diario {
+        width: 100%;
+        height: 620px;
+        padding: 22px 18px;
+    }
+
+    .cabecalho h1 {
+        font-size: 26px;
+    }
+
+    .formulario-area h2 {
+        font-size: 17px;
+    }
+}
