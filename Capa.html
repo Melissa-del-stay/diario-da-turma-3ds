@@ -1,57 +1,70 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Nosso Diário 3DS</title>
+    <title>Nosso Diário | Turma 3DS</title>
 
     <link rel="stylesheet" href="Capa.css">
     <script src="Capa.js" defer></script>
 </head>
+
 <body>
 
     <main class="livro">
 
-        <!-- Página de entrada do diário -->
+        <!-- PÁGINA INTERNA -->
         <section class="pagina">
 
-            <h1>Nosso Diário</h1>
-            <p>Dois anos de histórias · Turma 3DS</p>
+            <div class="conteudo-pagina">
 
-            <form id="formulario">
+                <h1>Bem-vindos ao nosso diário!</h1>
 
-                <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    placeholder="Seu nome ou apelido"
-                    autocomplete="name"
-                    required
-                >
+                <p>
+                    Dois anos de histórias, amizades,
+                    desafios e lembranças especiais.
+                </p>
 
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Seu Gmail"
-                    autocomplete="email"
-                    required
-                >
+                <form id="formulario">
 
-                <input
-                    type="password"
-                    id="senha"
-                    name="senha"
-                    placeholder="Sua senha"
-                    autocomplete="current-password"
-                    required
-                >
+    <label for="nome">Seu nome:</label>
+    <input
+        type="text"
+        id="nome"
+        name="nome"
+        placeholder="Digite seu nome"
+        autocomplete="name"
+        required
+    >
 
-                <button type="submit">Entrar no diário</button>
+    <label for="email">E-mail:</label>
+    <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Digite seu e-mail"
+        autocomplete="email"
+        required
+    >
 
-            </form>
+    <label for="senha">Senha:</label>
+    <input
+        type="password"
+        id="senha"
+        name="senha"
+        placeholder="Digite sua senha"
+        autocomplete="current-password"
+        required
+    >
+
+    <button type="submit">Entrar no diário</button>
+
+    <p id="mensagem"></p>
+
+</form>
 
             <p id="mensagem" role="status" aria-live="polite"></p>
 
@@ -60,7 +73,7 @@
 
                 <p>Ainda não tem uma conta?</p>
 
-                <a href="./Cadastro.html">
+                <a href="./Historia.html">
                     Criar minha conta ✦
                 </a>
 
@@ -68,48 +81,48 @@
 
         </section>
 
-        <!-- Capa decorativa do diário -->
-        <div class="capa" id="capa">
+        <!-- CAPA DO DIÁRIO -->
+        <section class="capa" id="capa">
 
             <div class="frente">
 
-                <div class="moldura"></div>
+                <div class="moldura">
 
-                <div class="decoracao superior">✦ ❦ ✦</div>
+                    <p class="subtitulo">NOSSO DIÁRIO</p>
 
-                <div class="titulo-capa">
-                    <span>O LIVRO DAS</span>
+                    <h1>Turma 3DS</h1>
 
-                    <h2>Nossas Memórias</h2>
+                    <p class="ano">2025 — 2026</p>
 
-                    <div class="linha"></div>
+                    <!-- CADEADO -->
+                    <div
+                        class="cadeado"
+                        id="cadeado"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Abrir diário"
+                    >
 
-                    <p>TURMA 3DS</p>
-                </div>
+                        <div class="arco"></div>
 
-                <div
-                    class="cadeado"
-                    id="cadeado"
-                    role="button"
-                    tabindex="0"
-                    aria-label="Clique para abrir o diário"
-                >
-                    <div class="arco"></div>
+                        <div class="corpo">
+                            <div class="fechadura"></div>
+                        </div>
 
-                    <div class="corpo">
-                        <div class="fechadura"></div>
                     </div>
+
+                    <p class="instrucao">
+                        Clique no cadeado para abrir
+                    </p>
+
                 </div>
-
-                <div class="decoracao inferior">❦</div>
-
-                <div class="ano">2024 — 2026</div>
 
             </div>
 
-        </div>
+        </section>
 
     </main>
 
+    <script src="Capa.js"></script>
+
 </body>
-</html>

@@ -1,0 +1,415 @@
+
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 15px 190px 15px 15px;
+    background: radial-gradient(
+        ellipse at center,
+        #4b202b 0%,
+        #210e13 75%
+    );
+
+    font-family: Georgia, "Times New Roman", serif;
+    color: #542431;
+}
+
+/* ========================================
+   ESTRUTURA DO DIÁRIO
+======================================== */
+
+.diario {
+    position: relative;
+
+    width: min(1050px, 100%);
+    min-height: 850px;
+    height: calc(100vh - 50px);
+
+    margin: 0 auto;
+    padding: 16px;
+
+    background: #382027;
+    border: 3px solid #c9a45b;
+    border-radius: 5px;
+
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.livro {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1;
+
+    perspective: 1600px;
+
+    background: #e8d8b6;
+
+    box-shadow: inset 0 0 18px rgba(75, 45, 25, 0.2);
+
+    overflow: hidden;
+}
+
+.livro::before {
+    content: "";
+
+    position: absolute;
+    z-index: 4;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 18px;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+        to right,
+        rgba(76, 48, 31, 0.22),
+        rgba(76, 48, 31, 0.05),
+        transparent
+    );
+}
+
+/* ========================================
+   PÁGINAS
+======================================== */
+
+.folha {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 45px 55px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    overflow-wrap: anywhere;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.25),
+            transparent 35%
+        ),
+        #f1e4c8;
+
+    border: 1px solid #d2bd91;
+
+    box-shadow: 2px 3px 8px rgba(65, 39, 25, 0.12);
+
+    transform-origin: left center;
+    backface-visibility: hidden;
+}
+
+.folha[hidden] {
+    display: none !important;
+}
+
+.folha.ativa {
+    display: block;
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ========================================
+   DECORAÇÃO
+======================================== */
+
+.folha::before,
+.folha::after {
+    content: "✦";
+
+    position: absolute;
+
+    color: #b59a61;
+    font-size: 17px;
+    opacity: 0.75;
+
+    pointer-events: none;
+}
+
+.folha::before {
+    top: 18px;
+    left: 22px;
+}
+
+.folha::after {
+    right: 22px;
+    bottom: 18px;
+}
+
+/* ========================================
+   CONTEÚDO
+======================================== */
+
+.conteudo {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 900px;
+    min-height: 100%;
+
+    margin: 0 auto;
+    padding-top: 25px;
+
+    text-align: center;
+}
+
+.etiqueta,
+.numero {
+    display: block;
+
+    color: #8c7848;
+
+    font-size: 12px;
+    letter-spacing: 3px;
+    line-height: 1.8;
+}
+
+.conteudo h1 {
+    margin: 25px 0 18px;
+
+    color: #682334;
+
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: normal;
+}
+
+.conteudo h2 {
+    margin: 25px 0;
+
+    color: #682334;
+
+    font-size: clamp(25px, 3vw, 36px);
+    font-weight: normal;
+}
+
+.conteudo p {
+    max-width: 800px;
+
+    margin: 20px auto;
+
+    color: #594338;
+
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.enfeite {
+    margin: 25px 0;
+
+    color: #a88746;
+
+    font-size: 30px;
+    letter-spacing: 8px;
+}
+
+/* ========================================
+   POST-ITS LATERAIS
+======================================== */
+
+.postits {
+    position: fixed;
+
+    top: 50%;
+    right: 0;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+
+    transform: translateY(-50%);
+}
+
+.postit {
+    width: 155px;
+    min-height: 45px;
+
+    padding: 12px 10px 12px 17px;
+
+    border: 1px solid rgba(65, 35, 30, 0.2);
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+
+    color: #fff3dc;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    text-align: left;
+
+    cursor: pointer;
+
+    box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.18);
+
+    transition:
+        width 0.2s ease,
+        filter 0.2s ease;
+}
+
+.postit:hover,
+.postit:focus-visible,
+.postit.ativo {
+    width: 170px;
+    filter: brightness(1.12);
+}
+
+.postit.inicio {
+    background: #8b3545;
+}
+
+.postit.historia {
+    background: #64734a;
+}
+
+.postit.fotos {
+    background: #a86f3d;
+}
+
+.postit.figurinhas {
+    background: #9b6470;
+}
+
+.postit.jogos {
+    background: #496c7a;
+}
+
+.postit.album {
+    background: #8c7848;
+}
+
+.postit.perfis {
+    background: #6f4c5b;
+}
+
+.postit:focus-visible {
+    outline: 2px solid #f1e4c8;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   ANIMAÇÃO
+======================================== */
+
+@keyframes virarPagina {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(-105deg);
+    }
+}
+
+/* ========================================
+   TELAS MENORES
+======================================== */
+
+@media (max-width: 900px) {
+    body {
+        padding: 15px 10px 90px;
+    }
+
+    .diario {
+    width: min(1200px, 100%);
+    min-height: 900px;
+    height: calc(100vh - 30px);
+    }
+    .folha {
+        padding: 30px 25px;
+    }
+
+    .conteudo {
+        padding-top: 20px;
+    }
+
+    .conteudo h1 {
+        font-size: 34px;
+    }
+
+    .conteudo h2 {
+        font-size: 25px;
+    }
+
+    .conteudo p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .postits {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        flex-direction: row;
+        align-items: stretch;
+        gap: 5px;
+
+        overflow-x: auto;
+        padding: 8px;
+
+        background: #210e13;
+
+        transform: none;
+    }
+
+    .postit,
+    .postit:hover,
+    .postit:focus-visible,
+    .postit.ativo {
+        flex: 0 0 auto;
+
+        width: auto;
+        max-width: 150px;
+        min-height: 42px;
+
+        padding: 10px;
+
+        border: 1px solid rgba(255, 243, 220, 0.2);
+        border-radius: 4px;
+
+        font-size: 12px;
+        text-align: center;
+    }
+}
+
+@media (max-height: 900px) and (min-width: 901px) {
+    .diario {
+        min-height: 0;
+        height: calc(100vh - 50px);
+    }
+}
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

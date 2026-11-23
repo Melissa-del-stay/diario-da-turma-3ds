@@ -10,8 +10,9 @@
 }
 
 body {
-    min-height: 100vh;
-    padding: 35px 15px;
+    width: 100%;
+    height: 100vh;
+    padding: 12px 15px;
 
     display: flex;
     justify-content: center;
@@ -37,21 +38,26 @@ body {
     position: relative;
 
     width: min(100%, 1120px);
+    height: 100%;
 
     display: grid;
     grid-template-columns: 65px minmax(0, 1fr) 65px;
-    align-items: center;
+    grid-template-rows: minmax(0, 1fr) auto;
 
-    gap: 15px;
+    align-items: center;
+    column-gap: 15px;
+    row-gap: 0;
 }
 
 .livro {
     position: relative;
 
-    width: 100%;
-    height: min(760px, calc(100vh - 90px));
+    grid-column: 2;
+    grid-row: 1;
 
-    min-height: 520px;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
 
     background: #f1e4c8;
     border: 5px solid #bd9653;
@@ -78,13 +84,12 @@ body {
 
     padding: 55px 75px;
 
-    background:
-        radial-gradient(
-            ellipse at center,
-            #f8eed8 0%,
-            #f1e4c8 75%,
-            #e8d6b4 100%
-        );
+    background: radial-gradient(
+        ellipse at center,
+        #f8eed8 0%,
+        #f1e4c8 75%,
+        #e8d6b4 100%
+    );
 
     display: none;
 
@@ -425,6 +430,25 @@ body {
 }
 
 /* =========================================
+   GALERIA DE IA — PÁGINA 3
+========================================= */
+
+.pagina[data-pagina="3"] .memorias-terceirao {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 12px;
+}
+
+.pagina[data-pagina="3"] .galeria-memoria {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+}
+.pagina[data-pagina="3"] .galeria-memoria img {
+    height: 120px;
+    width: 100%;
+    object-fit: cover;
+    background: #e8d9ba;
+}
+/* =========================================
    CONTROLES LATERAIS
 ========================================= */
 
@@ -450,6 +474,16 @@ body {
     transition: background 0.2s, transform 0.2s;
 }
 
+.controle-lateral.anterior {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.controle-lateral.proximo {
+    grid-column: 3;
+    grid-row: 1;
+}
+
 .controle-lateral:hover:not(:disabled) {
     background: #8b4056;
     transform: scale(1.08);
@@ -465,15 +499,18 @@ body {
 ========================================= */
 
 .indicador-pagina {
-    position: absolute;
-    top: 12px;
-    right: 20px;
+    position: static;
 
-    color: #98764b;
-    font-size: 11px;
-    letter-spacing: 1px;
+    grid-column: 2;
+    grid-row: 2;
 
-    z-index: 10;
+    text-align: center;
+    color: #f1e4c8;
+
+    font-size: 13px;
+    letter-spacing: 1.5px;
+
+    padding-top: 8px;
 }
 
 /* =========================================
@@ -483,17 +520,12 @@ body {
 @media (max-width: 700px) {
 
     body {
-        padding: 20px 5px;
+        padding: 8px 5px;
     }
 
     .livro-historia {
         grid-template-columns: 38px minmax(0, 1fr) 38px;
-        gap: 5px;
-    }
-
-    .livro {
-        height: min(760px, calc(100vh - 70px));
-        min-height: 480px;
+        column-gap: 5px;
     }
 
     .controle-lateral {
@@ -519,7 +551,7 @@ body {
     }
 
     .pagina-terceirao {
-        padding: 35px 18px;
+        padding: 25px 18px;
     }
 
     .pagina-terceirao h2 {
@@ -569,186 +601,91 @@ body {
     }
 
     .indicador-pagina {
-        top: 8px;
-        right: 10px;
-        font-size: 9px;
-    }
-}
-
-/* =========================================
-   INDICADOR ABAIXO DO LIVRO
-========================================= */
-
-.livro-historia {
-    grid-template-rows: auto auto;
-}
-
-.indicador-pagina {
-    position: static;
-    grid-column: 2;
-    grid-row: 2;
-
-    text-align: center;
-    color: #f1e4c8;
-
-    font-size: 13px;
-    letter-spacing: 1.5px;
-
-    padding-top: 12px;
-}
-
-/* =========================================
-   FOTOS E VÍDEOS MAIORES
-========================================= */
-
-/* Página 4 e 5 */
-.pagina-terceirao .galeria-memoria {
-    gap: 12px;
-    margin-top: 12px;
-}
-
-.pagina-terceirao .galeria-memoria img,
-.pagina-terceirao .galeria-memoria video {
-    height: 150px;
-}
-
-.pagina-terceirao .placeholder-memoria {
-    min-height: 150px;
-    aspect-ratio: auto;
-}
-
-.pagina-terceirao .placeholder-memoria span {
-    font-size: 38px;
-}
-
-.pagina-terceirao .placeholder-memoria small {
-    font-size: 13px;
-}
-
-/* Celulares */
-@media (max-width: 700px) {
-
-    .indicador-pagina {
         font-size: 11px;
-        padding-top: 9px;
+        padding-top: 7px;
     }
 
-    .pagina-terceirao .galeria-memoria img,
-    .pagina-terceirao .galeria-memoria video {
-        height: 110px;
+    .pagina[data-pagina="3"] .memorias-terceirao {
+        grid-template-columns: 1fr;
     }
 
-    .pagina-terceirao .placeholder-memoria {
-        min-height: 110px;
-    }
+    .pagina[data-pagina="3"] .galeria-memoria img {
+    height: 90px;
 }
+    }
 /* =========================================
-   POSIÇÃO DOS BOTÕES E DO INDICADOR
+   TELAS MUITO BAIXAS
 ========================================= */
 
-.livro-historia {
-    grid-template-columns: 65px minmax(0, 1fr) 65px;
-    grid-template-rows: auto auto;
-}
+@media (max-height: 650px) {
+    .pagina {
+        padding-top: 25px;
+        padding-bottom: 20px;
+    }
 
-/* Livro no centro */
-.livro {
-    grid-column: 2;
-    grid-row: 1;
-}
+    .pagina-terceirao {
+        padding-top: 18px;
+    }
 
-/* Botão de voltar */
-.controle-lateral.anterior {
-    grid-column: 1;
-    grid-row: 1;
-}
+    .introducao-terceirao {
+        margin-bottom: 10px;
+    }
 
-/* Botão de avançar */
-.controle-lateral.proximo {
-    grid-column: 3;
-    grid-row: 1;
-}
+    .pagina[data-pagina="3"] .galeria-memoria img {
+        height: 65px;
+    }
 
+    .memoria {
+        gap: 6px;
+        padding: 8px;
+    }
+}
 
 /* =========================================
-   POSIÇÃO DO LIVRO, BOTÕES E INDICADOR
+   ACESSIBILIDADE
 ========================================= */
 
-.livro-historia {
-    grid-template-columns: 65px minmax(0, 1fr) 65px;
-    grid-template-rows: auto auto;
-    column-gap: 15px;
-    row-gap: 0;
-}
-
-/* Livro */
-.livro {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-/* Botão anterior */
-.controle-lateral.anterior {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-/* Botão próximo */
-.controle-lateral.proximo {
-    grid-column: 3;
-    grid-row: 1;
-}
-
-/* Indicador abaixo do livro */
-.indicador-pagina {
-    position: static;
-    grid-column: 2;
-    grid-row: 2;
-
-    text-align: center;
-    color: #f1e4c8;
-
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    padding-top: 12px;
-}
-
-/* Fotos maiores */
-.pagina-terceirao .galeria-memoria {
-    gap: 12px;
-    margin-top: 12px;
-}
-
-.pagina-terceirao .galeria-memoria img,
-.pagina-terceirao .galeria-memoria video {
-    height: 150px;
-}
-
-.pagina-terceirao .placeholder-memoria {
-    min-height: 150px;
-    aspect-ratio: auto;
-}
-
-/* Ajustes para celulares */
-@media (max-width: 700px) {
-
-    .livro-historia {
-        grid-template-columns: 38px minmax(0, 1fr) 38px;
-        column-gap: 5px;
-    }
-
-    .indicador-pagina {
-        font-size: 11px;
-        padding-top: 9px;
-    }
-
-    .pagina-terceirao .galeria-memoria img,
-    .pagina-terceirao .galeria-memoria video {
-        height: 110px;
-    }
-
-    .pagina-terceirao .placeholder-memoria {
-        min-height: 110px;
+@media (prefers-reduced-motion: reduce) {
+    .pagina.virando-frente,
+    .pagina.virando-volta {
+        animation-duration: 0.01ms;
     }
 }
+/* =====================================
+   VÍDEO DO BOLINHA
+===================================== */
+.memoria-bolinha .video-bolinha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
 
+.memoria-bolinha .video-bolinha video {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: 260px;
+    object-fit: cover;
+    object-position: center;
+
+    background: #210e13;
+    border: 2px solid #fff9eb;
+    outline: 1px solid #bd9653;
+    border-radius: 4px;
+}
+/* AUMENTAR FOTOS DO CAFÉ DA MANHÃ */
+
+.memoria-cafe .galeria-memoria img {
+    height: 130px;
+    width: 100%;
+    object-fit: cover;
+}
+/* AUMENTAR FOTOS DO CAFÉ DA MANHÃ */
+
+.memoria-cafe .galeria-memoria img {
+    height: 130px;
+    width: 100%;
+    object-fit: cover;
+}
