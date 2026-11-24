@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -8,8 +7,8 @@
 
     <title>Nosso Diário | Turma 3DS</title>
 
-    <link rel="stylesheet" href="Capa.css">
-    <script src="Capa.js" defer></script>
+    <link rel="stylesheet" href="./Capa.css">
+    <script src="./Capa.js" defer></script>
 </head>
 
 <body>
@@ -28,54 +27,36 @@
                     desafios e lembranças especiais.
                 </p>
 
+                <!-- FORMULÁRIO DE ENTRADA -->
                 <form id="formulario">
 
-    <label for="nome">Seu nome:</label>
-    <input
-        type="text"
-        id="nome"
-        name="nome"
-        placeholder="Digite seu nome"
-        autocomplete="name"
-        required
-    >
+                    <label for="nome">Seu nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" autocomplete="name" required>
 
-    <label for="email">E-mail:</label>
-    <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Digite seu e-mail"
-        autocomplete="email"
-        required
-    >
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" autocomplete="email"
+                        required>
 
-    <label for="senha">Senha:</label>
-    <input
-        type="password"
-        id="senha"
-        name="senha"
-        placeholder="Digite sua senha"
-        autocomplete="current-password"
-        required
-    >
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha"
+                        autocomplete="current-password" required>
 
-    <button type="submit">Entrar no diário</button>
+                    <button type="submit">Entrar no diário</button>
 
-    <p id="mensagem"></p>
+                    <p id="mensagem" role="status" aria-live="polite"></p>
 
-</form>
+                </form>
 
-            <p id="mensagem" role="status" aria-live="polite"></p>
+                <!-- ACESSO AO CADASTRO -->
+                <div class="opcao-cadastro">
 
-            <!-- Acesso à página de cadastro -->
-            <div class="opcao-cadastro">
+                    <p>Ainda não tem uma conta?</p>
 
-                <p>Ainda não tem uma conta?</p>
+                    <a href="./Cadastro.html">
+                        Criar minha conta ✦
+                    </a>
 
-                <a href="./Historia.html">
-                    Criar minha conta ✦
-                </a>
+                </div>
 
             </div>
 
@@ -95,13 +76,7 @@
                     <p class="ano">2025 — 2026</p>
 
                     <!-- CADEADO -->
-                    <div
-                        class="cadeado"
-                        id="cadeado"
-                        role="button"
-                        tabindex="0"
-                        aria-label="Abrir diário"
-                    >
+                    <div class="cadeado" id="cadeado" role="button" tabindex="0" aria-label="Abrir diário">
 
                         <div class="arco"></div>
 
@@ -123,6 +98,6 @@
 
     </main>
 
-    <script src="Capa.js"></script>
-
 </body>
+
+</html>

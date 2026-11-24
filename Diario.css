@@ -1,4 +1,3 @@
-
 /* ========================================
    CONFIGURAÇÕES GERAIS
 ======================================== */
@@ -10,56 +9,166 @@
 }
 
 body {
-    min-height: 100vh;
-    padding: 15px 190px 15px 15px;
-    background: radial-gradient(
-        ellipse at center,
-        #4b202b 0%,
-        #210e13 75%
-    );
+    width: 100%;
+    height: 100vh;
+    padding: 12px 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(ellipse at center,
+            #4b202b 0%,
+            #210e13 75%);
 
     font-family: Georgia, "Times New Roman", serif;
     color: #542431;
+
+    overflow: hidden;
 }
 
 /* ========================================
    ESTRUTURA DO DIÁRIO
 ======================================== */
-
 .diario {
     position: relative;
 
-    width: min(1050px, 100%);
-    min-height: 850px;
-    height: calc(100vh - 50px);
+    width: min(100%, 1200px);
+    height: 100%;
 
-    margin: 0 auto;
-    padding: 16px;
+    display: grid;
 
-    background: #382027;
-    border: 3px solid #c9a45b;
-    border-radius: 5px;
+    grid-template-columns: 55px minmax(0, 1fr) 55px;
+    grid-template-rows: auto minmax(0, 1fr) auto;
 
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 5px;
 
-    display: flex;
-    flex-direction: column;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    padding: 0;
 }
 
+/* ========================================
+   NAVEGAÇÃO SUPERIOR
+======================================== */
+
+.postits {
+    position: relative;
+
+    grid-column: 1 / -1;
+    grid-row: 1;
+
+    width: 100%;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 6px;
+    padding: 3px;
+
+    overflow-x: auto;
+}
+
+.postit {
+    flex: 1 1 auto;
+
+    min-width: 0;
+    min-height: 43px;
+
+    padding: 10px 8px;
+
+    border: 1px solid rgba(65, 35, 30, 0.2);
+    border-radius: 5px;
+
+    color: #fff3dc;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.postit:hover,
+.postit:focus-visible {
+    transform: translateY(-3px);
+    filter: brightness(1.12);
+}
+
+.postit.ativo {
+    filter: brightness(1.2);
+    border-bottom: 3px solid #f1e4c8;
+}
+
+.postit.inicio {
+    background: #8b3545;
+}
+
+.postit.historia {
+    background: #64734a;
+}
+
+.postit.fotos {
+    background: #a86f3d;
+}
+
+.postit.figurinhas {
+    background: #9b6470;
+}
+
+.postit.jogos {
+    background: #496c7a;
+}
+
+.postit.album {
+    background: #8c7848;
+}
+
+.postit.perfis {
+    background: #6f4c5b;
+}
+
+.postit:focus-visible {
+    outline: 2px solid #f1e4c8;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   LIVRO
+======================================== */
 .livro {
     position: relative;
+
+    grid-column: 2;
+    grid-row: 2;
 
     width: 100%;
     height: 100%;
     min-height: 0;
-    flex: 1;
 
-    perspective: 1600px;
+    background: #f1e4c8;
 
-    background: #e8d8b6;
+    border: 5px solid #bd9653;
+    border-radius: 5px;
 
-    box-shadow: inset 0 0 18px rgba(75, 45, 25, 0.2);
+    box-shadow:
+        0 0 0 2px #5b2935,
+        0 15px 35px rgba(0, 0, 0, 0.45);
 
+    perspective: 1500px;
     overflow: hidden;
 }
 
@@ -77,12 +186,10 @@ body {
 
     pointer-events: none;
 
-    background: linear-gradient(
-        to right,
-        rgba(76, 48, 31, 0.22),
-        rgba(76, 48, 31, 0.05),
-        transparent
-    );
+    background: linear-gradient(to right,
+            rgba(76, 48, 31, 0.22),
+            rgba(76, 48, 31, 0.05),
+            transparent);
 }
 
 /* ========================================
@@ -97,17 +204,17 @@ body {
     height: 100%;
 
     padding: 45px 55px;
-
+    text-align: center;
     overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     overflow-wrap: anywhere;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(255, 255, 255, 0.25),
-            transparent 35%
-        ),
+            transparent 35%),
         #f1e4c8;
 
     border: 1px solid #d2bd91;
@@ -116,6 +223,10 @@ body {
 
     transform-origin: left center;
     backface-visibility: hidden;
+}
+
+.folha::-webkit-scrollbar {
+    display: none;
 }
 
 .folha[hidden] {
@@ -224,90 +335,6 @@ body {
 }
 
 /* ========================================
-   POST-ITS LATERAIS
-======================================== */
-
-.postits {
-    position: fixed;
-
-    top: 50%;
-    right: 0;
-    z-index: 10;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 7px;
-
-    transform: translateY(-50%);
-}
-
-.postit {
-    width: 155px;
-    min-height: 45px;
-
-    padding: 12px 10px 12px 17px;
-
-    border: 1px solid rgba(65, 35, 30, 0.2);
-    border-right: none;
-    border-radius: 5px 0 0 5px;
-
-    color: #fff3dc;
-
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 13px;
-    text-align: left;
-
-    cursor: pointer;
-
-    box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.18);
-
-    transition:
-        width 0.2s ease,
-        filter 0.2s ease;
-}
-
-.postit:hover,
-.postit:focus-visible,
-.postit.ativo {
-    width: 170px;
-    filter: brightness(1.12);
-}
-
-.postit.inicio {
-    background: #8b3545;
-}
-
-.postit.historia {
-    background: #64734a;
-}
-
-.postit.fotos {
-    background: #a86f3d;
-}
-
-.postit.figurinhas {
-    background: #9b6470;
-}
-
-.postit.jogos {
-    background: #496c7a;
-}
-
-.postit.album {
-    background: #8c7848;
-}
-
-.postit.perfis {
-    background: #6f4c5b;
-}
-
-.postit:focus-visible {
-    outline: 2px solid #f1e4c8;
-    outline-offset: 2px;
-}
-
-/* ========================================
    ANIMAÇÃO
 ======================================== */
 
@@ -326,15 +353,35 @@ body {
 ======================================== */
 
 @media (max-width: 900px) {
+
     body {
-        padding: 15px 10px 90px;
+        padding: 10px;
     }
 
     .diario {
-    width: min(1200px, 100%);
-    min-height: 900px;
-    height: calc(100vh - 30px);
+        width: 100%;
+        height: calc(100vh - 20px);
+        min-height: 0;
+        padding: 10px;
     }
+
+    .postits {
+        justify-content: flex-start;
+        gap: 5px;
+        padding: 3px 2px 8px;
+    }
+
+    .postit {
+        flex: 0 0 auto;
+
+        width: auto;
+        min-height: 40px;
+
+        padding: 10px 12px;
+
+        font-size: 12px;
+    }
+
     .folha {
         padding: 30px 25px;
     }
@@ -355,50 +402,52 @@ body {
         font-size: 15px;
         line-height: 1.7;
     }
-
-    .postits {
-        top: auto;
-        right: 0;
-        bottom: 0;
-        left: 0;
-
-        flex-direction: row;
-        align-items: stretch;
-        gap: 5px;
-
-        overflow-x: auto;
-        padding: 8px;
-
-        background: #210e13;
-
-        transform: none;
-    }
-
-    .postit,
-    .postit:hover,
-    .postit:focus-visible,
-    .postit.ativo {
-        flex: 0 0 auto;
-
-        width: auto;
-        max-width: 150px;
-        min-height: 42px;
-
-        padding: 10px;
-
-        border: 1px solid rgba(255, 243, 220, 0.2);
-        border-radius: 4px;
-
-        font-size: 12px;
-        text-align: center;
-    }
 }
 
-@media (max-height: 900px) and (min-width: 901px) {
-    .diario {
-        min-height: 0;
-        height: calc(100vh - 50px);
-    }
+/* ========================================
+   SETAS LATERAIS
+======================================== */
+
+.controle-lateral {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    border: 2px solid #bd9653;
+    border-radius: 50%;
+
+    font-family: Georgia, serif;
+    font-size: 27px;
+
+    cursor: pointer;
+
+    transition: background 0.2s, transform 0.2s;
+}
+
+.controle-lateral.anterior {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.controle-lateral.proximo {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.controle-lateral:hover:not(:disabled) {
+    background: #8b4056;
+    transform: scale(1.08);
+}
+
+.controle-lateral:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
 }
 
 /* ========================================
@@ -406,10 +455,23 @@ body {
 ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+.diario footer {
+    grid-column: 2;
+    grid-row: 3;
+
+    text-align: center;
+
+    color: #f1e4c8;
+    font-size: 13px;
+
+    padding-top: 8px;
 }

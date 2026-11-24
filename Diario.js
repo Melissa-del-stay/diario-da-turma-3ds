@@ -1,10 +1,17 @@
+
 const postits = document.querySelectorAll(".postit");
 const folhas = document.querySelectorAll(".folha");
+const botaoAnterior = document.getElementById("paginaAnterior");
+const botaoProxima = document.getElementById("proximaPagina");
 
 let paginaAtual = 0;
 let trocandoPagina = false;
+function atualizarBotoes() {
+    botaoAnterior.disabled = paginaAtual === 0;
+    botaoProxima.disabled = paginaAtual === folhas.length - 1;
+}
 
-// Garante que a página inicial esteja visível quando o diário carregar
+// Garante que a página inicial esteja visível
 const paginaInicial = document.querySelector('.folha[data-indice="0"]');
 
 if (paginaInicial) {
@@ -12,7 +19,7 @@ if (paginaInicial) {
     paginaInicial.classList.add("ativa");
 }
 
-// Garante que as outras páginas comecem escondidas
+// Esconde as outras páginas inicialmente
 folhas.forEach((folha) => {
     if (folha.dataset.indice !== "0") {
         folha.hidden = true;
@@ -22,10 +29,21 @@ folhas.forEach((folha) => {
 
 // Abre a página selecionada
 function abrirPagina(indice) {
+
     if (trocandoPagina || indice === paginaAtual) {
         return;
     }
 
+    // O marcador História abre o livro História
+    if (indice === 1) {
+        window.location.href = "./Historia.html";
+        return;
+    }
+    // O marcador Fotos abre a galeria de fotografias
+    if (indice === 2) {
+        window.location.href = "./Fotos.html";
+        return;
+    }
     const folhaAtual = document.querySelector(
         `.folha[data-indice="${paginaAtual}"]`
     );
@@ -57,29 +75,41 @@ function abrirPagina(indice) {
     proximaFolha.hidden = false;
     proximaFolha.classList.remove("ativa", "virando");
 
-    // Inicia a animação da folha atual
+    // Inicia a animação
     folhaAtual.classList.remove("ativa");
     folhaAtual.classList.add("virando");
 
-    // Mostra a próxima folha após o início da animação
     requestAnimationFrame(() => {
         proximaFolha.classList.add("ativa");
 
-        // Aguarda a animação terminar
         setTimeout(() => {
             folhaAtual.hidden = true;
             folhaAtual.classList.remove("virando");
 
             paginaAtual = indice;
             trocandoPagina = false;
+            atualizarBotoes();
         }, 650);
     });
 }
 
-// Adiciona o clique aos marcadores
+// Adiciona os cliques aos marcadores
 postits.forEach((postit) => {
     postit.addEventListener("click", () => {
         const indice = Number(postit.dataset.pagina);
         abrirPagina(indice);
     });
 });
+botaoAnterior.addEventListener("click", () => {
+    if (paginaAtual > 0) {
+        abrirPagina(paginaAtual - 1);
+    }
+});
+
+botaoProxima.addEventListener("click", () => {
+    if (paginaAtual < folhas.length - 1) {
+        abrirPagina(paginaAtual + 1);
+    }
+});
+
+atualizarBotoes();

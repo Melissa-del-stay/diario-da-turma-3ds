@@ -1,0 +1,514 @@
+/* =========================================
+   JOGOS — NOSSO DIÁRIO 3DS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   FUNDO
+========================================= */
+
+body {
+    width: 100%;
+    height: 100vh;
+    padding: 12px 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(ellipse at center,
+            #4b202b 0%,
+            #210e13 75%);
+
+    font-family: Georgia, "Times New Roman", serif;
+    color: #594338;
+
+    overflow: hidden;
+}
+
+/* =========================================
+   ESTRUTURA GERAL
+========================================= */
+
+.pagina-jogos {
+    position: relative;
+
+    width: min(100%, 1200px);
+    height: 100%;
+
+    display: grid;
+
+    grid-template-columns: 55px minmax(0, 1fr) 55px;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 5px;
+}
+
+/* =========================================
+   NAVEGAÇÃO SUPERIOR
+========================================= */
+
+.postits {
+    grid-column: 1 / -1;
+    grid-row: 1;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 6px;
+
+    padding: 3px;
+    overflow-x: auto;
+}
+
+.postit {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 43px;
+
+    padding: 10px 8px;
+
+    border: 1px solid rgba(65, 35, 30, 0.2);
+    border-radius: 5px;
+
+    color: #fff3dc;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.18);
+
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.postit:hover,
+.postit:focus-visible {
+    transform: translateY(-3px);
+    filter: brightness(1.12);
+}
+
+.postit.ativo {
+    filter: brightness(1.2);
+    border-bottom: 3px solid #f1e4c8;
+}
+
+.postit.inicio {
+    background: #8b3545;
+}
+
+.postit.historia {
+    background: #64734a;
+}
+
+.postit.fotos {
+    background: #a86f3d;
+}
+
+.postit.figurinhas {
+    background: #9b6470;
+}
+
+.postit.jogos {
+    background: #496c7a;
+}
+
+.postit.album {
+    background: #8c7848;
+}
+
+.postit.perfis {
+    background: #6f4c5b;
+}
+
+.postit:focus-visible {
+    outline: 2px solid #f1e4c8;
+    outline-offset: 2px;
+}
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho-jogos {
+    grid-column: 2;
+    grid-row: 2;
+
+    width: 100%;
+
+    text-align: center;
+    padding: 12px 10px 5px;
+}
+
+.detalhe {
+    display: block;
+
+    color: #bd9653;
+    font-size: 23px;
+    letter-spacing: 8px;
+
+    margin-bottom: 8px;
+}
+
+.subtitulo {
+    color: #bd9653;
+
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+}
+
+.cabecalho-jogos h1 {
+    color: #f1e4c8;
+
+    font-size: clamp(30px, 4vw, 43px);
+    font-weight: normal;
+
+    margin-bottom: 10px;
+}
+
+.descricao {
+    color: #d7c1a2;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   CARDS DOS JOGOS
+========================================= */
+
+.lista-jogos {
+    grid-column: 2;
+    grid-row: 3;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 28px;
+    padding: 15px;
+}
+
+.card-jogo {
+    position: relative;
+
+    width: 100%;
+    max-width: 390px;
+    min-height: 300px;
+
+    padding: 30px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    text-decoration: none;
+
+    background: radial-gradient(ellipse at center,
+            #f8eed8 0%,
+            #f1e4c8 75%,
+            #e8d6b4 100%);
+
+    border: 3px solid #bd9653;
+    border-radius: 5px;
+
+    box-shadow:
+        0 0 0 2px #5b2935,
+        0 12px 25px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.card-jogo:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 0 0 2px #5b2935,
+        0 18px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================================
+   ÍCONES
+========================================= */
+
+.icone-jogo {
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(189, 150, 83, 0.15);
+
+    border: 1px solid #bd9653;
+    border-radius: 50%;
+
+    font-size: 35px;
+
+    margin-bottom: 18px;
+}
+
+/* =========================================
+   TEXTOS DOS CARDS
+========================================= */
+
+.categoria {
+    color: #98764b;
+
+    font-size: 10px;
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+}
+
+.card-jogo h2 {
+    color: #743044;
+
+    font-size: 25px;
+    font-weight: normal;
+
+    margin-bottom: 13px;
+}
+
+.card-jogo p {
+    max-width: 290px;
+
+    color: #765c48;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+}
+
+/* =========================================
+   BOTÃO JOGAR
+========================================= */
+
+.botao-jogar {
+    display: inline-block;
+
+    padding: 10px 28px;
+
+    color: #fff3dc;
+    background: #743044;
+
+    border: 1px solid #bd9653;
+    border-radius: 3px;
+
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.card-jogo:hover .botao-jogar {
+    background: #8b4056;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   RODAPÉ
+========================================= */
+
+.rodape-jogos {
+    grid-column: 2;
+    grid-row: 4;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #d7c1a2;
+
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 1px;
+
+    padding: 10px 0 5px;
+}
+
+.rodape-jogos span {
+    color: #bd9653;
+    font-size: 17px;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 8px 5px;
+    }
+
+    .pagina-jogos {
+        grid-template-columns: 38px minmax(0, 1fr) 38px;
+        column-gap: 5px;
+        row-gap: 8px;
+    }
+
+    .postits {
+        justify-content: flex-start;
+        gap: 5px;
+    }
+
+    .postit {
+        flex: 0 0 auto;
+        width: auto;
+        min-height: 40px;
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .cabecalho-jogos {
+        padding-top: 8px;
+    }
+
+    .cabecalho-jogos h1 {
+        font-size: 28px;
+    }
+
+    .descricao {
+        font-size: 12px;
+    }
+
+    .lista-jogos {
+        flex-direction: column;
+        gap: 12px;
+        padding: 8px;
+    }
+
+    .card-jogo {
+        max-width: 400px;
+        min-height: 0;
+        flex: 1;
+        padding: 12px;
+    }
+
+    .icone-jogo {
+        width: 48px;
+        height: 48px;
+        font-size: 25px;
+        margin-bottom: 8px;
+    }
+
+    .card-jogo h2 {
+        font-size: 19px;
+        margin-bottom: 6px;
+    }
+
+    .card-jogo p {
+        font-size: 11px;
+        margin-bottom: 10px;
+    }
+
+    .categoria {
+        margin-bottom: 5px;
+    }
+
+    .botao-jogar {
+        padding: 7px 20px;
+        font-size: 10px;
+    }
+
+    .rodape-jogos {
+        font-size: 10px;
+        padding-top: 5px;
+    }
+}
+
+/* =========================================
+   TELAS MUITO BAIXAS
+========================================= */
+
+@media (max-height: 650px) {
+
+    .cabecalho-jogos {
+        padding-top: 5px;
+    }
+
+    .detalhe {
+        font-size: 17px;
+        margin-bottom: 4px;
+    }
+
+    .cabecalho-jogos h1 {
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+
+    .descricao {
+        font-size: 12px;
+    }
+
+    .lista-jogos {
+        gap: 18px;
+    }
+
+    .card-jogo {
+        min-height: 250px;
+        padding: 18px;
+    }
+
+    .icone-jogo {
+        width: 55px;
+        height: 55px;
+        font-size: 27px;
+        margin-bottom: 10px;
+    }
+
+    .card-jogo h2 {
+        font-size: 21px;
+        margin-bottom: 8px;
+    }
+
+    .card-jogo p {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .card-jogo,
+    .botao-jogar,
+    .postit {
+        transition: none;
+    }
+}

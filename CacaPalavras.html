@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caça-palavras | Nosso Diário 3DS</title>
+    <link rel="stylesheet" href="CacaPalavras.css">
+    <script src="CacaPalavras.js" defer></script>
+</head>
+
+<body>
+
+    <main class="pagina-caca-palavras">
+
+        <nav class="postits">
+            <a class="postit inicio" href="Diario.html">Início</a>
+            <a class="postit historia" href="Historia.html">História</a>
+            <a class="postit fotos" href="Fotos.html">Fotos</a>
+            <a class="postit figurinhas" href="Figurinhas.html">Figurinhas</a>
+            <a class="postit jogos ativo" href="jogo.html">Jogos</a>
+            <a class="postit album" href="#">Álbum de figurinhas</a>
+            <a class="postit perfis" href="#">Perfis da turma</a>
+        </nav>
+
+        <header class="cabecalho-caca">
+            <h1>CAÇA-PALAVRAS</h1>
+            <p>Encontre as 10 palavras escondidas!</p>
+        </header>
+
+        <section class="conteudo-caca">
+
+            <div class="area-jogo">
+
+                <div class="informacoes-jogo">
+                    <span>Palavras encontradas:</span>
+                    <strong id="contador">0 / 10</strong>
+                </div>
+
+                <div id="quadroLetras" class="quadro-letras">
+                    <!-- As letras serão criadas pelo JavaScript -->
+                </div>
+
+                <div id="explicacao" class="explicacao">
+                    <h2>Você sabia?</h2>
+                    <p>Encontre uma palavra para descobrir sua explicação!</p>
+                </div>
+
+            </div>
+
+            <aside class="lista-palavras">
+                <h2>PALAVRAS</h2>
+                <ul id="listaPalavras">
+                    <!-- A lista será criada pelo JavaScript -->
+                </ul>
+            </aside>
+
+        </section>
+
+        <div class="final-jogo">
+            <p id="mensagemFinal"></p>
+            <button id="proximaRodada" hidden>
+                PRÓXIMA RODADA
+            </button>
+        </div>
+
+        <a href="jogo.html" class="botao-voltar">← Voltar aos jogos</a>
+
+    </main>
+
+</body>
+
+</html>

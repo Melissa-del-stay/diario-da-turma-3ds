@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -7,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosso Diário 3DS</title>
     <link rel="stylesheet" href="Diario.css">
-   <script src="Diario.js"></script>
+    <script src="./Diario.js" defer></script>
 </head>
 
 <body>
@@ -23,7 +22,9 @@
             <button class="postit album" data-pagina="5">Álbum de figurinhas</button>
             <button class="postit perfis" data-pagina="6">Perfis da turma</button>
         </nav>
-
+        <button class="controle-lateral anterior" id="paginaAnterior" type="button" aria-label="Página anterior">
+            ←
+        </button>
         <div class="livro">
 
             <section class="folha ativa" data-indice="0">
@@ -92,7 +93,9 @@
             </section>
 
         </div>
-
+        <button class="controle-lateral proximo" id="proximaPagina" type="button" aria-label="Próxima página">
+            →
+        </button>
         <footer>
             FEITO DE MOMENTOS, GUARDADO PARA SEMPRE ✦
         </footer>
@@ -100,4 +103,5 @@
     </main>
 
 </body>
+
 </html>
