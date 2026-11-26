@@ -5,91 +5,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Nosso Diário 3DS</title>
+
     <link rel="stylesheet" href="Diario.css">
-   <script src="Diario.js"></script>
+    <script src="Diario.js" defer></script>
 </head>
 
 <body>
 
     <main class="diario">
 
-        <nav class="postits" aria-label="Navegação do diário">
-            <button class="postit inicio ativo" data-pagina="0">Início</button>
-            <button class="postit historia" data-pagina="1">História</button>
-            <button class="postit fotos" data-pagina="2">Fotos</button>
-            <button class="postit figurinhas" data-pagina="3">Figurinhas</button>
-            <button class="postit jogos" data-pagina="4">Jogos</button>
-            <button class="postit album" data-pagina="5">Álbum de figurinhas</button>
-            <button class="postit perfis" data-pagina="6">Perfis da turma</button>
+        <!-- MENU SUPERIOR -->
+        <nav class="postits" aria-label="Navegação principal">
+
+            <a href="Diario.html" class="postit inicio ativo">
+                Início
+            </a>
+
+            <a href="Historia.html" class="postit historia">
+                História
+            </a>
+
+            <a href="Fotos.html" class="postit fotos">
+                Fotos
+            </a>
+
+            <a href="Loja.html" class="postit figurinhas">
+                Loja
+            </a>
+
+            <a href="Jogos.html" class="postit jogos">
+                Jogos
+            </a>
+
+            <a href="Album.html" class="postit album">
+                Figurinhas
+            </a>
+
+            <a href="Perfis.html" class="postit perfis">
+                Perfis
+            </a>
+
         </nav>
 
+        <!-- LIVRO -->
         <div class="livro">
 
+            <!-- SETA ESQUERDA -->
+            <button
+                class="seta seta-esquerda"
+                id="voltarPagina"
+                type="button"
+                aria-label="Página anterior"
+                disabled>
+                &#10094;
+            </button>
+
+            <!-- PÁGINA INICIAL -->
             <section class="folha ativa" data-indice="0">
-                <div class="conteudo">
-                    <p class="etiqueta">TURMA 3DS · 2024—2026</p>
-                    <h1>Nosso Diário</h1>
-                    <div class="enfeite">✦ ❦ ✦</div>
-                    <h2>Entre, o diário é nosso!</h2>
-                    <p>
-                        Dois anos de histórias, amizades, risadas
-                        e momentos que merecem ser lembrados.
-                    </p>
-                    <p>Escolha um marcador ao lado para começar a explorar.</p>
-                </div>
+
+
+<div class="conteudo">
+
+    <p class="etiqueta">
+        TURMA 3DS · 2025—2026
+    </p>
+
+    <h1 class="titulo-brilhante">Nosso Diário</h1>
+
+    <div class="enfeite">
+        ✦ ❦ ✦
+    </div>
+
+    <h2>Bem-vindos ao nosso cantinho!</h2>
+
+    <p>
+        Dois anos de histórias, amizades, risadas
+        e momentos que merecem ser lembrados.
+    </p>
+
+    <p>
+        Cada página guarda um pedacinho da nossa história.
+    </p>
+
+    <p class="instrucao">
+        Use as setas para começar a explorar nosso diário.
+    </p>
+
+</div>
+
+
             </section>
 
-            <section class="folha" data-indice="1" hidden>
-                <div class="conteudo">
-                    <span class="numero">01 · NOSSA TRAJETÓRIA</span>
-                    <h2>Nossa história</h2>
-                    <p>Aqui ficará a linha do tempo dos nossos dois anos de turma.</p>
-                </div>
-            </section>
-
-            <section class="folha" data-indice="2" hidden>
-                <div class="conteudo">
-                    <span class="numero">02 · MOMENTOS</span>
-                    <h2>Nossa galeria</h2>
-                    <p>Aqui ficarão as fotos e lembranças especiais da turma.</p>
-                </div>
-            </section>
-
-            <section class="folha" data-indice="3" hidden>
-                <div class="conteudo">
-                    <span class="numero">03 · COLEÇÃO</span>
-                    <h2>Figurinhas da turma</h2>
-                    <p>Aqui ficarão as figurinhas personalizadas dos alunos.</p>
-                </div>
-            </section>
-
-            <section class="folha" data-indice="4" hidden>
-                <div class="conteudo">
-                    <span class="numero">04 · HORA DE JOGAR</span>
-                    <h2>Nossos jogos</h2>
-                    <p>Aqui ficará o acesso aos jogos criados pela turma.</p>
-                </div>
-            </section>
-
-            <section class="folha" data-indice="5" hidden>
-                <div class="conteudo">
-                    <span class="numero">05 · COMPLETE A COLEÇÃO</span>
-                    <h2>Álbum de figurinhas</h2>
-                    <p>Aqui ficará o álbum para explorar e colecionar figurinhas.</p>
-                </div>
-            </section>
-
-            <section class="folha" data-indice="6" hidden>
-                <div class="conteudo">
-                    <span class="numero">06 · QUEM SOMOS</span>
-                    <h2>Perfis da turma</h2>
-                    <p>
-                        Conheça os colegas por meio de perfis personalizados,
-                        com fotos, gostos, hobbies e frases favoritas.
-                    </p>
-                </div>
-            </section>
+            <!-- SETA DIREITA -->
+            <button
+                class="seta seta-direita"
+                id="avancarPagina"
+                type="button"
+                aria-label="Próxima página">
+                &#10095;
+            </button>
 
         </div>
 

@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Documentos/fotos minhhas"
+		},
+		{
+			"path": "../../Documentos/fotos minhas"
+		},
+		{
+			"path": "../../Documentos/eu criança"
+		},
+		{
+			"path": "../../Documentos/outros"
+		},
+		{
+			"path": "../../Documentos/elementos"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Sobre mim (album)"
+	}
+}

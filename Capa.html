@@ -14,68 +14,86 @@
 
 <body>
 
+    <!-- PÁGINA INICIAL CARREGADA AO FUNDO -->
+    <iframe
+        id="paginaInicial"
+        src="./Diario.html"
+        title="Página inicial do Nosso Diário"
+        aria-hidden="true"
+        tabindex="-1">
+    </iframe>
+
     <main class="livro">
 
         <!-- PÁGINA INTERNA -->
-        <section class="pagina">
+        <section class="pagina" id="paginaEntrada">
 
             <div class="conteudo-pagina">
 
                 <h1>Bem-vindos ao nosso diário!</h1>
 
-                <p>
+                <p class="descricao">
                     Dois anos de histórias, amizades,
                     desafios e lembranças especiais.
                 </p>
 
+                <!-- FORMULÁRIO -->
                 <form id="formulario">
 
-    <label for="nome">Seu nome:</label>
-    <input
-        type="text"
-        id="nome"
-        name="nome"
-        placeholder="Digite seu nome"
-        autocomplete="name"
-        required
-    >
+                    <div class="campo">
+                        <label for="nome">Seu nome:</label>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
 
-    <label for="email">E-mail:</label>
-    <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Digite seu e-mail"
-        autocomplete="email"
-        required
-    >
+                    <div class="campo">
+                        <label for="email">E-mail:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
 
-    <label for="senha">Senha:</label>
-    <input
-        type="password"
-        id="senha"
-        name="senha"
-        placeholder="Digite sua senha"
-        autocomplete="current-password"
-        required
-    >
+                    <div class="campo">
+                        <label for="senha">Senha:</label>
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
 
-    <button type="submit">Entrar no diário</button>
+                    <button type="submit">
+                        Entrar no diário
+                    </button>
 
-    <p id="mensagem"></p>
+                    <p id="mensagem" role="status" aria-live="polite"></p>
 
-</form>
+                </form>
 
-            <p id="mensagem" role="status" aria-live="polite"></p>
+                <!-- CADASTRO -->
+                <div class="opcao-cadastro">
 
-            <!-- Acesso à página de cadastro -->
-            <div class="opcao-cadastro">
+                    <p>Ainda não tem uma conta?</p>
 
-                <p>Ainda não tem uma conta?</p>
+                    <a href="./Cadastro.html">
+                        Criar minha conta ✦
+                    </a>
 
-                <a href="./Historia.html">
-                    Criar minha conta ✦
-                </a>
+                </div>
 
             </div>
 
@@ -123,6 +141,5 @@
 
     </main>
 
-    <script src="Capa.js"></script>
-
 </body>
+</html>

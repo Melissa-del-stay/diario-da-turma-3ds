@@ -9,9 +9,15 @@
     box-sizing: border-box;
 }
 
+html,
 body {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
     padding: 12px 15px;
 
     display: flex;
@@ -31,17 +37,36 @@ body {
 }
 
 /* ========================================
+   PÁGINA INICIAL AO FUNDO
+======================================== */
+
+#paginaInicial {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: none;
+
+    pointer-events: none;
+}
+
+/* ========================================
    ESTRUTURA DO LIVRO
 ======================================== */
 
 .livro {
     position: relative;
+    z-index: 1;
 
-    width: min(100%, 960px);
+    width: min(100%, 1200px);
     height: 100%;
     min-height: 0;
 
-    perspective: 1500px;
+    perspective: 1800px;
+    transform-style: preserve-3d;
 }
 
 /* ========================================
@@ -57,7 +82,11 @@ body {
     height: 100%;
     min-height: 0;
 
-    padding: 55px 75px;
+    padding: clamp(30px, 5vw, 70px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background: radial-gradient(
         ellipse at center,
@@ -87,22 +116,24 @@ body {
 
 .conteudo-pagina {
     width: 100%;
-    max-width: 780px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 .pagina h1 {
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 
     color: #743044;
-    font-size: 32px;
+    font-size: clamp(27px, 3vw, 38px);
     font-weight: normal;
 }
 
-.pagina > p {
-    margin-bottom: 25px;
+.descricao {
+    margin-bottom: 30px;
 
-    font-size: 14px;
+    color: #542431;
+    font-size: 15px;
+    line-height: 1.6;
 }
 
 /* ========================================
@@ -110,32 +141,65 @@ body {
 ======================================== */
 
 #formulario {
+    width: 100%;
+    max-width: 530px;
+    margin: 0 auto;
+
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 17px;
+
+    text-align: left;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
 
 #formulario label {
-    text-align: left;
+    color: #542431;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 #formulario input {
     width: 100%;
-    min-height: 44px;
+    min-height: 47px;
 
-    padding: 12px;
+    padding: 12px 15px;
 
     border: 1px solid #c4a779;
     border-radius: 4px;
 
     background: #fffaf0;
+    color: #542431;
 
     font-family: Georgia, "Times New Roman", serif;
     font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#formulario input:focus {
+    border-color: #743044;
+    box-shadow: 0 0 0 3px rgba(116, 48, 68, 0.12);
+}
+
+#formulario input::placeholder {
+    color: #a18b75;
 }
 
 #formulario button {
-    min-height: 45px;
+    width: 100%;
+    min-height: 49px;
+
+    margin-top: 7px;
 
     border: 1px solid #bd9653;
     border-radius: 4px;
@@ -144,6 +208,7 @@ body {
     color: #fff0d1;
 
     font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
 
     cursor: pointer;
 
@@ -160,11 +225,48 @@ body {
 #formulario button:disabled {
     opacity: 0.7;
     cursor: wait;
+    transform: none;
 }
 
 #mensagem {
-    margin-top: 12px;
+    min-height: 16px;
+    margin-top: -5px;
+
+    color: #743044;
     font-size: 13px;
+    text-align: center;
+}
+
+/* ========================================
+   OPÇÃO DE CADASTRO
+======================================== */
+
+.opcao-cadastro {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.opcao-cadastro p {
+    margin-bottom: 7px;
+
+    color: #542431;
+    font-size: 13px;
+}
+
+.opcao-cadastro a {
+    color: #743044;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.opcao-cadastro a:hover {
+    color: #a05a40;
+    text-decoration: underline;
 }
 
 /* ========================================
@@ -194,7 +296,7 @@ body {
     transform-origin: left center;
     transform: rotateY(0deg);
 
-    transition: transform 1.2s ease-in-out;
+    transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
 
     transform-style: preserve-3d;
     backface-visibility: hidden;
@@ -224,7 +326,7 @@ body {
 
 .moldura {
     position: absolute;
-    inset: 20px;
+    inset: clamp(18px, 2.5vw, 30px);
 
     display: flex;
     flex-direction: column;
@@ -246,16 +348,16 @@ body {
 .moldura .subtitulo {
     color: #e0bd77;
 
-    font-size: 13px;
-    letter-spacing: 5px;
+    font-size: 14px;
+    letter-spacing: 6px;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .moldura h1 {
     color: #f1dfb8;
 
-    font-size: clamp(38px, 5vw, 58px);
+    font-size: clamp(42px, 5.5vw, 68px);
     font-weight: normal;
 
     text-shadow: 2px 3px 4px #2b0c16;
@@ -263,12 +365,12 @@ body {
 
 .moldura .ano {
     position: absolute;
-    bottom: 32px;
+    bottom: 35px;
 
     color: #e0bd77;
 
-    font-size: 12px;
-    letter-spacing: 3px;
+    font-size: 13px;
+    letter-spacing: 4px;
 }
 
 /* ========================================
@@ -276,40 +378,48 @@ body {
 ======================================== */
 
 .cadeado {
-    position: absolute;
+    position: relative;
 
-    bottom: 125px;
-    left: 50%;
+    width: 56px;
+    height: 68px;
 
-    width: 48px;
-    height: 60px;
-
-    transform: translateX(-50%);
+    margin-top: clamp(45px, 8vh, 80px);
 
     cursor: pointer;
+
+    transition: transform 0.25s ease;
+}
+
+.cadeado:hover {
+    transform: scale(1.08);
+}
+
+.cadeado:focus-visible {
+    outline: 2px solid #f1dfb8;
+    outline-offset: 8px;
 }
 
 .arco {
     position: absolute;
 
     top: 0;
-    left: 11px;
+    left: 13px;
 
-    width: 26px;
-    height: 29px;
+    width: 30px;
+    height: 33px;
 
     border: 5px solid #d8b66f;
     border-bottom: none;
 
-    border-radius: 16px 16px 0 0;
+    border-radius: 18px 18px 0 0;
 }
 
 .corpo {
     position: absolute;
     bottom: 0;
 
-    width: 48px;
-    height: 37px;
+    width: 56px;
+    height: 42px;
 
     border: 2px solid #e0bd77;
     border-radius: 5px;
@@ -326,11 +436,11 @@ body {
 .fechadura {
     position: absolute;
 
-    top: 9px;
-    left: 19px;
+    top: 10px;
+    left: 23px;
 
     width: 7px;
-    height: 12px;
+    height: 13px;
 
     border-radius: 5px;
 
@@ -342,7 +452,7 @@ body {
 
     position: absolute;
 
-    top: 7px;
+    top: 8px;
     left: 2px;
 
     width: 3px;
@@ -356,8 +466,7 @@ body {
 ======================================== */
 
 .instrucao {
-    position: absolute;
-    bottom: 90px;
+    margin-top: 17px;
 
     width: 100%;
 
@@ -367,7 +476,7 @@ body {
 }
 
 /* ========================================
-   ANIMAÇÃO DE ABRIR A CAPA
+   ABRIR A CAPA
 ======================================== */
 
 .capa.aberta {
@@ -376,22 +485,30 @@ body {
 }
 
 /* ========================================
-   ANIMAÇÃO DA PÁGINA INTERNA
+   VIRAR A PÁGINA DE ENTRADA
 ======================================== */
 
 .pagina.virando {
     z-index: 3;
-    animation: virarPagina 1.2s ease-in-out forwards;
+    pointer-events: none;
+
+    animation: virarPagina 850ms cubic-bezier(.65, 0, .35, 1) forwards;
 }
 
 @keyframes virarPagina {
-    from {
+
+    0% {
         transform: rotateY(0deg);
     }
 
-    to {
-        transform: rotateY(-100deg);
+    45% {
+        transform: rotateY(-75deg);
     }
+
+    100% {
+        transform: rotateY(-180deg);
+    }
+
 }
 
 /* ========================================
@@ -409,24 +526,51 @@ body {
     }
 
     .pagina {
-        padding: 35px 25px;
+        padding: 30px 22px;
+    }
+
+    .conteudo-pagina {
+        max-width: 100%;
+    }
+
+    .pagina h1 {
+        font-size: 27px;
+    }
+
+    .descricao {
+        font-size: 13px;
+        margin-bottom: 22px;
+    }
+
+    #formulario {
+        gap: 13px;
+    }
+
+    #formulario input {
+        min-height: 43px;
     }
 
     .moldura {
-        inset: 15px;
+        inset: 17px;
     }
 
     .moldura h1 {
-        font-size: 32px;
+        font-size: clamp(32px, 9vw, 45px);
     }
 
     .moldura .subtitulo {
+        font-size: 11px;
+        letter-spacing: 4px;
+    }
+
+    .moldura .ano {
         font-size: 11px;
     }
 
     .instrucao {
         font-size: 11px;
     }
+
 }
 
 /* ========================================
@@ -435,21 +579,46 @@ body {
 
 @media (max-height: 650px) {
 
-    .moldura {
-        inset: 15px;
+    .pagina {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .pagina h1 {
+        margin-bottom: 9px;
+        font-size: 27px;
+    }
+
+    .descricao {
+        margin-bottom: 15px;
+        font-size: 13px;
+    }
+
+    #formulario {
+        gap: 9px;
+    }
+
+    #formulario input {
+        min-height: 38px;
+        padding: 8px 12px;
+    }
+
+    #formulario button {
+        min-height: 40px;
+    }
+
+    .opcao-cadastro {
+        margin-top: 10px;
     }
 
     .cadeado {
-        bottom: 90px;
-    }
-
-    .instrucao {
-        bottom: 55px;
+        margin-top: 35px;
     }
 
     .moldura .ano {
-        bottom: 15px;
+        bottom: 18px;
     }
+
 }
 
 /* ========================================
@@ -465,4 +634,10 @@ body {
     .pagina.virando {
         animation-duration: 0.01ms;
     }
+
+    .cadeado,
+    #formulario button {
+        transition-duration: 0.01ms;
+    }
+
 }

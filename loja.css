@@ -1,0 +1,320 @@
+
+/* ========================================
+   LOJINHA — NOSSO DIÁRIO 3DS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    padding: 12px 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(
+        ellipse at center,
+        #4b202b 0%,
+        #210e13 75%
+    );
+
+    font-family: Georgia, "Times New Roman", serif;
+    overflow: hidden;
+}
+
+.livro-figurinhas {
+    width: min(100%, 1200px);
+    height: 100%;
+
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 12px;
+}
+
+/* MENU */
+
+.menu-postits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.menu-postits a {
+    padding: 10px 17px;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    text-decoration: none;
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+.menu-postits a:hover {
+    background: #8b4056;
+    transform: translateY(-2px);
+}
+
+.menu-postits a.ativo {
+    background: #bd9653;
+    color: #210e13;
+    font-weight: bold;
+}
+
+/* LIVRO */
+
+.livro {
+    min-height: 0;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 35px;
+
+    background: radial-gradient(
+        ellipse at center,
+        #f8eed8 0%,
+        #f1e4c8 75%,
+        #e8d6b4 100%
+    );
+
+    border: 5px solid #bd9653;
+    border-radius: 5px;
+
+    box-shadow:
+        0 0 0 2px #5b2935,
+        0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* CABEÇALHO */
+
+.cabecalho {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.etiqueta {
+    display: block;
+    color: #98764b;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.cabecalho h1 {
+    color: #743044;
+    font-size: clamp(25px, 4vw, 36px);
+    font-weight: normal;
+    margin-bottom: 7px;
+}
+
+.cabecalho p {
+    color: #806747;
+    font-size: 14px;
+}
+
+/* MOEDAS */
+
+.saldo-moedas {
+    align-self: center;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 9px 20px;
+    margin-bottom: 20px;
+
+    background: #e8d6b4;
+    border: 1px solid #bd9653;
+    border-radius: 5px;
+
+    color: #743044;
+}
+
+.saldo-moedas strong {
+    font-size: 16px;
+}
+
+/* PACOTES */
+
+.grade-pacotes {
+    flex: 1;
+    min-height: 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 18px;
+}
+
+.pacote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    padding: 18px 14px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.38);
+    border: 2px solid #bd9653;
+    border-radius: 5px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.09);
+}
+
+.pacote-comum {
+    border-top: 6px solid #64734a;
+}
+
+.pacote-raro {
+    border-top: 6px solid #743044;
+}
+
+.pacote-super {
+    border-top: 6px solid #9871a5;
+}
+
+/* ILUSTRAÇÃO PROVISÓRIA */
+
+.imagem-pacote {
+    width: 110px;
+    height: 145px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 17px;
+
+    background: #743044;
+    border: 3px solid #bd9653;
+    border-radius: 8px;
+
+    color: #f1e4c8;
+    font-size: 55px;
+
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+.pacote-raro .imagem-pacote {
+    background: #4b202b;
+    border-color: #bd9653;
+}
+
+.pacote-super .imagem-pacote {
+    background: #49314f;
+    border-color: #9871a5;
+}
+
+/* TEXTOS */
+
+.pacote h2 {
+    color: #743044;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.pacote p {
+    color: #806747;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 40px;
+}
+
+.preco {
+    color: #743044;
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+/* BOTÃO */
+
+.botao-comprar {
+    width: 100%;
+    max-width: 180px;
+
+    padding: 11px;
+
+    background: #743044;
+    color: #f1e4c8;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.botao-comprar:hover {
+    background: #8b4056;
+}
+
+/* RODAPÉ */
+
+.rodape {
+    text-align: center;
+    margin-top: 15px;
+    color: #806747;
+    font-size: 13px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+    body {
+        padding: 8px 5px;
+        height: auto;
+        min-height: 100vh;
+        overflow: auto;
+    }
+
+    .livro-figurinhas {
+        height: auto;
+        min-height: calc(100vh - 16px);
+    }
+
+    .menu-postits {
+        gap: 5px;
+    }
+
+    .menu-postits a {
+        padding: 7px 9px;
+        font-size: 10px;
+    }
+
+    .livro {
+        padding: 18px 12px;
+    }
+
+    .grade-pacotes {
+        grid-template-columns: 1fr;
+    }
+
+    .pacote {
+        padding: 20px;
+    }
+
+    .imagem-pacote {
+        width: 90px;
+        height: 115px;
+    }
+}

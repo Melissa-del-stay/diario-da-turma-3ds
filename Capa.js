@@ -1,16 +1,21 @@
+
 document.addEventListener("DOMContentLoaded", function () {
+
     const capa = document.getElementById("capa");
     const cadeado = document.getElementById("cadeado");
     const formulario = document.getElementById("formulario");
     const mensagem = document.getElementById("mensagem");
-
     const botaoEntrar = formulario
         ? formulario.querySelector('button[type="submit"]')
         : null;
 
     let enviandoFormulario = false;
 
-    // Abre a capa ao clicar no cadeado
+    /* ========================================
+       ABRIR A CAPA
+       NÃO ALTERAR ESTA ANIMAÇÃO
+    ======================================== */
+
     function abrirCapa() {
         if (capa && !capa.classList.contains("aberta")) {
             capa.classList.add("aberta");
@@ -28,14 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Envia o formulário e abre o diário
+    /* ========================================
+       ENTRAR NO DIÁRIO
+    ======================================== */
+
     if (formulario) {
         formulario.addEventListener("submit", function (event) {
+
             event.preventDefault();
 
-            if (enviandoFormulario) {
-                return;
-            }
+            if (enviandoFormulario) return;
 
             enviandoFormulario = true;
 
@@ -48,16 +55,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 botaoEntrar.textContent = "Abrindo...";
             }
 
-            const pagina = document.querySelector(".pagina");
+            const pagina = document.getElementById("paginaEntrada")
+                || document.querySelector(".pagina");
 
-            // Inicia a animação de virar a página
             if (pagina) {
                 pagina.classList.add("virando");
             }
-          // Vai para o diário mais rápido
-setTimeout(function () {
-    window.location.replace("./Diario.html");
-}, 550);
+
+            /* Redirecionamento garantido */
+            setTimeout(function () {
+                window.location.href = "./Diario.html";
+            }, 1000);
+
         });
     }
+
 });

@@ -1,85 +1,91 @@
-const postits = document.querySelectorAll(".postit");
-const folhas = document.querySelectorAll(".folha");
 
-let paginaAtual = 0;
-let trocandoPagina = false;
+document.addEventListener("DOMContentLoaded", function () {
 
-// Garante que a página inicial esteja visível quando o diário carregar
-const paginaInicial = document.querySelector('.folha[data-indice="0"]');
+    const capa = document.getElementById("capa");
+    const cadeado = document.getElementById("cadeado");
+    const formulario = document.getElementById("formulario");
+    const mensagem = document.getElementById("mensagem");
+    const paginaInicial = document.getElementById("paginaInicial");
 
-if (paginaInicial) {
-    paginaInicial.hidden = false;
-    paginaInicial.classList.add("ativa");
-}
+    const botaoEntrar = formulario
+        ? formulario.querySelector('button[type="submit"]')
+        : null;
 
-// Garante que as outras páginas comecem escondidas
-folhas.forEach((folha) => {
-    if (folha.dataset.indice !== "0") {
-        folha.hidden = true;
-        folha.classList.remove("ativa", "virando");
-    }
-});
+    let enviandoFormulario = false;
 
-// Abre a página selecionada
-function abrirPagina(indice) {
-    if (trocandoPagina || indice === paginaAtual) {
-        return;
-    }
+    /* ========================================
+       ABRIR A CAPA
+    ======================================== */
 
-    const folhaAtual = document.querySelector(
-        `.folha[data-indice="${paginaAtual}"]`
-    );
-
-    const proximaFolha = document.querySelector(
-        `.folha[data-indice="${indice}"]`
-    );
-
-    if (!folhaAtual || !proximaFolha) {
-        return;
-    }
-
-    trocandoPagina = true;
-
-    // Atualiza o marcador selecionado
-    postits.forEach((postit) => {
-        const ativo = Number(postit.dataset.pagina) === indice;
-
-        postit.classList.toggle("ativo", ativo);
-
-        if (ativo) {
-            postit.setAttribute("aria-current", "page");
-        } else {
-            postit.removeAttribute("aria-current");
+    function abrirCapa() {
+        if (capa && !capa.classList.contains("aberta")) {
+            capa.classList.add("aberta");
         }
-    });
+    }
 
-    // Prepara a próxima folha
-    proximaFolha.hidden = false;
-    proximaFolha.classList.remove("ativa", "virando");
+    if (cadeado) {
+        cadeado.addEventListener("click", abrirCapa);
 
-    // Inicia a animação da folha atual
-    folhaAtual.classList.remove("ativa");
-    folhaAtual.classList.add("virando");
+        cadeado.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                abrirCapa();
+            }
+        });
+    }
 
-    // Mostra a próxima folha após o início da animação
-    requestAnimationFrame(() => {
-        proximaFolha.classList.add("ativa");
+    /* ========================================
+       ENVIAR FORMULÁRIO
+    ======================================== */
 
-        // Aguarda a animação terminar
-        setTimeout(() => {
-            folhaAtual.hidden = true;
-            folhaAtual.classList.remove("virando");
+    if (formulario) {
+        formulario.addEventListener("submit", function (event) {
 
-            paginaAtual = indice;
-            trocandoPagina = false;
-        }, 650);
-    });
-}
+            event.preventDefault();
 
-// Adiciona o clique aos marcadores
-postits.forEach((postit) => {
-    postit.addEventListener("click", () => {
-        const indice = Number(postit.dataset.pagina);
-        abrirPagina(indice);
-    });
+            if (enviandoFormulario) return;
+
+            enviandoFormulario = true;
+
+            if (mensagem) {
+                mensagem.textContent = "Abrindo nosso diário...";
+            }
+
+            if (botaoEntrar) {
+                botaoEntrar.disabled = true;
+                botaoEntrar.textContent = "Abrindo...";
+            }
+
+            const pagina = document.querySelector(".pagina");
+
+            if (pagina) {
+                pagina.addEventListener("animationend", function finalizarAnimacao(event) {
+
+                    if (event.target !== pagina || event.animationName !== "virarPagina") {
+                        return;
+                    }
+
+                    /* Mostra o Diário que já está carregado no iframe */
+                    if (paginaInicial) {
+                        paginaInicial.classList.add("diario-visivel");
+                    }
+
+                    /* Retira a tela de entrada */
+                    pagina.remove();
+
+                    if (capa) {
+                        capa.remove();
+                    }
+
+                }, { once: true });
+
+                pagina.classList.add("virando");
+
+            } else {
+                window.location.replace("./Diario.html");
+            }
+
+        });
+    }
+
 });

@@ -1,0 +1,670 @@
+
+/* ========================================
+   FOTOS — NOSSO DIÁRIO 3DS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    padding: 12px 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(
+        ellipse at center,
+        #4b202b 0%,
+        #210e13 75%
+    );
+
+    font-family: Georgia, "Times New Roman", serif;
+    overflow: hidden;
+}
+
+/* ========================================
+   ESTRUTURA PRINCIPAL
+======================================== */
+
+.livro-fotos {
+    width: min(100%, 1200px);
+    height: 100%;
+
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 12px;
+}
+
+/* ========================================
+   MENU SUPERIOR
+======================================== */
+
+.menu-postits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.menu-postits a {
+    padding: 10px 17px;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    text-decoration: none;
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+.menu-postits a:hover {
+    background: #8b4056;
+    transform: translateY(-2px);
+}
+
+.menu-postits a.ativo {
+    background: #bd9653;
+    color: #210e13;
+    font-weight: bold;
+}
+
+/* ========================================
+   LIVRO
+======================================== */
+
+.livro {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 0;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 45px;
+
+    background: radial-gradient(
+        ellipse at center,
+        #f8eed8 0%,
+        #f1e4c8 75%,
+        #e8d6b4 100%
+    );
+
+    border: 5px solid #bd9653;
+    border-radius: 5px;
+
+    box-shadow:
+        0 0 0 2px #5b2935,
+        0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.cabecalho {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.etiqueta {
+    display: block;
+
+    color: #98764b;
+
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+}
+
+.cabecalho h1 {
+    color: #743044;
+
+    font-size: clamp(27px, 4vw, 38px);
+    font-weight: normal;
+
+    margin-bottom: 7px;
+}
+
+.cabecalho p {
+    color: #806747;
+    font-size: 14px;
+}
+
+/* ========================================
+   GRADE DE FOTOS E VÍDEOS
+======================================== */
+
+.grade-fotos {
+    flex: 1;
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+/* ========================================
+   QUADRINHOS
+======================================== */
+
+.foto-item {
+    position: relative;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding: 7px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    border: 1px solid rgba(189, 150, 83, 0.7);
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.10);
+
+    cursor: pointer;
+
+    transition: transform 0.2s;
+}
+
+.foto-item:hover:not(:disabled) {
+    transform: scale(1.025);
+}
+
+.foto-item:disabled {
+    cursor: default;
+}
+
+/* ========================================
+   FOTOGRAFIAS
+======================================== */
+
+.foto-item img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+object-position: center 47%;
+    border: 2px solid #fff9eb;
+    outline: 1px solid #bd9653;
+}
+/* Ajuste da terceira foto */
+.grade-fotos .foto-item:nth-child(3) img {
+    object-position: center 25%;
+}
+
+.imagem-indisponivel {
+    background: #e8d9ba;
+}
+
+.imagem-indisponivel::after {
+    content: "Imagem não encontrada";
+
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #806747;
+    font-size: 12px;
+}
+/* ========================================
+   VÍDEOS — SEM ZOOM E SEM CORTES
+======================================== */
+
+.video-item {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    padding: 3px;
+
+    background: #f1e4c8;
+    border: 1px solid rgba(189, 150, 83, 0.35);
+}
+
+.video-item .video-memoria {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    background: transparent;
+
+    border: none;
+    outline: none;
+
+    transform: none;
+}
+
+/* Vídeos horizontais */
+
+.video-item.horizontal .video-memoria {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+/* Vídeos verticais */
+
+.video-item.vertical .video-memoria {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+/* ========================================
+   BOTÃO DE ÁUDIO
+======================================== */
+
+.botao-som {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 2;
+
+    padding: 7px 11px;
+
+    color: #f1e4c8;
+    background: rgba(33, 14, 19, 0.88);
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    font-family: Georgia, serif;
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+.botao-som:hover {
+    background: #743044;
+}
+
+/* ========================================
+   VÍDEO NÃO ENCONTRADO
+======================================== */
+
+.video-indisponivel {
+    background: #e8d9ba;
+}
+
+.video-indisponivel::after {
+    content: "Vídeo não encontrado";
+
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    font-size: 12px;
+}
+
+/* ========================================
+   ESPAÇOS PROVISÓRIOS
+======================================== */
+
+.foto-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    background: #e8d9ba;
+
+    border: 2px solid #fff9eb;
+    outline: 1px solid #bd9653;
+
+    color: #806747;
+}
+
+.foto-placeholder span {
+    font-size: 35px;
+}
+
+.foto-placeholder small {
+    font-size: 12px;
+}
+
+/* ========================================
+   CONTROLES
+======================================== */
+
+.controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 18px;
+}
+
+.controles button {
+    padding: 9px 18px;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    font-family: Georgia, serif;
+    cursor: pointer;
+}
+
+.controles button:hover:not(:disabled) {
+    background: #8b4056;
+}
+
+.controles button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+#indicadorPagina {
+    color: #743044;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   VISUALIZADOR DE FOTOS
+======================================== */
+
+.visualizador {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(20, 5, 10, 0.94);
+
+    padding: 50px;
+}
+
+.visualizador.aberto {
+    display: flex;
+}
+
+.visualizador img {
+    max-width: 85%;
+    max-height: 85%;
+
+    object-fit: contain;
+
+    border: 3px solid #bd9653;
+    border-radius: 4px;
+}
+
+.fechar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+
+    color: white;
+    background: none;
+    border: none;
+
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.seta {
+    position: absolute;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    border: 1px solid #bd9653;
+    border-radius: 50%;
+
+    width: 45px;
+    height: 45px;
+
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.seta-anterior {
+    left: 25px;
+}
+
+.seta-proxima {
+    right: 25px;
+}
+
+/* ========================================
+   ANIMAÇÃO DO CONTEÚDO
+======================================== */
+
+@keyframes conteudoSaindo {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+}
+
+@keyframes conteudoEntrando {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Saída dos elementos internos */
+
+.saindo-subindo {
+    animation: conteudoSaindo 200ms ease forwards;
+}
+
+/* Entrada dos elementos internos */
+
+.subindo-aparecendo {
+    animation: conteudoEntrando 600ms ease both;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 8px 5px;
+    }
+
+    .livro-fotos {
+        gap: 8px;
+    }
+
+    .menu-postits {
+        gap: 5px;
+    }
+
+    .menu-postits a {
+        padding: 7px 9px;
+        font-size: 10px;
+    }
+
+    .livro {
+        padding: 18px 12px;
+    }
+
+    .cabecalho {
+        margin-bottom: 15px;
+    }
+
+    .cabecalho p {
+        font-size: 12px;
+    }
+
+    .grade-fotos {
+        gap: 8px;
+    }
+
+    .foto-item {
+        padding: 4px;
+    }
+
+    .video-item {
+        padding: 4px;
+    }
+
+    .botao-som {
+        right: 7px;
+        bottom: 7px;
+
+        padding: 5px 7px;
+        font-size: 9px;
+    }
+
+    .controles button {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    #indicadorPagina {
+        font-size: 11px;
+    }
+
+    .visualizador {
+        padding: 20px;
+    }
+
+    .visualizador img {
+        max-width: 90%;
+    }
+}
+
+@media (max-height: 600px) {
+
+    .livro {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .cabecalho {
+        margin-bottom: 10px;
+    }
+
+    .cabecalho h1 {
+        font-size: 25px;
+    }
+
+    .controles {
+        margin-top: 10px;
+    }
+}
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
+.video-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.video-item .video-memoria {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: none;
+    zoom: 1;
+}
+/* ========================================
+   VÍDEO AMPLIADO
+======================================== */
+
+.visualizador.visualizador-video .video-ampliado {
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 90vw;
+    max-height: 85vh;
+
+    object-fit: contain;
+    object-position: center;
+
+    border: none;
+    outline: none;
+    border-radius: 0;
+
+    background: transparent;
+    transform: none;
+}
+/* VÍDEO ABERTO — SEM BORDA DOURADA */
+
+.visualizador.visualizador-video .video-ampliado {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 0;
+}

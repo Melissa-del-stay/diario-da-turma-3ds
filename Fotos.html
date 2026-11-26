@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fotos | Nosso Diário 3DS</title>
+
+    <link rel="stylesheet" href="Fotos.css">
+    <script src="Fotos.js" defer></script>
+</head>
+
+<body>
+
+    <main class="livro-fotos">
+
+        <nav class="menu-postits">
+            <a href="Diario.html">Início</a>
+            <a href="Historia.html">História</a>
+            <a href="Fotos.html"   >Fotos</a>
+            <a href="loja.html">Loja</a>
+            <a href="jogo.html">Jogos</a>
+            <a href="Figurinhas.html">Figurinhas</a>
+            <a href="Perfis.html">Perfis</a>
+        </nav>
+
+        <section class="livro">
+
+            <header class="cabecalho">
+
+                <span class="etiqueta">
+                    NOSSO DIÁRIO • TURMA 3DS
+                </span>
+
+                <h1>Nossas Memórias</h1>
+
+                <p>Momentos que merecem ser lembrados.</p>
+
+            </header>
+
+            <section
+                id="gradeFotos"
+                class="grade-fotos">
+            </section>
+
+            <footer class="controles">
+
+                <button id="paginaAnterior" disabled>
+                    ← Anterior
+                </button>
+
+                <span id="indicadorPagina">
+                    Página 01
+                </span>
+
+                <button id="proximaPagina">
+                    Próxima →
+                </button>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+    <div id="visualizador" class="visualizador">
+
+        <button id="fecharFoto" class="fechar">×</button>
+
+        <button id="fotoAnterior" class="seta seta-anterior">
+            ‹
+        </button>
+          
+        <button id="fotoProxima" class="seta seta-proxima">
+            ›
+        </button>
+
+    </div>
+
+</body>
+</html>

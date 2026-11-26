@@ -1,7 +1,7 @@
 
-/* =========================================
-   NOSSA HISTÓRIA — TURMA 3DS
-========================================= */
+/* ========================================
+   HISTÓRIA — NOSSO DIÁRIO 3DS
+======================================== */
 
 * {
     margin: 0;
@@ -9,8 +9,14 @@
     box-sizing: border-box;
 }
 
+html,
 body {
     width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
     height: 100vh;
     padding: 12px 15px;
 
@@ -25,41 +31,132 @@ body {
     );
 
     font-family: Georgia, "Times New Roman", serif;
-    color: #594338;
-
-    overflow: hidden;
 }
 
-/* =========================================
-   ESTRUTURA GERAL
-========================================= */
+/* ========================================
+   ESTRUTURA PRINCIPAL
+======================================== */
 
 .livro-historia {
     position: relative;
-
-    width: min(100%, 1120px);
+    width: min(100%, 1200px);
     height: 100%;
 
     display: grid;
-    grid-template-columns: 65px minmax(0, 1fr) 65px;
-    grid-template-rows: minmax(0, 1fr) auto;
-
-    align-items: center;
-    column-gap: 15px;
-    row-gap: 0;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 12px;
 }
+
+/* ========================================
+   MENU SUPERIOR
+======================================== */
+
+.postits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.postit {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px 17px;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    text-decoration: none;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    text-align: center;
+
+    transition: 0.25s;
+}
+
+.postit::after {
+    content: "";
+    position: absolute;
+
+    top: -50%;
+    left: -120%;
+
+    width: 65%;
+    height: 200%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 239, 190, 0.45),
+        transparent
+    );
+
+    transform: skewX(-25deg);
+    pointer-events: none;
+}
+
+.postit:hover {
+    background: #8b4056;
+    transform: translateY(-3px);
+
+    border-color: #e4c17a;
+
+    box-shadow:
+        0 0 7px rgba(189, 150, 83, 0.55),
+        0 0 15px rgba(189, 150, 83, 0.2);
+}
+
+.postit:hover::after {
+    animation: reflexoPostit 0.75s ease;
+}
+
+@keyframes reflexoPostit {
+    from {
+        left: -120%;
+    }
+
+    to {
+        left: 150%;
+    }
+}
+
+.postit.ativo {
+    background: #bd9653;
+    color: #210e13;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(189, 150, 83, 0.35);
+}
+
+/* ========================================
+   LIVRO
+======================================== */
 
 .livro {
     position: relative;
 
-    grid-column: 2;
-    grid-row: 1;
-
-    width: 100%;
-    height: 100%;
     min-height: 0;
+    width: 100%;
 
-    background: #f1e4c8;
+    display: flex;
+    flex-direction: column;
+
+    background: radial-gradient(
+        ellipse at center,
+        #f8eed8 0%,
+        #f1e4c8 75%,
+        #e8d6b4 100%
+    );
+
     border: 5px solid #bd9653;
     border-radius: 5px;
 
@@ -71,9 +168,9 @@ body {
     overflow: hidden;
 }
 
-/* =========================================
+/* ========================================
    PÁGINAS
-========================================= */
+======================================== */
 
 .pagina {
     position: absolute;
@@ -82,7 +179,7 @@ body {
     width: 100%;
     height: 100%;
 
-    padding: 55px 75px;
+    padding: 45px 65px;
 
     background: radial-gradient(
         ellipse at center,
@@ -114,22 +211,24 @@ body {
 .pagina.virando-volta {
     display: block;
     z-index: 4;
+    pointer-events: none;
 }
 
 .conteudo-pagina {
     position: relative;
 
     width: 100%;
-    max-width: 780px;
-    min-height: 100%;
+    max-width: 960px;
+    height: 100%;
+    min-height: 0;
 
     margin: 0 auto;
-    padding-bottom: 35px;
+    padding-bottom: 30px;
 }
 
-/* =========================================
-   ANIMAÇÃO DAS PÁGINAS
-========================================= */
+/* ========================================
+   ANIMAÇÃO DE VIRADA
+======================================== */
 
 .pagina.virando-frente {
     animation: virarFrente 650ms ease-in-out forwards;
@@ -163,13 +262,53 @@ body {
     }
 }
 
-/* =========================================
+/* ========================================
+   SAÍDA PARA INÍCIO E FOTOS
+======================================== */
+
+.pagina.saindo-para-diario {
+    display: block;
+    z-index: 5;
+    pointer-events: none;
+    animation: sairParaDiario 650ms ease-in-out forwards;
+}
+
+.pagina.saindo-para-fotos {
+    display: block;
+    z-index: 5;
+    pointer-events: none;
+    animation: sairParaFotos 650ms ease-in-out forwards;
+}
+
+@keyframes sairParaDiario {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: rotateY(90deg);
+        opacity: 0.5;
+    }
+}
+
+@keyframes sairParaFotos {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: rotateY(-90deg);
+        opacity: 0.5;
+    }
+}
+
+/* ========================================
    CAPA
-========================================= */
+======================================== */
 
 .capa-historia {
-    min-height: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,77 +319,103 @@ body {
 
 .subtitulo {
     color: #98764b;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 3px;
     margin-bottom: 25px;
 }
 
 .ornamento {
     color: #bd9653;
-    font-size: 25px;
+    font-size: 30px;
     margin-bottom: 20px;
 }
 
 .capa-historia h1 {
     color: #743044;
-    font-size: clamp(38px, 6vw, 58px);
+    font-size: clamp(38px, 5vw, 52px);
     font-weight: normal;
     margin-bottom: 20px;
 }
 
 .descricao {
-    max-width: 470px;
+    max-width: 550px;
     color: #765c48;
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 19px;
+    line-height: 1.8;
 }
 
 .detalhe-capa {
     color: #bd9653;
     font-size: 35px;
-    margin: 30px 0;
+    margin: 25px 0;
 }
 
 .convite {
-    max-width: 420px;
+    max-width: 500px;
     color: #806747;
-    font-size: 15px;
+    font-size: 18px;
     font-style: italic;
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
-/* =========================================
+/* ========================================
    TÍTULOS
-========================================= */
+======================================== */
 
 .etiqueta {
     display: inline-block;
 
     color: #98764b;
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 13px;
+    letter-spacing: 3px;
 
     margin-bottom: 18px;
 }
 
 .pagina h2 {
     color: #743044;
-    font-size: 32px;
+    font-size: clamp(30px, 3.5vw, 40px);
     font-weight: normal;
     margin-bottom: 12px;
 }
 
 .pagina h3 {
     color: #98764b;
-    font-size: 17px;
+    font-size: 19px;
     font-weight: normal;
     font-style: italic;
     margin-bottom: 25px;
 }
 
-/* =========================================
+/* ========================================
+   BRILHO DOS TÍTULOS
+======================================== */
+
+.titulo-brilhante {
+    color: #743044 !important;
+    background: none !important;
+    -webkit-text-fill-color: #743044 !important;
+
+    animation: brilhoTitulo 3s ease-in-out infinite alternate;
+}
+
+@keyframes brilhoTitulo {
+    from {
+        filter: drop-shadow(
+            0 0 3px rgba(189, 150, 83, 0.3)
+        );
+    }
+
+    to {
+        filter: drop-shadow(
+            0 0 12px rgba(189, 150, 83, 0.85)
+        );
+    }
+}
+
+/* ========================================
    TEXTOS
-========================================= */
+======================================== */
 
 .texto-historia {
     margin-top: 20px;
@@ -258,8 +423,8 @@ body {
 
 .texto-historia p {
     color: #594338;
-    font-size: 15px;
-    line-height: 1.8;
+    font-size: 18px;
+    line-height: 1.85;
     text-align: justify;
     margin-bottom: 18px;
 }
@@ -276,9 +441,9 @@ body {
     background: rgba(189, 150, 83, 0.08);
 }
 
-/* =========================================
+/* ========================================
    NÚMERO DA PÁGINA
-========================================= */
+======================================== */
 
 .numero-pagina {
     position: absolute;
@@ -290,9 +455,9 @@ body {
     letter-spacing: 2px;
 }
 
-/* =========================================
+/* ========================================
    TERCEIRÃO
-========================================= */
+======================================== */
 
 .pagina-terceirao {
     padding-bottom: 15px;
@@ -303,12 +468,12 @@ body {
 }
 
 .pagina-terceirao h2 {
-    font-size: 29px;
+    font-size: 32px;
     margin-bottom: 5px;
 }
 
 .pagina-terceirao h3 {
-    font-size: 15px;
+    font-size: 17px;
     margin-bottom: 15px;
 }
 
@@ -319,15 +484,15 @@ body {
 
 .introducao-terceirao p {
     color: #594338;
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.6;
     text-align: justify;
     margin-bottom: 8px;
 }
 
-/* =========================================
+/* ========================================
    CARDS DAS MEMÓRIAS
-========================================= */
+======================================== */
 
 .memorias-terceirao {
     display: grid;
@@ -341,6 +506,7 @@ body {
     gap: 9px;
 
     min-width: 0;
+    min-height: 0;
     padding: 13px;
 
     background: rgba(255, 255, 255, 0.38);
@@ -352,19 +518,19 @@ body {
 .memoria h4 {
     color: #743044;
     font-family: Georgia, serif;
-    font-size: 15px;
+    font-size: 17px;
     margin-bottom: 2px;
 }
 
 .memoria p {
     color: #594338;
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.55;
 }
 
-/* =========================================
-   GALERIA
-========================================= */
+/* ========================================
+   GALERIA GERAL
+======================================== */
 
 .galeria-memoria {
     display: grid;
@@ -392,101 +558,152 @@ body {
     border-radius: 2px;
 }
 
-/* =========================================
-   QUADRINHOS PROVISÓRIOS
-========================================= */
+/* ========================================
+   GALERIAS DE IA
+======================================== */
 
-.placeholder-memoria {
-    aspect-ratio: 1 / 1;
-    min-height: 100px;
-
-    background: #e8d9ba;
-    border: 1px solid #c9ad7b;
-
+.pagina-galeria-ia {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 7px;
-
-    color: #806747;
-    text-align: center;
 }
 
-.placeholder-memoria span {
-    font-size: 30px;
-    opacity: 0.75;
+.pagina-galeria-ia .texto-intro-galeria {
+    color: #594338;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    max-width: 850px;
 }
 
-.placeholder-memoria small {
-    font-family: Georgia, serif;
-    font-size: 12px;
-}
+.pagina-galeria-ia .galeria-ia {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, 190px);
 
-.placeholder-video {
-    background: #dfceb0;
-    border-style: dashed;
-}
-
-/* =========================================
-   GALERIA DE IA — PÁGINA 3
-========================================= */
-
-.pagina[data-pagina="3"] .memorias-terceirao {
-    grid-template-columns: 0.8fr 1.2fr;
     gap: 12px;
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+
+    margin: 15px auto 0;
 }
 
-.pagina[data-pagina="3"] .galeria-memoria {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
+.pagina-galeria-ia .galeria-ia img,
+.pagina-galeria-ia .galeria-ia .espaco-foto {
+    display: block;
+
+    width: 100%;
+    height: 190px;
+    min-width: 0;
+    min-height: 0;
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #e6d6b9;
+    border: 2px solid #fff9eb;
+    outline: 1px solid #bd9653;
+    border-radius: 3px;
 }
-.pagina[data-pagina="3"] .galeria-memoria img {
-    height: 120px;
+
+.pagina-galeria-ia .galeria-ia img {
+    padding: 0;
+    cursor: pointer;
+
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.pagina-galeria-ia .galeria-ia img:hover {
+    transform: scale(1.025);
+    box-shadow: 0 4px 12px rgba(33, 14, 19, 0.25);
+}
+
+.pagina-galeria-ia .galeria-ia .espaco-foto {
+    border: 1px dashed #bd9653;
+    outline: none;
+    background: rgba(189, 150, 83, 0.08);
+}
+
+/* ========================================
+   VÍDEO DO BOLINHA
+======================================== */
+
+.memoria-bolinha .video-bolinha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin-top: 10px;
+}
+
+.memoria-bolinha .video-bolinha video {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: 220px;
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #210e13;
+    border: 2px solid #fff9eb;
+    outline: 1px solid #bd9653;
+    border-radius: 4px;
+}
+
+/* ========================================
+   CAFÉ DA MANHÃ
+======================================== */
+
+.memoria-cafe .galeria-memoria img {
+    height: 130px;
     width: 100%;
     object-fit: cover;
-    background: #e8d9ba;
 }
-/* =========================================
-   CONTROLES LATERAIS
-========================================= */
+
+/* ========================================
+   SETAS DE NAVEGAÇÃO DO LIVRO
+======================================== */
 
 .controle-lateral {
-    width: 55px;
-    height: 55px;
+    position: absolute;
+    top: 50%;
+    z-index: 7;
+
+    width: 42px;
+    height: 50px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transform: translateY(-50%);
 
     color: #f1e4c8;
     background: #743044;
 
-    border: 2px solid #bd9653;
-    border-radius: 50%;
+    border: 1px solid #bd9653;
+    border-radius: 4px;
 
     font-family: Georgia, serif;
-    font-size: 27px;
+    font-size: 24px;
 
     cursor: pointer;
 
-    transition: background 0.2s, transform 0.2s;
+    transition: 0.2s;
 }
 
 .controle-lateral.anterior {
-    grid-column: 1;
-    grid-row: 1;
+    left: 8px;
 }
 
 .controle-lateral.proximo {
-    grid-column: 3;
-    grid-row: 1;
+    right: 8px;
 }
 
 .controle-lateral:hover:not(:disabled) {
     background: #8b4056;
-    transform: scale(1.08);
 }
 
 .controle-lateral:disabled {
@@ -494,28 +711,169 @@ body {
     cursor: not-allowed;
 }
 
-/* =========================================
-   INDICADOR DE PÁGINA
-========================================= */
+/* ========================================
+   INDICADOR
+======================================== */
 
 .indicador-pagina {
-    position: static;
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%);
 
-    grid-column: 2;
-    grid-row: 2;
-
-    text-align: center;
     color: #f1e4c8;
-
-    font-size: 13px;
+    font-size: 11px;
     letter-spacing: 1.5px;
-
-    padding-top: 8px;
+    z-index: 10;
 }
 
-/* =========================================
+/* ========================================
+   ANIMAÇÃO DE REVELAÇÃO
+======================================== */
+
+.pagina.revelando .conteudo-pagina > * {
+    animation: revelarTexto 0.8s ease both;
+}
+
+.pagina.revelando .conteudo-pagina > :nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.pagina.revelando .conteudo-pagina > :nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.pagina.revelando .conteudo-pagina > :nth-child(3) {
+    animation-delay: 0.25s;
+}
+
+.pagina.revelando .conteudo-pagina > :nth-child(4) {
+    animation-delay: 0.35s;
+}
+
+@keyframes revelarTexto {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   VISUALIZADOR DE FOTOS
+======================================== */
+
+.visualizador-fotos {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    padding: 35px;
+    background: rgba(20, 8, 12, 0.94);
+}
+
+.visualizador-fotos.aberto {
+    display: flex;
+}
+
+.imagem-ampliada-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 85vw;
+    max-height: 88vh;
+}
+
+#imagemAmpliada {
+    display: block;
+    max-width: 85vw;
+    max-height: 82vh;
+    object-fit: contain;
+
+    border: 3px solid #bd9653;
+    border-radius: 4px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+}
+
+#contadorFotos {
+    color: #f1e4c8;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.visualizador-fotos button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.visualizador-fotos button:hover {
+    background: #9a4b61;
+}
+
+.fechar-visualizador {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+
+    width: 42px;
+    height: 42px;
+    font-size: 30px;
+}
+
+.foto-anterior,
+.proxima-foto {
+    flex-shrink: 0;
+    width: 45px;
+    height: 55px;
+    font-size: 25px;
+}
+
+/* ========================================
+   SEM BARRAS DE ROLAGEM
+======================================== */
+
+html,
+body,
+.livro-historia,
+.livro,
+.pagina,
+.conteudo-pagina {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.livro::-webkit-scrollbar,
+.pagina::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* ========================================
    RESPONSIVIDADE
-========================================= */
+======================================== */
 
 @media (max-width: 700px) {
 
@@ -524,22 +882,24 @@ body {
     }
 
     .livro-historia {
-        grid-template-columns: 38px minmax(0, 1fr) 38px;
-        column-gap: 5px;
+        gap: 8px;
     }
 
-    .controle-lateral {
-        width: 36px;
-        height: 36px;
-        font-size: 19px;
+    .postits {
+        gap: 5px;
+    }
+
+    .postit {
+        padding: 7px 9px;
+        font-size: 10px;
     }
 
     .pagina {
-        padding: 35px 25px;
+        padding: 30px 25px;
     }
 
     .pagina h2 {
-        font-size: 26px;
+        font-size: 27px;
     }
 
     .pagina h3 {
@@ -547,23 +907,13 @@ body {
     }
 
     .texto-historia p {
-        font-size: 13px;
+        font-size: 14px;
+        line-height: 1.7;
     }
 
-    .pagina-terceirao {
-        padding: 25px 18px;
-    }
-
-    .pagina-terceirao h2 {
-        font-size: 24px;
-    }
-
-    .pagina-terceirao h3 {
-        font-size: 13px;
-    }
-
-    .introducao-terceirao p {
-        font-size: 11px;
+    .descricao,
+    .convite {
+        font-size: 15px;
     }
 
     .memorias-terceirao {
@@ -573,14 +923,15 @@ body {
 
     .memoria {
         padding: 9px;
+        gap: 6px;
     }
 
     .memoria h4 {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .memoria p {
-        font-size: 11px;
+        font-size: 12px;
     }
 
     .galeria-memoria img,
@@ -588,104 +939,105 @@ body {
         height: 75px;
     }
 
-    .placeholder-memoria {
-        min-height: 75px;
+    .memoria-bolinha .video-bolinha video {
+        height: 190px;
     }
 
-    .placeholder-memoria span {
-        font-size: 23px;
+    .memoria-cafe .galeria-memoria img {
+        height: 100px;
     }
 
-    .placeholder-memoria small {
-        font-size: 10px;
+    .pagina-galeria-ia {
+        padding: 25px 20px;
     }
 
-    .indicador-pagina {
-        font-size: 11px;
-        padding-top: 7px;
+    .pagina-galeria-ia .galeria-ia {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(2, 115px);
+        gap: 8px;
     }
 
-    .pagina[data-pagina="3"] .memorias-terceirao {
-        grid-template-columns: 1fr;
+    .pagina-galeria-ia .galeria-ia img,
+    .pagina-galeria-ia .galeria-ia .espaco-foto {
+        height: 115px;
     }
 
-    .pagina[data-pagina="3"] .galeria-memoria img {
-    height: 90px;
+    .visualizador-fotos {
+        gap: 8px;
+        padding: 15px;
+    }
+
+    .foto-anterior,
+    .proxima-foto {
+        width: 35px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    #imagemAmpliada {
+        max-width: 70vw;
+        max-height: 75vh;
+    }
+
+    .controle-lateral {
+        width: 32px;
+        height: 42px;
+        font-size: 19px;
+    }
 }
-    }
-/* =========================================
-   TELAS MUITO BAIXAS
-========================================= */
+
+/* ========================================
+   TELAS BAIXAS
+======================================== */
 
 @media (max-height: 650px) {
+
     .pagina {
-        padding-top: 25px;
-        padding-bottom: 20px;
+        padding-top: 22px;
+        padding-bottom: 15px;
     }
 
     .pagina-terceirao {
-        padding-top: 18px;
+        padding-top: 15px;
     }
 
     .introducao-terceirao {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
-    .pagina[data-pagina="3"] .galeria-memoria img {
-        height: 65px;
+    .introducao-terceirao p {
+        font-size: 12px;
+        line-height: 1.4;
     }
 
     .memoria {
         gap: 6px;
         padding: 8px;
     }
-}
 
-/* =========================================
-   ACESSIBILIDADE
-========================================= */
+    .memoria p {
+        font-size: 11px;
+    }
 
-@media (prefers-reduced-motion: reduce) {
-    .pagina.virando-frente,
-    .pagina.virando-volta {
-        animation-duration: 0.01ms;
+    .memoria-bolinha .video-bolinha video {
+        height: 150px;
+    }
+
+    .memoria-cafe .galeria-memoria img {
+        height: 90px;
     }
 }
-/* =====================================
-   VÍDEO DO BOLINHA
-===================================== */
-.memoria-bolinha .video-bolinha {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 15px;
-}
 
-.memoria-bolinha .video-bolinha video {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    height: 260px;
-    object-fit: cover;
-    object-position: center;
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
 
-    background: #210e13;
-    border: 2px solid #fff9eb;
-    outline: 1px solid #bd9653;
-    border-radius: 4px;
-}
-/* AUMENTAR FOTOS DO CAFÉ DA MANHÃ */
+@media (prefers-reduced-motion: reduce) {
 
-.memoria-cafe .galeria-memoria img {
-    height: 130px;
-    width: 100%;
-    object-fit: cover;
-}
-/* AUMENTAR FOTOS DO CAFÉ DA MANHÃ */
-
-.memoria-cafe .galeria-memoria img {
-    height: 130px;
-    width: 100%;
-    object-fit: cover;
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }

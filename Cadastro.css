@@ -1,44 +1,86 @@
 
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
 body {
     min-height: 100vh;
-    padding: 25px;
+    min-height: 100dvh;
+
+    padding: 20px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #210e13;
+
+    background: radial-gradient(
+        ellipse at center,
+        #4b202b 0%,
+        #210e13 75%
+    );
+
     font-family: Georgia, "Times New Roman", serif;
     color: #542431;
 }
 
-/* Página do diário: mesmo tamanho da tela de entrada */
+/* ========================================
+   PÁGINA DO DIÁRIO
+======================================== */
+
 .pagina-diario {
-    width: 480px;
-    height: 620px;
-    max-width: 100%;
-    padding: 22px 25px;
-    background: #f1e4c8;
-    border: 5px solid #c9a45b;
+    position: relative;
+
+    width: min(100%, 1200px);
+    min-height: min(760px, calc(100vh - 40px));
+
+    padding: 35px 55px;
+
+    background: radial-gradient(
+        ellipse at center,
+        #f8eed8 0%,
+        #f1e4c8 75%,
+        #e8d6b4 100%
+    );
+
+    border: 5px solid #bd9653;
     border-radius: 5px;
+
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    justify-content: flex-start;
 }
 
-/* Detalhes decorativos */
+/* ========================================
+   DETALHES DECORATIVOS
+======================================== */
+
 .ornamento {
     text-align: center;
+
     color: #bd9653;
-    font-size: 18px;
-    letter-spacing: 5px;
-    margin-bottom: 10px;
+    font-size: 22px;
+    letter-spacing: 6px;
+
+    margin-bottom: 18px;
 }
+
+/* ========================================
+   CABEÇALHO
+======================================== */
 
 .cabecalho {
     text-align: center;
@@ -46,112 +88,165 @@ body {
 
 .etiqueta {
     display: inline-block;
-    padding: 5px 10px;
+
+    padding: 6px 13px;
+
     border: 1px solid #bd9653;
+
     color: #542431;
-    font-size: 9px;
+
+    font-size: 10px;
     letter-spacing: 2px;
     font-weight: bold;
 }
 
 .cabecalho h1 {
-    margin-top: 12px;
-    font-size: 29px;
+    margin-top: 15px;
+
+    font-size: clamp(30px, 3vw, 40px);
     font-weight: normal;
+
     color: #542431;
 }
 
 .frase {
-    margin-top: 7px;
-    font-size: 12px;
+    margin-top: 9px;
+
+    font-size: 14px;
+    color: #743044;
 }
 
 .introducao {
-    margin-top: 12px;
+    max-width: 580px;
+
+    margin: 17px auto 0;
+
     color: #79614e;
-    font-size: 12px;
-    line-height: 1.5;
+
+    font-size: 14px;
+    line-height: 1.7;
 }
 
-/* Formulário */
+/* ========================================
+   ÁREA DO FORMULÁRIO
+======================================== */
+
 .formulario-area {
-    margin-top: 18px;
+    width: 100%;
+    max-width: 560px;
+
+    margin: 32px auto 0;
 }
 
 .formulario-area h2 {
-    margin-bottom: 12px;
+    margin-bottom: 22px;
+
     text-align: center;
-    font-size: 18px;
+
+    font-size: 22px;
     font-weight: normal;
+
+    color: #743044;
 }
+
+/* ========================================
+   FORMULÁRIO
+======================================== */
 
 #formCadastro {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
-#formCadastro > label:not(.consentimento) {
-    margin: 7px 0 4px;
-    font-size: 12px;
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#formCadastro label {
+    color: #542431;
+
+    font-size: 14px;
     font-weight: bold;
 }
 
-#formCadastro > input {
+#formCadastro input {
     width: 100%;
-    height: 37px;
-    padding: 8px 10px;
+    min-height: 47px;
+
+    padding: 12px 14px;
+
     border: 1px solid #c4a779;
     border-radius: 4px;
+
     background: #fffaf0;
     color: #39251e;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+
     outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-#formCadastro > input:focus {
-    border-color: #6b2839;
-    box-shadow: 0 0 0 2px rgba(107, 40, 57, 0.12);
+#formCadastro input:focus {
+    border-color: #743044;
+
+    box-shadow:
+        0 0 0 3px rgba(116, 48, 68, 0.12);
 }
 
-.consentimento {
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-    margin-top: 12px;
-    color: #79614e;
-    font-size: 11px;
-    line-height: 1.4;
+#formCadastro input::placeholder {
+    color: #a18b75;
 }
 
-.consentimento input {
-    margin-top: 2px;
-    accent-color: #6b2839;
-    flex-shrink: 0;
-}
+/* ========================================
+   BOTÃO
+======================================== */
 
 #formCadastro button {
-    min-height: 40px;
-    margin-top: 14px;
-    padding: 9px;
+    width: 100%;
+    min-height: 49px;
+
+    margin-top: 8px;
+    padding: 11px;
+
     border: 1px solid #bd9653;
     border-radius: 4px;
+
     background: #682334;
     color: #fff0d1;
+
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 13px;
+    font-size: 15px;
+
     cursor: pointer;
-    transition: background 0.2s;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
 
 #formCadastro button:hover {
     background: #7b3043;
+    transform: translateY(-2px);
 }
 
+/* ========================================
+   MENSAGEM DE STATUS
+======================================== */
+
 #mensagemStatus {
-    margin-top: 8px;
-    font-size: 11px;
-    line-height: 1.4;
+    margin-top: 5px;
+
+    font-size: 13px;
+    line-height: 1.5;
+
     text-align: center;
 }
 
@@ -167,54 +262,179 @@ body {
     color: #355c36;
 }
 
-/* Link para voltar */
+/* ========================================
+   LINK PARA VOLTAR
+======================================== */
+
 .voltar {
-    margin-top: 13px;
+    margin-top: 23px;
+
     text-align: center;
-    font-size: 11px;
+
+    font-size: 13px;
     color: #79614e;
 }
 
 .voltar a {
     color: #682334;
+
     font-weight: bold;
     text-decoration: none;
+
     border-bottom: 1px solid #bd9653;
+
     padding-bottom: 2px;
+
+    transition: color 0.2s ease;
 }
 
 .voltar a:hover {
     color: #8a3c50;
 }
 
-/* Rodapé */
+/* ========================================
+   RODAPÉ
+======================================== */
+
 footer {
     margin-top: auto;
-    padding-top: 15px;
+    padding-top: 28px;
+
     text-align: center;
+
     color: #79614e;
-    font-size: 8px;
-    letter-spacing: 1px;
+
+    font-size: 10px;
+    letter-spacing: 1.5px;
     line-height: 1.6;
 }
 
-/* Adaptação para telas menores */
-@media (max-width: 500px) {
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 700px) {
+
     body {
-        padding: 15px;
+        padding: 10px;
     }
 
     .pagina-diario {
         width: 100%;
-        height: 620px;
-        padding: 22px 18px;
+        min-height: calc(100vh - 20px);
+
+        padding: 25px 22px;
+    }
+
+    .ornamento {
+        font-size: 18px;
+        margin-bottom: 14px;
     }
 
     .cabecalho h1 {
-        font-size: 26px;
+        font-size: 29px;
+    }
+
+    .frase {
+        font-size: 12px;
+    }
+
+    .introducao {
+        font-size: 12px;
+    }
+
+    .formulario-area {
+        margin-top: 25px;
     }
 
     .formulario-area h2 {
-        font-size: 17px;
+        font-size: 19px;
+        margin-bottom: 17px;
+    }
+
+    #formCadastro {
+        gap: 13px;
+    }
+
+    #formCadastro input {
+        min-height: 44px;
+    }
+
+    .voltar {
+        margin-top: 18px;
+    }
+
+    footer {
+        font-size: 8px;
+        padding-top: 22px;
+    }
+}
+
+/* ========================================
+   TELAS COM POUCA ALTURA
+======================================== */
+
+@media (max-height: 750px) {
+
+    body {
+        align-items: flex-start;
+    }
+
+    .pagina-diario {
+        min-height: auto;
+    }
+
+    .ornamento {
+        margin-bottom: 10px;
+    }
+
+    .cabecalho h1 {
+        margin-top: 9px;
+    }
+
+    .introducao {
+        margin-top: 10px;
+    }
+
+    .formulario-area {
+        margin-top: 20px;
+    }
+
+    .formulario-area h2 {
+        margin-bottom: 13px;
+    }
+
+    #formCadastro {
+        gap: 10px;
+    }
+
+    #formCadastro input {
+        min-height: 40px;
+        padding: 9px 12px;
+    }
+
+    #formCadastro button {
+        min-height: 43px;
+    }
+
+    .voltar {
+        margin-top: 15px;
+    }
+
+    footer {
+        padding-top: 18px;
+    }
+}
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #formCadastro button,
+    .voltar a,
+    #formCadastro input {
+        transition-duration: 0.01ms;
     }
 }

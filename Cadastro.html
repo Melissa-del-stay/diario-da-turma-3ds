@@ -42,52 +42,60 @@
 
             <form id="formCadastro">
 
-                <label for="nome">Seu nome ou apelido</label>
+                <div class="campo">
+                    <label for="nome">Seu nome ou apelido</label>
 
-                <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    placeholder="Como podemos te chamar?"
-                    maxlength="60"
-                    autocomplete="name"
-                    required
-                >
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Como podemos te chamar?"
+                        maxlength="60"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
 
-                <label for="email">Seu Gmail</label>
+                <div class="campo">
+                    <label for="email">Seu Gmail</label>
 
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Digite seu Gmail"
-                    autocomplete="email"
-                    required
-                >
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Digite seu Gmail"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
 
-                <label for="senha">Crie sua senha</label>
+                <div class="campo">
+                    <label for="senha">Crie sua senha</label>
 
-                <input
-                    type="password"
-                    id="senha"
-                    name="senha"
-                    placeholder="Pelo menos 8 caracteres"
-                    minlength="8"
-                    autocomplete="new-password"
-                    required
-                >
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Pelo menos 8 caracteres"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
 
-                <label for="confirmarSenha">Confirme sua senha</label>
+                <div class="campo">
+                    <label for="confirmarSenha">Confirme sua senha</label>
 
-                <input
-                    type="password"
-                    id="confirmarSenha"
-                    name="confirmarSenha"
-                    placeholder="Digite a senha novamente"
-                    minlength="8"
-                    autocomplete="new-password"
-                    required
-                >
+                    <input
+                        type="password"
+                        id="confirmarSenha"
+                        name="confirmarSenha"
+                        placeholder="Digite a senha novamente"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
 
                 <button type="submit">
                     Criar minha conta ✦
@@ -115,5 +123,4 @@
     </main>
 
 </body>
-
 </html>
