@@ -1,0 +1,651 @@
+/* ========================================
+   LOJINHA — NOSSO DIÁRIO 3DS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    padding: 12px 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(ellipse at center,
+            #4b202b 0%,
+            #210e13 75%);
+
+    font-family: Georgia, "Times New Roman", serif;
+    overflow: hidden;
+}
+
+.livro-figurinhas {
+    width: min(100%, 1200px);
+    height: 100%;
+
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 12px;
+}
+
+/* MENU */
+
+.menu-postits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.menu-postits a {
+    padding: 10px 17px;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    text-decoration: none;
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+.menu-postits a:hover {
+    background: #8b4056;
+    transform: translateY(-2px);
+}
+
+.menu-postits a.ativo {
+    background: #bd9653;
+    color: #210e13;
+    font-weight: bold;
+}
+
+/* LIVRO */
+
+.livro {
+    min-height: 0;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 35px;
+
+    background: radial-gradient(ellipse at center,
+            #f8eed8 0%,
+            #f1e4c8 75%,
+            #e8d6b4 100%);
+
+    border: 5px solid #bd9653;
+    border-radius: 5px;
+
+    box-shadow:
+        0 0 0 2px #5b2935,
+        0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* CABEÇALHO */
+
+.cabecalho {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.etiqueta {
+    display: block;
+    color: #98764b;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.cabecalho h1 {
+    color: #743044;
+    font-size: clamp(25px, 4vw, 36px);
+    font-weight: normal;
+    margin-bottom: 7px;
+}
+
+.cabecalho p {
+    color: #806747;
+    font-size: 14px;
+}
+
+/* MOEDAS */
+
+.saldo-moedas {
+    align-self: center;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 9px 20px;
+    margin-bottom: 20px;
+
+    background: #e8d6b4;
+    border: 1px solid #bd9653;
+    border-radius: 5px;
+
+    color: #743044;
+}
+
+.saldo-moedas strong {
+    font-size: 16px;
+}
+
+/* PACOTES */
+
+.grade-pacotes {
+    flex: 1;
+    min-height: 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 18px;
+}
+
+.pacote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    padding: 18px 14px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.38);
+    border: 2px solid #bd9653;
+    border-radius: 5px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.09);
+}
+
+.pacote-comum {
+    border-top: 6px solid #64734a;
+}
+
+.pacote-raro {
+    border-top: 6px solid #743044;
+}
+
+.pacote-super {
+    border-top: 6px solid #9871a5;
+}
+
+/* ILUSTRAÇÃO PROVISÓRIA */
+
+.imagem-pacote {
+    width: 110px;
+    height: 145px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 17px;
+
+    background: #743044;
+    border: 3px solid #bd9653;
+    border-radius: 8px;
+
+    color: #f1e4c8;
+    font-size: 55px;
+
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
+.pacote-raro .imagem-pacote {
+    background: #4b202b;
+    border-color: #bd9653;
+}
+
+.pacote-super .imagem-pacote {
+    background: #49314f;
+    border-color: #9871a5;
+}
+
+/* TEXTOS */
+
+.pacote h2 {
+    color: #743044;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.pacote p {
+    color: #806747;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 40px;
+}
+
+.preco {
+    color: #743044;
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+/* BOTÃO */
+
+.botao-comprar {
+    width: 100%;
+    max-width: 180px;
+
+    padding: 11px;
+
+    background: #743044;
+    color: #f1e4c8;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.botao-comprar:hover {
+    background: #8b4056;
+}
+
+/* RODAPÉ */
+
+.rodape {
+    text-align: center;
+    margin-top: 15px;
+    color: #806747;
+    font-size: 13px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+    body {
+        padding: 8px 5px;
+        height: auto;
+        min-height: 100vh;
+        overflow: auto;
+    }
+
+    .livro-figurinhas {
+        height: auto;
+        min-height: calc(100vh - 16px);
+    }
+
+    .menu-postits {
+        gap: 5px;
+    }
+
+    .menu-postits a {
+        padding: 7px 9px;
+        font-size: 10px;
+    }
+
+    .livro {
+        padding: 18px 12px;
+    }
+
+    .grade-pacotes {
+        grid-template-columns: 1fr;
+    }
+
+    .pacote {
+        padding: 20px;
+    }
+
+    .imagem-pacote {
+        width: 90px;
+        height: 115px;
+    }
+}
+
+/* ========================================
+   CAÇA-PALAVRAS
+======================================== */
+
+.cabecalho-caca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.cabecalho-caca h2 {
+    color: #743044;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+.cabecalho-caca p {
+    color: #765c48;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.moedas-jogo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    color: #210e13;
+    background: #ead4a9;
+    border: 1px solid #bd9653;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+/* ========================================
+   PROGRESSO
+======================================== */
+
+.progresso-caca {
+    margin-bottom: 15px;
+    color: #743044;
+    font-size: 13px;
+}
+
+.barra-progresso {
+    width: 100%;
+    height: 8px;
+    margin-top: 7px;
+    background: #dfceb0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#barraPreenchida {
+    width: 0%;
+    height: 100%;
+    background: #743044;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+/* ========================================
+   ORGANIZAÇÃO DO JOGO
+======================================== */
+
+.layout-caca {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+    gap: 25px;
+    align-items: start;
+    height: calc(100% - 105px);
+    min-height: 0;
+}
+
+/* ========================================
+   GRADE DE LETRAS
+======================================== */
+
+.grade-caca {
+    width: 100%;
+    max-width: 490px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(13, minmax(0, 1fr));
+    grid-template-rows: repeat(13, minmax(0, 1fr));
+    gap: 3px;
+
+    padding: 10px;
+
+    background: #e8d8ba;
+    border: 2px solid #bd9653;
+    border-radius: 5px;
+
+    user-select: none;
+    touch-action: none;
+}
+
+.letra-caca {
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #3c2025;
+    background: #fff8e9;
+
+    border: 1px solid rgba(189, 150, 83, 0.35);
+    border-radius: 3px;
+
+    font-family: Georgia, serif;
+    font-size: clamp(10px, 1.35vw, 17px);
+    font-weight: bold;
+
+    cursor: pointer;
+    user-select: none;
+    touch-action: none;
+    -webkit-user-select: none;
+}
+
+.letra-caca.selecionada {
+    color: #fff8e9;
+    background: #9b6873;
+    border-color: #743044;
+}
+
+.letra-caca.encontrada {
+    color: #fff8e9;
+    background: #64734a;
+    border-color: #64734a;
+}
+
+/* ========================================
+   PAINEL LATERAL
+======================================== */
+
+.painel-caca {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 15px;
+
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid #bd9653;
+    border-radius: 5px;
+}
+
+.painel-caca h3 {
+    color: #743044;
+    font-size: 19px;
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.lista-palavras {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 22px;
+}
+
+.palavra-pendente {
+    padding: 6px 9px;
+
+    color: #743044;
+    background: #f8eed8;
+
+    border: 1px solid #bd9653;
+    border-radius: 3px;
+
+    font-size: 12px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.palavra-pendente.palavra-encontrada {
+    color: #fff8e9;
+    background: #64734a;
+    border-color: #64734a;
+    text-decoration: line-through;
+}
+
+/* ========================================
+   SIGNIFICADOS
+======================================== */
+
+.titulo-significados {
+    padding-top: 12px;
+    border-top: 1px solid rgba(189, 150, 83, 0.6);
+}
+
+.significados {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.significados>p {
+    color: #765c48;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.significado-item {
+    padding: 10px;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    border-left: 3px solid #64734a;
+    border-radius: 3px;
+}
+
+.significado-item strong {
+    display: block;
+    color: #743044;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.significado-item p {
+    color: #765c48;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ========================================
+   MENSAGEM FINAL
+======================================== */
+
+.mensagem-final:not(:empty) {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    padding: 25px;
+    text-align: center;
+
+    color: #f1e4c8;
+    background: rgba(33, 14, 19, 0.95);
+}
+
+.mensagem-final h3 {
+    color: #e4c17a;
+    font-size: 27px;
+    font-weight: normal;
+}
+
+.mensagem-final p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .area-jogo {
+        padding: 20px 12px;
+    }
+
+    .cabecalho-caca h2 {
+        font-size: 21px;
+    }
+
+    .layout-caca {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+        height: calc(100% - 90px);
+        gap: 15px;
+    }
+
+    .grade-caca {
+        max-width: 100%;
+        gap: 2px;
+        padding: 5px;
+    }
+
+    .letra-caca {
+        font-size: clamp(9px, 2.5vw, 15px);
+    }
+
+    .painel-caca {
+        overflow: visible;
+    }
+
+    .mensagem-final h3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-height: 650px) and (min-width: 701px) {
+
+    .area-jogo {
+        padding: 18px 35px;
+    }
+
+    .cabecalho-caca {
+        margin-bottom: 7px;
+    }
+
+    .cabecalho-caca h2 {
+        font-size: 23px;
+    }
+
+    .progresso-caca {
+        margin-bottom: 8px;
+    }
+
+    .layout-caca {
+        height: calc(100% - 85px);
+    }
+
+    .painel-caca {
+        padding: 10px;
+    }
+
+    .lista-palavras {
+        gap: 5px;
+        margin-bottom: 12px;
+    }
+}

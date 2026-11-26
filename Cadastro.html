@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Criar Conta | Nosso Diário 3DS</title>
+
+    <link rel="stylesheet" href="Cadastro.css">
+    <script src="Cadastro.js" defer></script>
+</head>
+
+<body>
+
+    <main class="pagina-diario">
+
+        <div class="ornamento">✦ ❦ ✦</div>
+
+        <header class="cabecalho">
+
+            <span class="etiqueta">DIÁRIO DA TURMA 3DS</span>
+
+            <h1>Nosso Diário</h1>
+
+            <p class="frase">
+                Dois anos de histórias · Turma 3DS
+            </p>
+
+            <p class="introducao">
+                Crie sua conta para explorar nossas memórias,
+                conhecer os momentos da turma, ver as fotos
+                e se divertir com os jogos.
+            </p>
+
+        </header>
+
+        <section class="formulario-area">
+
+            <h2>Prepare-se para explorar!</h2>
+
+            <form id="formCadastro">
+
+                <div class="campo">
+                    <label for="nome">Seu nome ou apelido</label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Como podemos te chamar?"
+                        maxlength="60"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="email">Seu Gmail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Digite seu Gmail"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="senha">Crie sua senha</label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder="Pelo menos 8 caracteres"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="confirmarSenha">Confirme sua senha</label>
+
+                    <input
+                        type="password"
+                        id="confirmarSenha"
+                        name="confirmarSenha"
+                        placeholder="Digite a senha novamente"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit">
+                    Criar minha conta ✦
+                </button>
+
+                <p
+                    id="mensagemStatus"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+            <p class="voltar">
+                Já tem uma conta?
+                <a href="./Capa.html">Entrar no diário</a>
+            </p>
+
+        </section>
+
+        <footer>
+            FEITO DE MOMENTOS, GUARDADO PARA SEMPRE
+        </footer>
+
+    </main>
+
+</body>
+</html>

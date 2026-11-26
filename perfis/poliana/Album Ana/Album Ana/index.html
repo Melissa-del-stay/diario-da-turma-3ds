@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ana • Meu Álbum</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Permanent+Marker&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Abertura: passe de backstage noturno com a bonequinha -->
+<div class="abertura" id="abertura">
+  <div class="passe-card">
+    <span class="passe-fita"></span>
+
+    <div class="passe-topo">
+      <span class="passe-tag">PASS • 024</span>
+      <span class="passe-freq"></span>
+    </div>
+
+    <div class="bonequinha-box">
+      <img id="bonequinhaImg" src="esperando.png" alt="Bonequinha com a mão no queixo">
+    </div>
+
+    <p class="passe-titulo">ANA ARQUIVO PESSOAL</p>
+    <p class="passe-frase" id="passeFrase">Som no fone, madrugada acesa e estrada na mente.</p>
+
+    <button type="button" class="btn-acessar" id="btnAcessar">Entrar no álbum</button>
+  </div>
+</div>
+
+<div class="estrelas" id="estrelas"></div>
+
+<!-- Cometas rasgando o céu no fundo -->
+<div class="camada-ceu" aria-hidden="true">
+  <div class="cometa cometa-1"></div>
+  <div class="cometa cometa-2"></div>
+  <div class="cometa cometa-3"></div>
+</div>
+
+<!-- 10 adesivos espalhados pela página inteira (rolam junto com o site) -->
+<div class="camada-adesivos" id="camadaAdesivos" aria-hidden="true">
+
+  <!-- Adesivo 1 -->
+  <div class="adesivo-item ad-1">
+    <span class="fita-adesiva fita-esq"></span>
+    <img src="nine-nine.png" alt="">
+  </div>
+
+  <!-- Adesivo 2 -->
+  <div class="adesivo-item ad-2">
+    <img src="play.png" alt="">
+  </div>
+
+  <!-- Adesivo 3 -->
+  <div class="adesivo-item ad-3">
+    <img src="celular.png" alt="">
+  </div>
+
+  <!-- Adesivo 4 -->
+  <div class="adesivo-item ad-4">
+    <span class="fita-adesiva fita-centro"></span>
+    <img src="rosa.png" alt="">
+  </div>
+
+  <!-- Adesivo 5 -->
+  <div class="adesivo-item ad-5">
+    <img src="ondas.png" alt="">
+  </div>
+
+  <!-- Adesivo 6 -->
+  <div class="adesivo-item ad-6">
+    <span class="fita-adesiva fita-dir"></span>
+    <img src="musica.png" alt="">
+  </div>
+
+  <!-- Adesivo 7 -->
+  <div class="adesivo-item ad-7">
+    <img src="notas.png" alt="">
+  </div>
+
+  <!-- Adesivo 8 -->
+  <div class="adesivo-item ad-8">
+    <span class="fita-adesiva fita-esq"></span>
+    <img src="moto.png" alt="">
+  </div>
+
+  <!-- Adesivo 9 -->
+  <div class="adesivo-item ad-9">
+    <img src="fone.png" alt="">
+  </div>
+
+  <!-- Adesivo 10 -->
+  <div class="adesivo-item ad-10">
+    <span class="fita-adesiva fita-centro"></span>
+    <img src="Desenho.png" alt="">
+  </div>
+
+</div>
+
+<header>
+  <h1 data-key="titulo" class="ed">Meu <span>Álbum</span></h1>
+  <p class="sub ed" data-key="subtitulo">um pouco sobre mim</p>
+</header>
+
+<main>
+
+  <!-- SOBRE MIM -->
+  <section class="recorte-bloco">
+    <div class="fita"></div>
+    <h2>Sobre <em>mim</em></h2>
+    <p class="ed" data-key="sobre" style="font-size:1.1rem">
+      Oi! Eu sou a Ana. Clique em "Editar" no canto da tela e escreva aqui um pouco sobre você:
+      o que te move, o que você curte, velocidade e o que faz sentido agora.
+    </p>
+  </section>
+
+  <div class="grid2">
+    <!-- MÚSICAS -->
+    <section class="recorte-bloco" style="margin:0">
+      <div class="fita"></div>
+      <h2>Artistas <em>favoritas</em></h2>
+      <ol class="songs" id="songs"></ol>
+      <button class="add" id="addSong">+ adicionar música</button>
+    </section>
+
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <!-- COR -->
+      <section class="recorte-bloco" style="margin:0">
+        <div class="fita"></div>
+        <h2>Cor <em>favorita</em></h2>
+        <div class="cor-box">
+          <div class="swatch" id="swatch"></div>
+          <div>
+            <div class="cor-nome ed" data-key="corNome">Azul noturno</div>
+            <input type="color" id="corPicker" value="#1e3a8a" title="Escolher cor">
+          </div>
+        </div>
+      </section>
+
+      <!-- HOBBIES -->
+      <section class="recorte-bloco" style="margin:0">
+        <div class="fita"></div>
+        <h2>Hobbies <em>favoritos</em></h2>
+        <div class="chips" id="hobbies"></div>
+        <button class="add" id="addHobby">+ adicionar hobby</button>
+      </section>
+    </div>
+  </div>
+
+  <!-- POLAROIDS -->
+  <section class="recorte-bloco">
+    <div class="fita"></div>
+    <h2>Minhas <em>polaroids</em></h2>
+    <div class="polas" id="polas"></div>
+    <button class="add" id="addPola">+ adicionar polaroid</button>
+  </section>
+
+  <!-- FILMES E SÉRIES (FOTOS) -->
+  <section class="recorte-bloco">
+    <div class="fita"></div>
+    <h2>Filmes e <em>Séries Favoritos</em></h2>
+    <div class="polas" id="filmesSeriesFotos"></div>
+    <button class="add" id="addFilmeSerieFoto">+ adicionar filme ou série</button>
+  </section>
+
+</main>
+
+<footer></footer>
+
+<div class="bar">
+  <button id="btnEdit">✎ Editar</button>
+</div>
+
+<!-- Visualizador de foto ou vídeo ao clicar (fora do modo editar) -->
+<div class="pola-modal" id="polaModal" aria-hidden="true">
+  <div class="pola-modal-box">
+    <button type="button" class="pola-modal-close" id="polaModalClose" title="Fechar">✕</button>
+    <img id="polaModalImg" src="" alt="">
+    <video id="polaModalVid" controls autoplay loop playsinline style="display:none;"></video>
+    <p class="pola-modal-legenda" id="polaModalLeg"></p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

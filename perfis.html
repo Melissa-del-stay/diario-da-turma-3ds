@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfis da Turma 3DS</title>
+    <link rel="stylesheet" href="perfis.css">
+</head>
+<body>
+
+    <main class="livro-perfis">
+
+        <header class="cabecalho">
+            <h1>Perfis da Turma</h1>
+            <p>Um pouquinho de cada pessoa que faz parte da nossa história.</p>
+        </header>
+
+    <nav class="navegacao">
+    <a href="Diario.html">Início</a>
+    <a href="Historia.html">História</a>
+    <a href="Fotos.html">Fotos</a>
+    <a href="loja.html">Loja</a>
+    <a href="jogo.html">Jogos</a>
+    <a href="Figurinhas.html">Figurinhas</a>
+    <a href="perfis.html" class="ativo">Perfis</a>
+</nav>
+
+        <section class="conteudo">
+
+            <div class="introducao">
+                <h2>Conheça nossa turma!</h2>
+                <p>
+                    Cada pessoa tem sua própria história,
+                    seus gostos e suas lembranças.
+                    Aqui você pode conhecer um pouco de cada um.
+                </p>
+            </div>
+
+            <div class="pesquisa">
+                <input
+                    type="text"
+                    id="pesquisarPerfil"
+                    placeholder="Pesquisar alguém da turma..."
+                >
+            </div>
+
+            <div class="lista-perfis" id="listaPerfis">
+
+              <!-- PERFIL DA POLIANA -->
+<a href="perfis/poliana/Album.html" class="card-perfil" data-nome="Poliana">
+
+    <div class="foto-perfil">
+        <span>?</span>
+    </div>
+
+    <h3>Poliana</h3>
+    <p>Conheça um pedacinho de mim!</p>
+    <span class="botao-perfil">Ver perfil</span>
+
+</a>
+             <!-- PERFIL DA ANA -->
+<a href="perfis/poliana/Album Ana/Album Ana/index.html" class="card-perfil" data-nome="Ana Vitória">
+
+    <div class="foto-perfil">
+        <span>?</span>
+    </div>
+
+    <h3>Ana Vitória</h3>
+    <p>Conheça um pedacinho de mim!</p>
+    <span class="botao-perfil">Ver perfil</span>
+
+</a>
+            </div>
+
+            <p id="nenhumPerfil" class="mensagem-vazia">
+                Nenhum perfil encontrado.
+            </p>
+
+        </section>
+
+        <footer>
+            <p>Turma 3DS • Nossa história, nossas pessoas.</p>
+        </footer>
+
+    </main>
+
+    <script src="perfis.js"></script>
+</body>
+</html>

@@ -1,0 +1,643 @@
+
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 12px 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(
+        ellipse at center,
+        #4b202b 0%,
+        #210e13 75%
+    );
+
+    font-family: Georgia, "Times New Roman", serif;
+    color: #f1e4c8;
+
+    overflow: hidden;
+}
+
+/* ========================================
+   PÁGINA INICIAL AO FUNDO
+======================================== */
+
+#paginaInicial {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: none;
+
+    pointer-events: none;
+}
+
+/* ========================================
+   ESTRUTURA DO LIVRO
+======================================== */
+
+.livro {
+    position: relative;
+    z-index: 1;
+
+    width: min(100%, 1200px);
+    height: 100%;
+    min-height: 0;
+
+    perspective: 1800px;
+    transform-style: preserve-3d;
+}
+
+/* ========================================
+   PÁGINA INTERNA
+======================================== */
+
+.pagina {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    padding: clamp(30px, 5vw, 70px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(
+        ellipse at center,
+        #f8eed8 0%,
+        #f1e4c8 75%,
+        #e8d6b4 100%
+    );
+
+    border: 5px solid #bd9653;
+    border-radius: 5px;
+
+    color: #542431;
+    text-align: center;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+
+    overflow: hidden;
+}
+
+/* ========================================
+   CONTEÚDO DA PÁGINA
+======================================== */
+
+.conteudo-pagina {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pagina h1 {
+    margin-bottom: 16px;
+
+    color: #743044;
+    font-size: clamp(27px, 3vw, 38px);
+    font-weight: normal;
+}
+
+.descricao {
+    margin-bottom: 30px;
+
+    color: #542431;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ========================================
+   FORMULÁRIO
+======================================== */
+
+#formulario {
+    width: 100%;
+    max-width: 530px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+
+    text-align: left;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#formulario label {
+    color: #542431;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#formulario input {
+    width: 100%;
+    min-height: 47px;
+
+    padding: 12px 15px;
+
+    border: 1px solid #c4a779;
+    border-radius: 4px;
+
+    background: #fffaf0;
+    color: #542431;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#formulario input:focus {
+    border-color: #743044;
+    box-shadow: 0 0 0 3px rgba(116, 48, 68, 0.12);
+}
+
+#formulario input::placeholder {
+    color: #a18b75;
+}
+
+#formulario button {
+    width: 100%;
+    min-height: 49px;
+
+    margin-top: 7px;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    background: #682334;
+    color: #fff0d1;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+#formulario button:hover {
+    background: #7b3043;
+    transform: translateY(-2px);
+}
+
+#formulario button:disabled {
+    opacity: 0.7;
+    cursor: wait;
+    transform: none;
+}
+
+#mensagem {
+    min-height: 16px;
+    margin-top: -5px;
+
+    color: #743044;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ========================================
+   OPÇÃO DE CADASTRO
+======================================== */
+
+.opcao-cadastro {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.opcao-cadastro p {
+    margin-bottom: 7px;
+
+    color: #542431;
+    font-size: 13px;
+}
+
+.opcao-cadastro a {
+    color: #743044;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.opcao-cadastro a:hover {
+    color: #a05a40;
+    text-decoration: underline;
+}
+
+/* ========================================
+   CAPA DECORATIVA
+======================================== */
+
+.capa {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    border: 5px solid #bd9653;
+    border-radius: 5px;
+
+    background: linear-gradient(
+        135deg,
+        #743044,
+        #4b1928 65%,
+        #35121e
+    );
+
+    box-shadow:
+        inset 0 0 0 5px #4b1928,
+        inset 0 0 0 7px #bd9653,
+        0 12px 30px rgba(0, 0, 0, 0.4);
+
+    transform-origin: left center;
+    transform: rotateY(0deg);
+
+    transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* ========================================
+   FRENTE DA CAPA
+======================================== */
+
+.frente {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+/* ========================================
+   MOLDURA DECORATIVA
+======================================== */
+
+.moldura {
+    position: absolute;
+    inset: clamp(18px, 2.5vw, 30px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border: 2px solid #c9a45b;
+
+    outline: 1px solid rgba(201, 164, 91, 0.5);
+    outline-offset: 5px;
+}
+
+/* ========================================
+   TÍTULO DA CAPA
+======================================== */
+
+.moldura .subtitulo {
+    color: #e0bd77;
+
+    font-size: 14px;
+    letter-spacing: 6px;
+
+    margin-bottom: 22px;
+}
+
+.moldura h1 {
+    color: #f1dfb8;
+
+    font-size: clamp(42px, 5.5vw, 68px);
+    font-weight: normal;
+
+    text-shadow: 2px 3px 4px #2b0c16;
+}
+
+.moldura .ano {
+    position: absolute;
+    bottom: 35px;
+
+    color: #e0bd77;
+
+    font-size: 13px;
+    letter-spacing: 4px;
+}
+
+/* ========================================
+   CADEADO
+======================================== */
+
+.cadeado {
+    position: relative;
+
+    width: 56px;
+    height: 68px;
+
+    margin-top: clamp(45px, 8vh, 80px);
+
+    cursor: pointer;
+
+    transition: transform 0.25s ease;
+}
+
+.cadeado:hover {
+    transform: scale(1.08);
+}
+
+.cadeado:focus-visible {
+    outline: 2px solid #f1dfb8;
+    outline-offset: 8px;
+}
+
+.arco {
+    position: absolute;
+
+    top: 0;
+    left: 13px;
+
+    width: 30px;
+    height: 33px;
+
+    border: 5px solid #d8b66f;
+    border-bottom: none;
+
+    border-radius: 18px 18px 0 0;
+}
+
+.corpo {
+    position: absolute;
+    bottom: 0;
+
+    width: 56px;
+    height: 42px;
+
+    border: 2px solid #e0bd77;
+    border-radius: 5px;
+
+    background: linear-gradient(
+        135deg,
+        #d9b76d,
+        #96702f
+    );
+
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.fechadura {
+    position: absolute;
+
+    top: 10px;
+    left: 23px;
+
+    width: 7px;
+    height: 13px;
+
+    border-radius: 5px;
+
+    background: #4b1928;
+}
+
+.fechadura::after {
+    content: "";
+
+    position: absolute;
+
+    top: 8px;
+    left: 2px;
+
+    width: 3px;
+    height: 5px;
+
+    background: #4b1928;
+}
+
+/* ========================================
+   INSTRUÇÃO
+======================================== */
+
+.instrucao {
+    margin-top: 17px;
+
+    width: 100%;
+
+    color: #f1dfb8;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   ABRIR A CAPA
+======================================== */
+
+.capa.aberta {
+    transform: rotateY(-160deg);
+    pointer-events: none;
+}
+
+/* ========================================
+   VIRAR A PÁGINA DE ENTRADA
+======================================== */
+
+.pagina.virando {
+    z-index: 3;
+    pointer-events: none;
+
+    animation: virarPagina 850ms cubic-bezier(.65, 0, .35, 1) forwards;
+}
+
+@keyframes virarPagina {
+
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    45% {
+        transform: rotateY(-75deg);
+    }
+
+    100% {
+        transform: rotateY(-180deg);
+    }
+
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 8px 5px;
+    }
+
+    .livro {
+        width: 100%;
+    }
+
+    .pagina {
+        padding: 30px 22px;
+    }
+
+    .conteudo-pagina {
+        max-width: 100%;
+    }
+
+    .pagina h1 {
+        font-size: 27px;
+    }
+
+    .descricao {
+        font-size: 13px;
+        margin-bottom: 22px;
+    }
+
+    #formulario {
+        gap: 13px;
+    }
+
+    #formulario input {
+        min-height: 43px;
+    }
+
+    .moldura {
+        inset: 17px;
+    }
+
+    .moldura h1 {
+        font-size: clamp(32px, 9vw, 45px);
+    }
+
+    .moldura .subtitulo {
+        font-size: 11px;
+        letter-spacing: 4px;
+    }
+
+    .moldura .ano {
+        font-size: 11px;
+    }
+
+    .instrucao {
+        font-size: 11px;
+    }
+
+}
+
+/* ========================================
+   TELAS MUITO BAIXAS
+======================================== */
+
+@media (max-height: 650px) {
+
+    .pagina {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .pagina h1 {
+        margin-bottom: 9px;
+        font-size: 27px;
+    }
+
+    .descricao {
+        margin-bottom: 15px;
+        font-size: 13px;
+    }
+
+    #formulario {
+        gap: 9px;
+    }
+
+    #formulario input {
+        min-height: 38px;
+        padding: 8px 12px;
+    }
+
+    #formulario button {
+        min-height: 40px;
+    }
+
+    .opcao-cadastro {
+        margin-top: 10px;
+    }
+
+    .cadeado {
+        margin-top: 35px;
+    }
+
+    .moldura .ano {
+        bottom: 18px;
+    }
+
+}
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .capa {
+        transition-duration: 0.01ms;
+    }
+
+    .pagina.virando {
+        animation-duration: 0.01ms;
+    }
+
+    .cadeado,
+    #formulario button {
+        transition-duration: 0.01ms;
+    }
+
+}

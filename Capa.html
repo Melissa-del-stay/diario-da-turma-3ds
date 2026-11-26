@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nosso Diário | Turma 3DS</title>
+
+    <link rel="stylesheet" href="Capa.css">
+    <script src="Capa.js" defer></script>
+</head>
+
+<body>
+
+    <!-- PÁGINA INICIAL CARREGADA AO FUNDO -->
+    <iframe
+        id="paginaInicial"
+        src="./Diario.html"
+        title="Página inicial do Nosso Diário"
+        aria-hidden="true"
+        tabindex="-1">
+    </iframe>
+
+    <main class="livro">
+
+        <!-- PÁGINA INTERNA -->
+        <section class="pagina" id="paginaEntrada">
+
+            <div class="conteudo-pagina">
+
+                <h1>Bem-vindos ao nosso diário!</h1>
+
+                <p class="descricao">
+                    Dois anos de histórias, amizades,
+                    desafios e lembranças especiais.
+                </p>
+
+                <!-- FORMULÁRIO -->
+                <form id="formulario">
+
+                    <div class="campo">
+                        <label for="nome">Seu nome:</label>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="email">E-mail:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="senha">Senha:</label>
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit">
+                        Entrar no diário
+                    </button>
+
+                    <p id="mensagem" role="status" aria-live="polite"></p>
+
+                </form>
+
+                <!-- CADASTRO -->
+                <div class="opcao-cadastro">
+
+                    <p>Ainda não tem uma conta?</p>
+
+                    <a href="./Cadastro.html">
+                        Criar minha conta ✦
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CAPA DO DIÁRIO -->
+        <section class="capa" id="capa">
+
+            <div class="frente">
+
+                <div class="moldura">
+
+                    <p class="subtitulo">NOSSO DIÁRIO</p>
+
+                    <h1>Turma 3DS</h1>
+
+                    <p class="ano">2025 — 2026</p>
+
+                    <!-- CADEADO -->
+                    <div
+                        class="cadeado"
+                        id="cadeado"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Abrir diário"
+                    >
+
+                        <div class="arco"></div>
+
+                        <div class="corpo">
+                            <div class="fechadura"></div>
+                        </div>
+
+                    </div>
+
+                    <p class="instrucao">
+                        Clique no cadeado para abrir
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

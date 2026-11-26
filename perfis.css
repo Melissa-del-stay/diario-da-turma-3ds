@@ -1,0 +1,377 @@
+
+/* ========================================
+   PERFIS — NOSSO DIÁRIO 3DS
+   LAYOUT PADRÃO DA TELA FOTOS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    padding: 12px 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(
+        ellipse at center,
+        #4b202b 0%,
+        #210e13 75%
+    );
+
+    font-family: Georgia, "Times New Roman", serif;
+    overflow: hidden;
+}
+
+/* ========================================
+   ESTRUTURA PRINCIPAL
+======================================== */
+
+.livro-perfis {
+    width: min(100%, 1200px);
+    height: 100%;
+
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 12px;
+}
+
+/* Esconde o cabeçalho antigo */
+
+.cabecalho,
+footer {
+    display: none;
+}
+
+/* ========================================
+   MENU SUPERIOR — POST-ITS
+======================================== */
+
+.navegacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.navegacao a {
+    padding: 10px 17px;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: normal;
+
+    transition: 0.2s;
+}
+
+.navegacao a:hover {
+    background: #8b4056;
+    transform: translateY(-2px);
+}
+
+.navegacao a.ativo {
+    background: #bd9653;
+    color: #210e13;
+    font-weight: bold;
+}
+
+/* ========================================
+   LIVRO — PÁGINA CREME
+======================================== */
+
+.conteudo {
+    min-height: 0;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 45px;
+
+    background: radial-gradient(
+        ellipse at center,
+        #f8eed8 0%,
+        #f1e4c8 75%,
+        #e8d6b4 100%
+    );
+
+    border: 5px solid #bd9653;
+    border-radius: 5px;
+
+    box-shadow:
+        0 0 0 2px #5b2935,
+        0 15px 35px rgba(0, 0, 0, 0.45);
+
+    color: #210e13;
+    overflow: hidden;
+}
+
+/* ========================================
+   INTRODUÇÃO
+======================================== */
+
+.introducao {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.introducao h2 {
+    color: #743044;
+    font-size: clamp(25px, 3vw, 32px);
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.introducao p {
+    max-width: 600px;
+    margin: auto;
+
+    color: #806747;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ========================================
+   PESQUISA
+======================================== */
+
+.pesquisa {
+    width: min(100%, 450px);
+    margin: 12px auto 20px;
+}
+
+.pesquisa input {
+    width: 100%;
+    padding: 12px;
+
+    background: #fffaf0;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    outline: none;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #210e13;
+}
+
+.pesquisa input:focus {
+    border: 2px solid #743044;
+}
+
+/* ========================================
+   GRADE DE PERFIS
+======================================== */
+
+.lista-perfis {
+    flex: 1;
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(0, 1fr);
+
+    align-content: start;
+    gap: 16px;
+
+    overflow-y: auto;
+    padding: 5px;
+}
+
+/* ========================================
+   CARDS
+======================================== */
+
+.card-perfil {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 18px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    border: 1px solid rgba(189, 150, 83, 0.7);
+    border-radius: 3px;
+
+    text-align: center;
+    text-decoration: none;
+    color: #210e13;
+
+    transition: transform 0.2s;
+}
+
+.card-perfil:hover {
+    transform: scale(1.025);
+}
+
+/* ========================================
+   FOTO DO PERFIL
+======================================== */
+
+.foto-perfil {
+    width: 115px;
+    height: 115px;
+
+    margin-bottom: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #e8d9ba;
+
+    border: 2px solid #fff9eb;
+    outline: 1px solid #bd9653;
+
+    border-radius: 50%;
+
+    color: #806747;
+    font-size: 35px;
+
+    overflow: hidden;
+}
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* ========================================
+   TEXTOS DOS CARDS
+======================================== */
+
+.card-perfil h3 {
+    color: #743044;
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 7px;
+}
+
+.card-perfil p {
+    color: #806747;
+    font-size: 12px;
+    margin-bottom: 13px;
+}
+
+/* ========================================
+   BOTÃO VER PERFIL
+======================================== */
+
+.botao-perfil {
+    display: inline-block;
+
+    padding: 9px 18px;
+
+    color: #f1e4c8;
+    background: #743044;
+
+    border: 1px solid #bd9653;
+    border-radius: 4px;
+
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/* ========================================
+   PESQUISA SEM RESULTADOS
+======================================== */
+
+.mensagem-vazia {
+    display: none;
+
+    margin-top: 15px;
+
+    text-align: center;
+    color: #743044;
+    font-size: 14px;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 8px 5px;
+    }
+
+    .livro-perfis {
+        gap: 8px;
+    }
+
+    .navegacao {
+        gap: 5px;
+    }
+
+    .navegacao a {
+        padding: 7px 9px;
+        font-size: 10px;
+    }
+
+    .conteudo {
+        padding: 18px 12px;
+    }
+
+    .introducao {
+        margin-bottom: 10px;
+    }
+
+    .introducao p {
+        font-size: 12px;
+    }
+
+    .pesquisa {
+        margin: 10px auto 15px;
+    }
+
+    .lista-perfis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .card-perfil {
+        padding: 10px;
+    }
+
+    .foto-perfil {
+        width: 85px;
+        height: 85px;
+    }
+
+    .card-perfil h3 {
+        font-size: 16px;
+    }
+
+    .card-perfil p {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .lista-perfis {
+        grid-template-columns: 1fr;
+    }
+}

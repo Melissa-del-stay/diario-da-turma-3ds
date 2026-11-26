@@ -1,0 +1,1433 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Playfair+Display:wght@600;700&family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+    --vinho: #702c45;
+    --vinho-escuro: #4b1d2d;
+    --dourado: #bd9653;
+    --creme: #f5ead2;
+    --papel: #fff8e9;
+    --rosa: #f3c4d6;
+    --vermelho: #c9475d;
+    --azul: #6486c8;
+    --amarelo: #f4df91;
+    --ciano: #8bd9df;
+    --texto: #563747;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 35px 18px;
+    color: var(--texto);
+    font-family: 'Nunito', sans-serif;
+    background:
+        radial-gradient(circle at 15% 12%, #8b5368 0, transparent 28%),
+        radial-gradient(circle at 85% 85%, #4b2638 0, transparent 30%),
+        #321722;
+}
+
+/* CABEÇALHO */
+
+.cabecalho {
+    max-width: 760px;
+    margin: 0 auto 25px;
+    text-align: center;
+    color: var(--creme);
+}
+
+.subtitulo {
+    margin-bottom: 10px;
+    color: #dfc18a;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.cabecalho h1 {
+    margin-bottom: 12px;
+    color: var(--creme);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 6vw, 46px);
+}
+
+.introducao {
+    max-width: 540px;
+    margin: 0 auto;
+    color: #ead8dc;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+/* PLAYER DE MÚSICA */
+
+.player-musica {
+    margin-top: 25px;
+    text-align: center;
+}
+
+#botaoMusica {
+    padding: 12px 22px;
+    color: #f1e4c8;
+    background-color: #743044;
+    border: 2px solid #bd9653;
+    border-radius: 25px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#botaoMusica:hover {
+    background-color: #35121e;
+    transform: translateY(-2px);
+}
+
+/* PÁGINA DE PAPEL */
+
+.perfil {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 38px;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 31px,
+            rgba(189, 150, 83, 0.12) 32px
+        ),
+        var(--papel);
+    border: 5px double var(--dourado);
+    border-radius: 5px;
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, 0.3),
+        inset 0 0 25px rgba(189, 150, 83, 0.12);
+}
+
+/* CANTOS DECORATIVOS */
+
+.perfil::before,
+.perfil::after {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    color: var(--dourado);
+    font-size: 25px;
+    content: "✦";
+}
+
+.perfil::before {
+    top: 10px;
+    left: 12px;
+}
+
+.perfil::after {
+    right: 12px;
+    bottom: 10px;
+}
+
+/* CARTÕES */
+
+.cartao {
+    position: relative;
+    min-width: 0;
+    padding: 22px 20px;
+    background: rgba(255, 252, 242, 0.8);
+    border: 1px solid rgba(189, 150, 83, 0.45);
+    border-radius: 3px;
+    box-shadow: 2px 4px 7px rgba(75, 29, 45, 0.12);
+}
+
+.cartao:nth-child(even) {
+    transform: rotate(0.4deg);
+}
+
+.cartao:nth-child(odd) {
+    transform: rotate(-0.4deg);
+}
+
+.sobre-mim {
+    grid-column: 1 / -1;
+    background: #f8e4eb;
+    border-color: #d8a5b8;
+}
+
+/* ADESIVOS */
+
+.icone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 12px;
+    color: var(--vinho);
+    background: var(--amarelo);
+    border: 1px solid rgba(189, 150, 83, 0.6);
+    border-radius: 50%;
+    font-size: 20px;
+    transform: rotate(-8deg);
+}
+
+.cartao:nth-child(3n) .icone {
+    background: var(--ciano);
+}
+
+.cartao:nth-child(3n + 1) .icone {
+    background: var(--rosa);
+}
+
+.cartao h2 {
+    margin-bottom: 12px;
+    color: var(--vinho);
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+}
+
+.cartao p {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.descricao {
+    margin-bottom: 14px;
+    color: #876477;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 18px !important;
+}
+
+/* ======================================
+   TRÊS GALERIAS LADO A LADO
+====================================== */
+
+.galerias-fotos {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+    width: 100%;
+    min-width: 0;
+}
+
+.galerias-fotos > .galeria {
+    grid-column: auto;
+    width: 100%;
+    min-width: 0;
+}
+
+/* CARROSSEL DE FOTOS - ESTILO POLAROID */
+
+.carrossel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.carrossel-conteudo {
+    width: min(280px, 100%);
+    padding: 12px 12px 18px;
+    background: #fffaf0;
+    border: 1px solid #e3d6bd;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
+    box-sizing: border-box;
+    transform: rotate(-1deg);
+}
+
+.foto-destaque,
+.video-destaque {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    background: #e8dfd2;
+}
+
+.legenda-carrossel {
+    margin: 0;
+    color: #702c45;
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    text-align: center;
+}
+
+.indicadores-carrossel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.indicador-foto {
+    width: 8px;
+    height: 8px;
+    border: none;
+    border-radius: 50%;
+    background: #d8b9c3;
+    cursor: pointer;
+}
+
+.indicador-foto.ativo {
+    background: #702c45;
+    transform: scale(1.25);
+}
+
+/* MURAL DE POLAROIDES, CASO UTILIZADO */
+
+.mural-fotos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.mural-fotos > figure {
+    grid-column: auto !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+.foto-polaroid {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 12px 12px 35px;
+    background: #fffdf7;
+    border: 1px solid #e5d8c4;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+.foto-polaroid:nth-child(1) {
+    transform: rotate(-3deg);
+}
+
+.foto-polaroid:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.foto-polaroid:nth-child(3) {
+    transform: rotate(-2deg);
+}
+
+.foto-polaroid img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background: #f3e7d6;
+    border: none;
+}
+
+.foto-polaroid figcaption {
+    margin-top: 15px;
+    color: var(--vinho);
+    text-align: center;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 17px;
+    line-height: 1.3;
+}
+
+/* LISTA DE MÚSICAS */
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 20px;
+}
+
+.lista li {
+    padding-left: 3px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.lista li::marker {
+    color: var(--vermelho);
+}
+
+/* ETIQUETAS */
+
+.etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.etiquetas span {
+    padding: 7px 12px;
+    color: var(--vinho);
+    background: #f5dce5;
+    border: 1px dashed #c98ca5;
+    border-radius: 3px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 16px;
+    transform: rotate(-1deg);
+}
+
+.etiquetas span:nth-child(even) {
+    background: #e0f3f3;
+    border-color: #8bcbd0;
+    transform: rotate(1deg);
+}
+
+.etiquetas span:nth-child(3n) {
+    background: #fff0bd;
+    border-color: #d9bd69;
+}
+
+/* COMIDAS */
+
+.duas-colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.duas-colunas h3 {
+    margin-bottom: 6px;
+    color: var(--vermelho);
+    font-family: 'Patrick Hand', cursive;
+    font-size: 19px;
+}
+
+.duas-colunas p {
+    font-size: 13px;
+}
+
+.frase-destaque {
+    margin-top: 16px;
+    padding: 10px;
+    text-align: center;
+    background: var(--amarelo);
+    border: 1px dashed var(--dourado);
+    font-family: 'Patrick Hand', cursive;
+    font-size: 18px !important;
+    transform: rotate(-1deg);
+}
+
+/* CORES FAVORITAS */
+
+.paleta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.cor {
+    width: 38px;
+    height: 38px;
+    border: 3px solid var(--papel);
+    outline: 1px solid var(--dourado);
+    border-radius: 50%;
+    box-shadow: 2px 3px 5px rgba(75, 29, 45, 0.15);
+}
+
+.rosa {
+    background: var(--rosa);
+}
+
+.vermelho {
+    background: var(--vermelho);
+}
+
+.vinho {
+    background: var(--vinho);
+}
+
+.azul {
+    background: var(--azul);
+}
+
+.amarelo {
+    background: var(--amarelo);
+}
+
+.ciano {
+    background: var(--ciano);
+}
+
+/* RODAPÉ */
+
+footer {
+    max-width: 900px;
+    margin: 25px auto 0;
+    text-align: center;
+    color: #ead8dc;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 18px;
+}
+
+/* TELAS MENORES */
+
+@media (max-width: 700px) {
+    .galerias-fotos {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    body {
+        padding: 22px 12px;
+    }
+
+    .perfil {
+        grid-template-columns: 1fr;
+        padding: 25px 18px;
+    }
+
+    .sobre-mim {
+        grid-column: auto;
+    }
+
+    .cartao {
+        padding: 19px 16px;
+    }
+
+    .duas-colunas {
+        grid-template-columns: 1fr;
+    }
+
+    /*  três fotos na mesma linha */
+    .mural-fotos {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .foto-polaroid {
+        padding: 6px 6px 20px;
+    }
+
+    .foto-polaroid img {
+        height: 100px;
+    }
+
+    .foto-polaroid figcaption {
+        margin-top: 10px;
+        font-size: 11px;
+    }
+}
+
+/* AJUSTE DO CARROSSEL EM TELAS PEQUENAS */
+
+@media (max-width: 480px) {
+    .carrossel-conteudo {
+        width: min(250px, 100%);
+    }
+
+    .foto-destaque,
+    .video-destaque {
+        height: 250px;
+    }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =================================
+   ✨ ESTRELINHAS SURPRESA NAS FOTOS
+================================= */
+
+/* Permite posicionar as estrelas sobre a foto */
+.carrossel {
+    position: relative;
+    overflow: visible;
+}
+
+/* Estrela criada pelo JavaScript */
+.estrelinha-surpresa {
+    position: absolute;
+    z-index: 20;
+    pointer-events: none;
+
+    color: #d6ad55;
+    text-shadow:
+        0 0 5px rgba(255, 231, 160, 0.9),
+        0 0 12px rgba(214, 173, 85, 0.7);
+
+    font-size: 18px;
+
+    animation: brilhoEstrelinha 1.4s ease-out forwards;
+}
+
+/* Animação de brilho e movimento */
+@keyframes brilhoEstrelinha {
+    0% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.4) rotate(0deg);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(0) scale(1.2) rotate(20deg);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateY(-18px) scale(1) rotate(45deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-32px) scale(0.5) rotate(70deg);
+    }
+}
+
+/* Um pequeno brilho quando o mouse está sobre a foto */
+.carrossel .foto-destaque {
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.carrossel:hover .foto-destaque {
+    filter: brightness(1.04);
+    box-shadow: 0 0 14px rgba(214, 173, 85, 0.25);
+}
+
+/* Acessibilidade: reduz animações se a pessoa preferir */
+@media (prefers-reduced-motion: reduce) {
+    .estrelinha-surpresa {
+        animation-duration: 0.5s;
+    }
+
+    .carrossel .foto-destaque {
+        transition: none;
+    }
+}
+
+/* =================================
+   🎧 SEÇÃO DE MÚSICAS FAVORITAS
+================================= */
+
+.cartao-musicas {
+    grid-column: 1 / -1;
+}
+
+.musicas-colunas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+
+    margin: 24px 0;
+}
+
+.lista-musicas {
+    margin: 0;
+    padding-left: 28px;
+    text-align: left;
+}
+
+.lista-musicas li {
+    padding: 7px 4px;
+    border-bottom: 1px dashed rgba(112, 44, 69, 0.22);
+
+    color: #4b2935;
+    line-height: 1.5;
+}
+
+.lista-musicas li::marker {
+    color: #bd9653;
+    font-weight: bold;
+}
+
+
+/* PLAYER DO YOUTUBE */
+
+.playlist-youtube {
+    margin-top: 26px;
+    padding: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #f8efdf,
+        #f1e4c8
+    );
+
+    border: 1px solid #d7bd8b;
+    border-radius: 16px;
+    box-shadow: 0 5px 14px rgba(53, 18, 30, 0.08);
+}
+
+.playlist-titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 16px;
+    color: #702c45;
+}
+
+.playlist-titulo > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    background: #702c45;
+    color: #f4dfb0;
+    border-radius: 50%;
+
+    font-size: 22px;
+}
+
+.playlist-titulo h3 {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+}
+
+.playlist-titulo p {
+    margin: 4px 0 0;
+    color: #80616a;
+    font-size: 13px;
+}
+
+
+/* Player responsivo */
+
+.youtube-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+    border-radius: 12px;
+    background: #210e13;
+}
+
+.youtube-player iframe {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+
+/* Botão para abrir no YouTube */
+
+.botao-playlist {
+    display: block;
+    width: fit-content;
+
+    margin: 16px auto 0;
+    padding: 10px 18px;
+
+    background: #702c45;
+    color: #fff4df;
+
+    border: 1px solid #bd9653;
+    border-radius: 24px;
+
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.botao-playlist:hover {
+    background: #542033;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(112, 44, 69, 0.2);
+}
+
+
+/* Celular: lista em uma coluna */
+
+@media (max-width: 600px) {
+    .musicas-colunas {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .playlist-youtube {
+        padding: 12px;
+    }
+
+    .playlist-titulo h3 {
+        font-size: 16px;
+    }
+}
+/* Playlist compacta, sem player gigante */
+.playlist-youtube {
+    margin-top: 22px;
+    padding: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #f8efdf,
+        #f1e4c8
+    );
+
+    border: 1px solid #d7bd8b;
+    border-radius: 16px;
+    box-shadow: 0 5px 14px rgba(53, 18, 30, 0.08);
+}
+
+/* Botão da playlist */
+.botao-playlist {
+    display: block;
+    width: fit-content;
+
+    margin: 16px auto 0;
+    padding: 11px 22px;
+
+    background: #702c45;
+    color: #fff4df;
+
+    border: 1px solid #bd9653;
+    border-radius: 24px;
+
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+
+    transition: 0.2s ease;
+}
+
+.botao-playlist:hover {
+    background: #542033;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(112, 44, 69, 0.2);
+} 
+
+/* BOTÃO COMPACTO DA PLAYLIST */
+
+.playlist-youtube {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.botao-playlist {
+    display: inline-block;
+    padding: 11px 24px;
+
+    background: #702c45;
+    color: #fff4df;
+
+    border: 1px solid #bd9653;
+    border-radius: 24px;
+
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+
+    transition: 0.2s ease;
+}
+
+.botao-playlist:hover {
+    background: #542033;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(112, 44, 69, 0.2);
+}
+/* =================================
+   DECORAÇÕES FIXAS DO DIÁRIO
+================================= */
+
+.perfil {
+    position: relative;
+}
+
+.decoracoes-diario {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.decor {
+    position: absolute;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* Cartinha: ao lado da seção "Um pouco sobre mim" */
+.decor-carta {
+    width: 85px;
+    top: 650px;
+    left: -35px;
+    transform: rotate(-8deg);
+}
+
+/* Estrelas: perto das galerias */
+.decor-estrelas {
+    width: 100px;
+    top: 300px;
+    right: -35px;
+    opacity: 0.85;
+}
+
+/* Firefly: perto das músicas */
+.decor-firefly {
+    width: 90px;
+    top: 1550px;
+    right: -35px;
+    opacity: 0.9;
+}
+
+/* Flor: perto do final do diário */
+.decor-flor {
+    width: 90px;
+    top: 1100px;
+    left: -35px;
+    opacity: 0.9;
+}
+
+/* Ajustes para celular */
+@media (max-width: 600px) {
+    .decor-carta {
+        width: 55px;
+        left: 0;
+    }
+
+    .decor-estrelas {
+        width: 65px;
+        right: 0;
+    }
+
+    .decor-firefly {
+        width: 60px;
+        right: 0;
+    }
+
+    .decor-flor {
+        width: 60px;
+        left: 0;
+    }
+}
+/* =================================
+   ✨ BRILHO DELICADO NOS CARTÕES
+================================= */
+
+.cartao {
+    overflow: hidden;
+}
+
+/* Camada suave de brilho */
+.cartao::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background: linear-gradient(
+        120deg,
+        transparent 25%,
+        rgba(255, 255, 255, 0.35) 50%,
+        transparent 75%
+    );
+
+    opacity: 0;
+    transform: translateX(-100%);
+    transition:
+        transform 0.7s ease,
+        opacity 0.3s ease;
+}
+
+/* Brilho aparece ao passar o mouse */
+.cartao:hover::after {
+    opacity: 1;
+    transform: translateX(100%);
+}
+
+/* Cartão ganha um contorno dourado discreto */
+.cartao:hover {
+    border-color: rgba(189, 150, 83, 0.8);
+    box-shadow:
+        0 5px 14px rgba(75, 29, 45, 0.14),
+        0 0 10px rgba(189, 150, 83, 0.12);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Respeita quem prefere menos animações */
+@media (prefers-reduced-motion: reduce) {
+    .cartao::after {
+        transition: none;
+    }
+}
+/* =================================
+   ✦ DETALHES DOURADOS NOS TÍTULOS
+================================= */
+
+.cartao h2 {
+    position: relative;
+    display: table;
+    padding-bottom: 8px;
+}
+
+/* Pequeno detalhe dourado abaixo do título */
+.cartao h2::after {
+    content: "✦";
+    position: absolute;
+    right: -20px;
+    bottom: 5px;
+
+    color: var(--dourado);
+    font-size: 11px;
+
+    opacity: 0.8;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+/* O detalhe ganha um pequeno movimento */
+.cartao:hover h2::after {
+    transform: rotate(25deg) scale(1.2);
+    opacity: 1;
+}
+
+/* Títulos não ficam apertados em telas pequenas */
+@media (max-width: 480px) {
+    .cartao h2::after {
+        right: -15px;
+        font-size: 9px;
+    }
+}
+/* =================================
+   ✨ DECORAÇÕES COM MOVIMENTO SUAVE
+================================= */
+
+.decor {
+    animation: flutuarDecoracao 4s ease-in-out infinite;
+}
+
+/* Cada decoração começa em um momento diferente */
+.decor-carta {
+    animation-delay: 0s;
+}
+
+.decor-estrelas {
+    animation-delay: 0.8s;
+}
+
+.decor-firefly {
+    animation-delay: 1.4s;
+}
+
+.decor-flor {
+    animation-delay: 0.5s;
+}
+
+/* Movimento leve para cima e para baixo */
+@keyframes flutuarDecoracao {
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -6px;
+    }
+}
+
+/* Respeita a preferência por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    .decor {
+        animation: none;
+    }
+}
+/* =================================
+   🎵 ANIMAÇÃO DELICADA DO BOTÃO
+================================= */
+
+#botaoMusica {
+    position: relative;
+    overflow: hidden;
+
+    box-shadow: 0 3px 8px rgba(75, 29, 45, 0.18);
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Brilho ao passar o mouse */
+#botaoMusica:hover {
+    background-color: #542033;
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 6px 14px rgba(75, 29, 45, 0.22),
+        0 0 10px rgba(189, 150, 83, 0.25);
+}
+
+/* Pequeno efeito ao clicar */
+#botaoMusica:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* Animação acessível */
+@media (prefers-reduced-motion: reduce) {
+    #botaoMusica {
+        transition: none;
+    }
+}
+/* =================================
+   ✦ MOLDURA DECORATIVA DA PÁGINA
+================================= */
+
+.perfil {
+    outline: 1px solid rgba(189, 150, 83, 0.55);
+    outline-offset: 5px;
+}
+
+/* Ornamentos dourados nos quatro cantos */
+.perfil::before,
+.perfil::after {
+    z-index: 3;
+    color: var(--dourado);
+    text-shadow: 0 1px 2px rgba(75, 29, 45, 0.15);
+}
+
+/* Canto superior esquerdo */
+.perfil::before {
+    content: "❧";
+    top: 12px;
+    left: 14px;
+    font-size: 25px;
+    transform: rotate(-35deg);
+}
+
+/* Canto inferior direito */
+.perfil::after {
+    content: "❧";
+    right: 14px;
+    bottom: 12px;
+    font-size: 25px;
+    transform: rotate(145deg);
+}
+
+/* Detalhes nos outros dois cantos */
+.perfil {
+    background-image:
+        radial-gradient(circle, var(--dourado) 1px, transparent 1.5px),
+        radial-gradient(circle, var(--dourado) 1px, transparent 1.5px),
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 31px,
+            rgba(189, 150, 83, 0.12) 32px
+        );
+    background-size:
+        12px 12px,
+        12px 12px,
+        auto;
+    background-position:
+        12px 12px,
+        calc(100% - 12px) calc(100% - 12px),
+        0 0;
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        repeat;
+}
+/* =================================
+   ✨ CARTÕES APARECENDO SUAVEMENTE
+================================= */
+
+.cartao {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Classe ativada pelo JavaScript */
+.cartao.cartao-visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mantém o efeito de rotação dos cartões */
+.cartao:nth-child(even).cartao-visivel {
+    transform: translateY(0) rotate(0.4deg);
+}
+
+.cartao:nth-child(odd).cartao-visivel {
+    transform: translateY(0) rotate(-0.4deg);
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .cartao {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+/* =================================
+   💌 ENVELOPE E MENSAGEM SECRETA
+================================= */
+
+/* Envelope no final da página */
+.mensagem-secreta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 35px auto;
+    z-index: 5;
+}
+
+/* Botão do envelope */
+#abrirMensagem {
+    background: var(--creme);
+    border: 2px solid var(--dourado);
+    border-radius: 12px;
+    width: 58px;
+    height: 52px;
+    font-size: 28px;
+    cursor: pointer;
+
+    box-shadow: 0 3px 8px rgba(75, 29, 45, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#abrirMensagem:hover {
+    transform: translateY(-4px) rotate(-5deg);
+    box-shadow: 0 6px 12px rgba(75, 29, 45, 0.2);
+}
+
+#abrirMensagem:active {
+    transform: scale(0.95);
+}
+
+/* Mensagem flutuante por cima do diário */
+.texto-mensagem {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+
+    width: min(340px, calc(100vw - 36px));
+    padding: 25px;
+
+    background: var(--papel);
+    border: 2px solid var(--dourado);
+    border-radius: 14px;
+
+    color: var(--texto);
+    text-align: center;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 20px;
+    line-height: 1.6;
+
+    box-shadow: 0 12px 35px rgba(35, 10, 20, 0.35);
+
+    transform: translate(-50%, -50%);
+    animation: aparecerMensagem 0.3s ease;
+}
+
+.texto-mensagem p {
+    margin: 0;
+}
+
+/* Entrada delicada da mensagem */
+@keyframes aparecerMensagem {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -46%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    #abrirMensagem,
+    .texto-mensagem {
+        transition: none;
+        animation: none;
+    }
+}
+/* =================================
+   💌 CARTINHA PARA MINHA INFÂNCIA
+================================= */
+
+.cartinha-infancia {
+    margin-top: 22px;
+    padding: 18px;
+    background: #fff5e5;
+    border: 1px dashed #bd9653;
+    box-shadow: inset 0 0 15px rgba(189, 150, 83, 0.12);
+    transform: rotate(0.3deg);
+}
+
+.cartinha-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-bottom: 15px;
+    color: #702c45;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 19px;
+    text-align: center;
+}
+
+.cartinha-cabecalho span {
+    font-size: 23px;
+}
+
+.cartinha-texto {
+    color: #563747;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.cartinha-texto p {
+    margin-bottom: 12px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.cartinha-texto p:first-child {
+    color: #702c45;
+    font-size: 19px;
+}
+
+.cartinha-texto .assinatura-cartinha {
+    margin-top: 18px;
+    margin-bottom: 0;
+    color: #702c45;
+    text-align: right;
+    font-size: 18px;
+}
+/* =================================
+   🧸 GALERIA FIXA: MINHA INFÂNCIA
+================================= */
+
+.cartao-infancia {
+    grid-column: 1 / -1;
+    min-width: 0;
+}
+
+.fotos-infancia {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.fotos-infancia img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border: 3px solid #fffaf0;
+    box-shadow: 0 3px 9px rgba(75, 29, 45, 0.16);
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    .fotos-infancia {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .fotos-infancia img {
+        height: 140px;
+    }
+}
+/* CARTINHA MAIS COMPACTA */
+.cartinha-infancia {
+    max-width: 520px;
+    margin: 22px auto 0;
+    padding: 15px 20px;
+}
+
+.cartinha-cabecalho {
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.cartinha-texto p {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.cartinha-texto p:first-child {
+    font-size: 18px;
+}
+
+.cartinha-texto .assinatura-cartinha {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 17px;
+}
+/* CARTINHA ABAIXO DAS TRÊS GALERIAS */
+.perfil > .cartinha-infancia {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 850px;
+    justify-self: center;
+    margin: 0 auto 10px;
+}
+
+/* Evita que a cartinha fique estreita */
+.perfil > .cartinha-infancia .cartinha-texto {
+    max-width: 720px;
+    margin: 0 auto;
+}

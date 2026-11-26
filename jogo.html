@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jogos | Nosso Diário 3DS</title>
+
+    <link rel="stylesheet" href="jogo.css">
+    <script src="jogo.js" defer></script>
+</head>
+
+<body>
+
+    <main class="livro-jogos">
+
+        <!-- MENU SUPERIOR -->
+        <nav class="postits">
+
+            <a href="Diario.html" class="postit">Início</a>
+            <a href="Historia.html" class="postit">História</a>
+            <a href="Fotos.html" class="postit">Fotos</a>
+            <a href="Loja.html" class="postit">Loja</a>
+            <a href="jogo.html" class="postit ativo">Jogos</a>
+            <a href="Figurinhas.html" class="postit">Figurinhas</a>
+            <a href="Perfis.html" class="postit">Perfis</a>
+
+        </nav>
+
+        <!-- LIVRO -->
+        <section class="livro">
+
+            <!-- CAPA DOS JOGOS -->
+            <section class="pagina capa-jogos">
+
+                <span class="etiqueta">NOSSO DIÁRIO 3DS</span>
+
+                <div class="ornamento">✦ ✧ ✦</div>
+
+                <h1>Hora de jogar!</h1>
+
+                <p class="descricao">
+                    Entre lembranças, brincadeiras e histórias,
+                    também tem espaço para testar seus conhecimentos
+                    e se divertir com a nossa turma.
+                </p>
+
+                <div class="divisor">✧ ━━━━━━━━━ ✧</div>
+
+                <h2>Escolha seu jogo</h2>
+
+                <!-- CARDS -->
+                <div class="lista-jogos">
+
+                    <article class="card-jogo">
+
+                        <div class="icone-jogo">⌕</div>
+
+                        <h3>Caça-palavras</h3>
+
+                        <p>
+                            Encontre palavras escondidas
+                            que fazem parte das nossas memórias.
+                        </p>
+
+                        <button id="abrirCacaPalavras">
+                            Jogar
+                        </button>
+
+                    </article>
+
+                    <article class="card-jogo">
+
+                        <div class="icone-jogo">?</div>
+
+                        <h3>Quiz da turma</h3>
+
+                        <p>
+                            Teste o quanto você conhece
+                            as histórias do nosso 3DS.
+                        </p>
+
+                        <button id="abrirQuiz">
+                            Jogar
+                        </button>
+
+                    </article>
+
+                </div>
+
+                <div class="assinatura">
+                    Feito de memórias, risadas e amizade.
+                </div>
+
+            </section>
+
+            <!-- ÁREA DOS JOGOS -->
+            <section id="areaJogo" class="area-jogo">
+
+                <button id="voltarJogos" class="botao-voltar">
+                    ← Voltar aos jogos
+                </button>
+
+                <div id="conteudoJogo"></div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

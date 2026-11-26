@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Um pedacinho de mim</title>
+
+    <link rel="stylesheet" href="Album.css">
+    <script src="Album.js" defer></script>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+        <p class="subtitulo">NOSSO DIÁRIO 3DS</p>
+
+        <h1>Um pedacinho de mim</h1>
+
+        <p class="introducao">
+            Um cantinho com as músicas, histórias e pequenas coisas
+            que fazem parte de quem eu sou.
+        </p>
+
+        <!-- PLAYER DE MÚSICA -->
+        <div class="player-musica">
+            <audio id="musicaFundo" loop>
+                <source src="white-keys.mp3" type="audio/mpeg">
+            </audio>
+
+            <button id="botaoMusica" type="button">
+                ♫ Tocar minha música
+            </button>
+        </div>
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="perfil">
+
+        <!-- DECORAÇÕES DO DIÁRIO -->
+        <div class="decoracoes-diario" aria-hidden="true">
+
+            <img
+                src="C:/Users/perol/OneDrive/Documentos/elementos/carta.png"
+                class="decor decor-carta"
+                alt=""
+            >
+
+            <img
+                src="C:/Users/perol/OneDrive/Documentos/elementos/estrelas.png"
+                class="decor decor-estrelas"
+                alt=""
+            >
+
+            <img
+                src="C:/Users/perol/OneDrive/Documentos/elementos/Firefly.png"
+                class="decor decor-firefly"
+                alt=""
+            >
+
+            <img
+                src="C:/Users/perol/OneDrive/Documentos/elementos/uma%20flor.png"
+                class="decor decor-flor"
+                alt=""
+            >
+
+        </div>
+
+
+        <!-- GALERIAS DE FOTOS LADO A LADO -->
+        <div class="galerias-fotos">
+
+            <!-- GALERIA: MINHAS LEMBRANÇAS -->
+            <section class="cartao galeria">
+                <span class="icone">📷</span>
+
+                <h2>Minhas lembranças</h2>
+
+                <p class="descricao">
+                    Pequenos momentos da minha vida que guardo com carinho ♡
+                </p>
+
+                <div class="carrossel" id="carrosselFotos">
+
+                    <div class="carrossel-conteudo" id="carrosselConteudo">
+                        <img
+                            src="file:///C:/Users/perol/OneDrive/Documentos/fotos%20minhas/foto%20minha1.jpeg"
+                            alt="Uma lembrança minha"
+                            class="foto-destaque"
+                        >
+                    </div>
+
+                    <p class="legenda-carrossel" id="legendaCarrossel">
+                        Um pedacinho de mim ♡
+                    </p>
+
+                    <div
+                        class="indicadores-carrossel"
+                        id="indicadoresCarrossel"
+                    ></div>
+
+                </div>
+            </section>
+
+
+            <!-- GALERIA: MINHA INFÂNCIA -->
+            <section class="cartao galeria cartao-infancia">
+                <span class="icone">🧸</span>
+
+                <h2>Minha infância</h2>
+
+                <p class="descricao">
+                    Um pedacinho da minha história, de quando eu era pequena ♡
+                </p>
+
+                <div class="carrossel" id="carrosselInfancia">
+
+                    <div class="carrossel-conteudo" id="conteudoInfancia">
+                        <img
+                            src="file:///C:/Users/perol/OneDrive/Documentos/eu%20crian%C3%A7a/foto%20com%20mae1.jpg"
+                            alt="Uma lembrança da minha infância"
+                            class="foto-destaque"
+                        >
+                    </div>
+
+                    <p class="legenda-carrossel" id="legendaInfancia">
+                        Um pedacinho da minha infância ♡
+                    </p>
+
+                    <div
+                        class="indicadores-carrossel"
+                        id="indicadoresInfancia"
+                    ></div>
+
+                </div>
+            </section>
+
+
+            <!-- GALERIA: MEUS COMPANHEIROS -->
+            <section class="cartao galeria">
+                <span class="icone">🐶</span>
+
+                <h2>Meus companheiros</h2>
+
+                <p class="descricao">
+                    Lembranças dos meus companheiros ♡
+                </p>
+
+                <div class="carrossel" id="carrosselCompanheiros">
+
+                    <div
+                        class="carrossel-conteudo"
+                        id="conteudoCompanheiros"
+                    >
+                        <img
+                            src="file:///C:/Users/perol/OneDrive/Documentos/outros/foto%20cachorro2.jpg"
+                            alt="Uma lembrança com meus companheiros"
+                            class="foto-destaque"
+                        >
+                    </div>
+
+                    <p class="legenda-carrossel">
+                        Lembranças dos meus melhores amigos ♡
+                    </p>
+
+                    <div
+                        class="indicadores-carrossel"
+                        id="indicadoresCompanheiros"
+                    ></div>
+
+                </div>
+            </section>
+
+        </div>
+
+
+        <!-- CARTINHA: AGORA ABAIXO DAS TRÊS GALERIAS -->
+        <section class="cartao cartinha-infancia">
+
+            <div class="cartinha-cabecalho">
+                <span>💌</span>
+                <p>Uma cartinha para minha versão pequena</p>
+            </div>
+
+            <div class="cartinha-texto">
+                <p>Oi, pequena eu…</p>
+
+                <p>
+                    Não tenha medo do mundo. Você ainda vai viver coisas lindas,
+                    conhecer pessoas especiais e realizar sonhos que hoje parecem distantes.
+                    Continue sendo essa menina sonhadora, divertida e de coração sensível.
+                    Cresça no seu tempo, sem precisar ter todas as respostas agora.
+                </p>
+
+                <p>
+                    Nunca deixe de acreditar em você. Ainda há muita coisa bonita
+                    esperando por você.
+                </p>
+
+                <p class="assinatura-cartinha">
+                    Com carinho,<br>
+                    Sua versão do futuro ♡
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- SOBRE MIM -->
+        <section class="cartao sobre-mim">
+            <span class="icone">🌙</span>
+
+            <h2>Um pouco sobre mim</h2>
+
+            <p>
+                Sou feita de sonhos, sentimentos e pequenos detalhes.
+                Tenho um jeito tímido, mas também sou divertida, carinhosa
+                e gosto de estar presente para as pessoas que amo.
+                Sou uma boa ouvinte e espero que quem esteja perto de mim
+                se sinta acolhido, tranquilo e feliz.
+            </p>
+
+            <p>
+                Gosto de aproveitar meu tempo jogando, programando,
+                lendo um pouco ou simplesmente saindo para respirar ar livre.
+                A música tem um lugar especial na minha vida: ela consegue
+                deixar meus dias mais leves e me fazer sorrir mesmo quando
+                as coisas não estão tão bem.
+            </p>
+
+            <p>
+                Encontro beleza nas coisas simples. Amo flores,
+                especialmente lírios, o cheiro de chuva e de terra molhada,
+                os dias ensolarados e o céu durante o pôr do sol.
+                Também gosto de observar a lua e as estrelas — existe algo
+                no céu que me faz parar por um instante e esquecer
+                a correria do mundo.
+            </p>
+
+            <p>
+                Meu lugar perfeito seria uma praia tranquila, com pouca gente,
+                o som do mar e tempo para aproveitar cada momento.
+                Tenho vontade de conhecer Paris ou a Itália e continuar
+                descobrindo lugares, histórias e coisas novas.
+            </p>
+
+            <p>
+                Tenho muitos sonhos para o futuro. Quero me tornar uma
+                programadora, principalmente criando sites, construir minha
+                própria família e ter uma casa que seja um verdadeiro lar:
+                um lugar cheio de amor, paz e felicidade.
+                Mais do que qualquer conquista, quero ser feliz e sentir
+                que estou vivendo uma vida que tenha significado para mim.
+            </p>
+
+            <p>
+                Sou alguém que guarda lembranças com carinho.
+                Gosto de fotos, cartas escritas à mão e objetos que carregam
+                histórias. Acredito que pequenos gestos podem transformar
+                um dia comum em algo inesquecível — como receber um buquê
+                das flores que gosto ou perceber que alguém se lembrou de mim.
+            </p>
+
+            <p>
+                Ainda estou descobrindo quem sou. Tenho meus momentos
+                de dúvida e sentimentos que às vezes parecem grandes demais,
+                mas também tenho sonhos, carinho para oferecer e muita coisa
+                bonita pela frente.
+            </p>
+
+            <p>
+                Se pudesse dizer algo à minha versão mais nova, diria:
+                <strong>
+                    “Não tenha medo do mundo. Ainda há muita coisa
+                    bonita esperando por você.”
+                </strong>
+            </p>
+
+            <p>
+                Quero continuar crescendo, conhecendo pessoas, criando
+                lembranças e encontrando beleza nas coisas que muitas vezes
+                passam despercebidas.
+            </p>
+
+            <p class="frase-destaque">
+                “Sou feita de sonhos, sentimentos e pequenos detalhes
+                que tornam a vida especial.”
+            </p>
+        </section>
+
+
+        <!-- MÚSICAS FAVORITAS -->
+        <section class="cartao cartao-musicas">
+            <span class="icone">🎧</span>
+
+            <h2>Minhas músicas favoritas</h2>
+
+            <p class="descricao">
+                Músicas que fazem parte de mim e da minha playlist ♡
+            </p>
+
+            <div class="musicas-colunas">
+
+                <ol class="lista-musicas">
+                    <li>White Keys</li>
+                    <li>Girassol — IVYSON</li>
+                    <li>Esperar pra Ver — Evinha</li>
+                    <li>Paint The Town Red — Doja Cat</li>
+                    <li>Get Lucky — Daft Punk ft. Pharrell Williams</li>
+                    <li>真夜中のドア / Stay with Me — Miki Matsubara</li>
+                    <li>Nothing’s New — Rio Romeo</li>
+                    <li>Blinding Lights — The Weeknd</li>
+                    <li>MILLION DOLLAR BABY — Tommy Richman</li>
+                </ol>
+
+                <ol class="lista-musicas" start="10">
+                    <li>Rock That Body — The Black Eyed Peas</li>
+                    <li>Not Like Us — Kendrick Lamar</li>
+                    <li>See You Again — Tyler, The Creator ft. Kali Uchis</li>
+                    <li>Heart To Heart</li>
+                    <li>From The Start — Laufey</li>
+                    <li>Apesar de Você — Chico Buarque</li>
+                    <li>Construção — Chico Buarque</li>
+                    <li>The Winner Takes It All — ABBA</li>
+                    <li>Cotidiano — Chico Buarque</li>
+                </ol>
+
+            </div>
+
+            <a
+                class="botao-playlist"
+                href="https://www.youtube.com/watch?v=Cz200209hOs&list=PLBr36kkDBrxU"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ▶ Abrir playlist
+            </a>
+        </section>
+
+
+        <!-- CORES FAVORITAS -->
+        <section class="cartao">
+            <span class="icone">🎨</span>
+
+            <h2>Minhas cores favoritas</h2>
+
+            <p class="descricao">
+                Um pouquinho das cores que eu amo.
+            </p>
+
+            <div class="etiquetas">
+                <span>Preto</span>
+                <span>Rosa</span>
+                <span>Rosa-claro</span>
+                <span>Roxo</span>
+                <span>Ciano</span>
+                <span>Vermelho</span>
+                <span>Amarelo-claro</span>
+                <span>Vinho</span>
+                <span>Azul</span>
+                <span>Azul-escuro</span>
+            </div>
+
+            <div class="paleta">
+                <span class="cor" style="background: #211c24;" title="Preto"></span>
+                <span class="cor" style="background: #e88db5;" title="Rosa"></span>
+                <span class="cor" style="background: #f3c4d6;" title="Rosa-claro"></span>
+                <span class="cor" style="background: #8b65b5;" title="Roxo"></span>
+                <span class="cor" style="background: #8bd9df;" title="Ciano"></span>
+                <span class="cor" style="background: #c9475d;" title="Vermelho"></span>
+                <span class="cor" style="background: #f4df91;" title="Amarelo-claro"></span>
+                <span class="cor" style="background: #702c45;" title="Vinho"></span>
+                <span class="cor" style="background: #6486c8;" title="Azul"></span>
+                <span class="cor" style="background: #263c70;" title="Azul-escuro"></span>
+            </div>
+        </section>
+
+
+        <!-- COMIDAS FAVORITAS -->
+        <section class="cartao">
+            <span class="icone">🍓</span>
+
+            <h2>Comidas que eu amo</h2>
+
+            <p class="descricao">
+                Algumas delícias que deixam meus dias mais felizes.
+            </p>
+
+            <div class="duas-colunas">
+
+                <div>
+                    <h3>🍰 Doces</h3>
+                    <p>
+                        Pudim, bolo de aniversário, doces com frutas
+                        e doces em geral.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>🍗 Salgados</h3>
+                    <p>
+                        Estrogonofe de frango, inroladinho de salsicha,
+                        pão de queijo e patê de frango.
+                    </p>
+                </div>
+
+            </div>
+
+            <p class="frase-destaque">
+                Amo frutas ♡
+            </p>
+        </section>
+
+    </main>
+
+
+    <!-- ENVELOPE SECRETO NO FINAL DO DIÁRIO -->
+    <div class="mensagem-secreta">
+
+        <button
+            id="abrirMensagem"
+            type="button"
+            aria-label="Abrir mensagem secreta"
+        >
+            💌
+        </button>
+
+        <div id="textoMensagem" class="texto-mensagem" hidden>
+            <p>
+                Parabéns! Você encontrou uma mensagem secreta.
+                Agora já sabe um pouquinho mais sobre mim.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>Feito com carinho para o Nosso Diário 3DS ✦</p>
+    </footer>
+
+</body>
+</html>
